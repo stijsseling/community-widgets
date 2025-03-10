@@ -1,0 +1,19 @@
+name: Widget request
+description: Request a new custom widget from the community
+labels: ["widget request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!NOTE]
+        >
+        > Do not prefix your title with "[REQUEST]", "[Widget request]", etc., a label will be added automatically.
+
+        Please provide a description of what the widget would show and how it would function, alongside any relevant API documentation or examples.
+
+  - type: textarea
+    id: description
+    validations:
+      required: true
+    attributes:
+      label: Description

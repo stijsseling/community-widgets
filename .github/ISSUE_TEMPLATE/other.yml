@@ -1,0 +1,10 @@
+name: Other
+description: For any other type of issue or discussions about the repository
+labels: ["other"]
+body:
+  - type: textarea
+    id: description
+    validations:
+      required: true
+    attributes:
+      label: Description

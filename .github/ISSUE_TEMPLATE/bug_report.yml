@@ -1,0 +1,27 @@
+name: Bug report
+description: Let us know if a widget isn't working as expected
+labels: ["bug report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!NOTE]
+        >
+        > Do not prefix your title with "[BUG]", "[Bug report]", etc., a label will be added automatically.
+
+        Please include any information you think is relevant to the issue you're experiencing.
+
+  - type: input
+    id: widget
+    attributes:
+      label: Widget link
+      description: A link to the relevant widget from this repository
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    validations:
+      required: true
+    attributes:
+      label: Description
