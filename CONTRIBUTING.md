@@ -19,7 +19,7 @@ If you have created a custom widget that you would like to share with the commun
 1. Fork the repository
 2. Create a new directory under `widgets` with the name of your widget and your GitHub username (e.g. `my-widget-by-my-username`)
 3. Make sure to read and follow the guidelines below
-4. Create a `README.md` file in the new directory and include a preview of the widget, its YAML content and any relevant information required to configure the widget, checkout [this](widgets\immich-stats-by-svilenmarkov\README.md) widget as an example
+4. Create a `README.md` file in the new directory and include a preview of the widget, its YAML content and any relevant information required to configure the widget, checkout [this](widgets/immich-stats-by-svilenmarkov/README.md) widget as an example
 5. Place your preview image in the same directory with the name `preview.png`
 6. Add your widget to the list in the `README.md` file in the root of the repository in alphabetical order using the format `* [Widget name](widgets/widget-directory/README.md) by @your-username - description`
 7. Commit your changes and push them to your fork, then create a pull request
