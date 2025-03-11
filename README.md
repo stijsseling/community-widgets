@@ -8,6 +8,7 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 
 ## Widgets
 
+* [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-magicexists/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
 * [Immich stats](widgets/immich-stats-by-svilenmarkov/README.md) by @svilenmarkov - show the number of photos, videos and usage of your Immich server
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
 * [Steam specials](widgets/steam-specials-by-svilenmarkov/README.md) by @svilenmarkov - show a list of discounted games on Steam
