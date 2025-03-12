@@ -1,5 +1,5 @@
 # Restic Glance Extension
-_View the full repository [here](https://github.com/not-first/restic-glance-extension)_
+_View the source repository [here](https://github.com/not-first/restic-glance-extension)_
 
 ![Widget screenshot](preview.png)
 
