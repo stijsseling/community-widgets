@@ -25,7 +25,7 @@ A middle layer is required to handle Spotify API access - a working example is f
 ### API setup
 
 1. Fork the val linked above.
-2. Log into [Spotify for Developers](https://developer.spotify.com/)
+2. Log into [Spotify for Developers](https://developer.spotify.com/).
 3. Navigate to the dashboard and create a new app, using `http://localhost:3000` (or whatever) as the callback.
 4. Record the `client_id` and `client_secret` and add them as env variables for your val.
 5. Grab a scope variable by navigating into this link: `https://accounts.spotify.com/en/authorize?client_id=<your_client_id>&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing`. It will redirect to a localhost url with this format: `http://localhost:3000/?code=<scope_variable>` - store this.
