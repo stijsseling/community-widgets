@@ -9,7 +9,7 @@
 
 ![](preview.png)
 
-_I'm going to separate the configuration for readability, the yaml file is in [config.yml](config.yml)._
+_I'm going to separate the configuration for readability, the yaml file is in [pve-stats.yml](pve-stats.yml)._
 ```yaml
 - type: custom-api
   title: Proxmox-VE Stats
