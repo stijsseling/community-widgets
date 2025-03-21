@@ -2,20 +2,20 @@
 
 ```yaml
 - type: custom-api
-          title: Spotify
-          cache: 30s
-          frameless: true
-          url: https://${NOW_PLAYING}.web.val.run/
-          template: |
-            <div class="widget-content-frame flex flex-row justify-start items-center gap-20">
-              <div>
-                <img src={{ .JSON.String "image" }} style="border-radius: 5px; min-width: 8rem; max-width: 8rem" class="card">
-              </div>
-              <div class="flex grow flex-column justify-center" style="padding-right: 1rem">
-                <div class="color-positive size-h4">{{ .JSON.String "shortenedName" }}</div>
-                <div class="size-h4">{{ .JSON.String "formattedArtist"}}</div>
-              </div>
-            </div>
+  title: Spotify
+  cache: 30s
+  frameless: true
+  url: https://${NOW_PLAYING}.web.val.run/
+  template: |
+    <div class="widget-content-frame flex flex-row justify-start items-center gap-20">
+      <div>
+        <img src={{ .JSON.String "image" }} style="border-radius: 5px; min-width: 8rem; max-width: 8rem" class="card">
+      </div>
+      <div class="flex grow flex-column justify-center" style="padding-right: 1rem">
+        <div class="color-positive size-h4">{{ .JSON.String "shortenedName" }}</div>
+        <div class="size-h4">{{ .JSON.String "formattedArtist" }}</div>
+      </div>
+    </div>
 ```
 
 ## Setup
