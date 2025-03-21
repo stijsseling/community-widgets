@@ -9,7 +9,6 @@
 
 ![](preview.png)
 
-_I'm going to separate the configuration for readability, the yaml file is in [pve-stats.yml](pve-stats.yml)._
 ```yaml
 - type: custom-api
   title: Proxmox-VE Stats
@@ -19,8 +18,6 @@ _I'm going to separate the configuration for readability, the yaml file is in [p
     Accept: application/json
     Authorization: PVEAPIToken=${PROXMOXVE_KEY}
   template: |
-```
-```html
     <div class="flex flex-column gap-5">
       <div class="flex justify-between text-center">
         <div>
