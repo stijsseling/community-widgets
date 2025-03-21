@@ -24,4 +24,4 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 > Extension widgets are not actively monitored by the Glance maintainers, use at your own risk.
 
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
-
+* [Uptime Kuma](https://github.com/not-first/uptime-kuma-glance-extension/) by @not-first - show the status of Uptime Kuma services on a status page
