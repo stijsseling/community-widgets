@@ -1,5 +1,9 @@
 # What's up docker - status
 This widget uses WUD api. It fetches all the containers and displayes them in Glance. It checks if container needs an update and displayes it. You can also decided if you want to toggle displaying all the container or only one's that needs an update. 
+
+To toggle showing all containers, you need to set the variable `$showAll` to `true`. You can do this by changing the line `{{ $showAll := false }}` in the code to `{{ $showAll := true }}`.
+
+This will display all containers, regardless of whether they need an update or not.
 ```
         - type: custom-api
           title: What's up docker?
