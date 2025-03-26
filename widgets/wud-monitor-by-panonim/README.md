@@ -49,7 +49,7 @@ For grabbing container no matter the state I also recommend adding this to your 
 ### Preview
 [![showAll var = false](./preview1.png)](./preview1.png)
 
-[![showAll var = true](./preview2.png)](./preview2.png)
+[![showAll var = true](./preview_2.png)](./preview2.png)
 <hr>
 Made by: Artur Flis
 
