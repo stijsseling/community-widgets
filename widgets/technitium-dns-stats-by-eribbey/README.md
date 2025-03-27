@@ -8,9 +8,9 @@ This Custom API implementation supports pulling basic stats from [Technitium DNS
 - Top queries table
 - Top blocked queries table
 
-![Collapsed widget](example_collapsed.png)
+![Collapsed widget](preview.png)
 
-![Table example](example_table.png)
+![Table example](preview_table.png)
 
 It will also check for updates to Technitium and display a notificaiton when an update is available.
 
