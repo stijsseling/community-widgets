@@ -1,6 +1,8 @@
-# Technitium Stats Widget
+# Technitium DNS Stats
 
-This Custom API implementation supports pulling basic stats from Technitium DNS Server. It will also display when a new version is available.
+This Custom API implementation supports pulling basic stats from [Technitium DNS Server](https://technitium.com/dns/). It will also display when a new version is available.
+
+![Collapsed widget](example_collapsed.png)
 
 ## Requirements
 
