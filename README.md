@@ -16,6 +16,7 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
 * [Steam specials](widgets/steam-specials-by-svilenmarkov/README.md) by @svilenmarkov - show a list of discounted games on Steam
 * [Steam User](widgets/steam-user-by-lunnosmp4/README.md) by @lunnosmp4 - show information about a Steam user
+* [Technitium stats](widgets/technitium-stats-by-eribbey/README.md) by @eribbey - show stats from Technitium DNS Server
 * [Trending Mastodon Links](widgets/trending-mastodon-links-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending links from a provided Mastodon instance
 * [Trending Bluesky News](widgets/trending-bluesky-news-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending news links from the [Trending News 2.0 Feed](https://bsky.app/profile/did:plc:kkf4naxqmweop7dv4l2iqqf5/feed/news-2-0) on Bluesky
 
