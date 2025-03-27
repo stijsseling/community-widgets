@@ -10,6 +10,8 @@ This Custom API implementation supports pulling basic stats from [Technitium DNS
 
 ![Collapsed widget](example_collapsed.png)
 
+![Table example](example_table.png)
+
 It will also check for updates to Technitium and display a notificaiton when an update is available.
 
 ## Requirements
