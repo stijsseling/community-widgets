@@ -1,9 +1,9 @@
 # What's Up Docker Monitor
 This widget uses WUD api. It fetches all the containers and displayes them in Glance. It checks if container needs an update and displayes it. You can also decided if you want to toggle displaying all the container or only one's that needs an update. 
 
-To toggle showing all containers, you need to set the variable `$showAll` to `true`. You can do this by changing the line `{{ $showAll := false }}` in the code to `{{ $showAll := true }}`. Setting it to true will also make sure that images needing an update will be displayed on top.
+To toggle showing all containers, you need to set the variable `$showAll` to `true`. You can do this by changing the line `{{ $showAll := false }}` in the code to `{{ $showAll := true }}`. Setting it to true will also make sure that images needing an update will be displayed on top. This will display all containers, regardless of whether they need an update or not.
 
-This will display all containers, regardless of whether they need an update or not.
+There's also a toggle to turn on/off a message indicating that all containers are Up-To-Date `{{ $hasUpdates := false }}`.
 ```
         - type: custom-api
           title: What's Up Docker?
@@ -14,8 +14,10 @@ This will display all containers, regardless of whether they need an update or n
             <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
               {{ $showAll := false }}  {{/* Set this to true to show all containers */}}
               {{ $containers := .JSON.Array "" }}
+              {{ $hasUpdates := false }} {{/* Set to true to hide up-to-date message */}}
               {{ range $index, $container := $containers }}
                 {{ if $container.Bool "updateAvailable" }}
+                  {{ $hasUpdates = true }}
                   <li>
                     <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
                     <ul class="list-horizontal-text">
@@ -31,6 +33,9 @@ This will display all containers, regardless of whether they need an update or n
                     </ul>
                   </li>
                 {{ end }}
+              {{ end }}
+              {{ if not $hasUpdates }}
+                <li><span class="color-positive">You're good to go!</span></li>
               {{ end }}
               {{ if $showAll }}
                 {{ range $index, $container := $containers }}
