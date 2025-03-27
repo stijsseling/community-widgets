@@ -1,19 +1,27 @@
 # Technitium DNS Stats
 
-This Custom API implementation supports pulling basic stats from [Technitium DNS Server](https://technitium.com/dns/). It will also display when a new version is available.
+This Custom API implementation supports pulling basic stats from [Technitium DNS Server](https://technitium.com/dns/) based off a set timeframe:
+- Current version
+- Total queries
+- Blocked queries
+- Top clients table
+- Top queries table
+- Top blocked queries table
 
 ![Collapsed widget](example_collapsed.png)
 
+It will also check for updates to Technitium and display a notificaiton when an update is available.
+
 ## Requirements
 
-- Technitium account with DNS zone viewing permissions
+- Technitium service account with appropriate permissions (I have my account in the "DNS Administrators" group)
 - API token for said account (Create by clicking your account icon in the top-right of Technitium -> "Create API Token")
 
 ## Environment Variables
 
 - `TECHNITIUM_IP_PORT`: The accessible IP of your Technitium instance. Default port is 5380.
 - `TECHNITIUM_TOKEN`: Technitium API token.
-- `TECHNITIUM_STATS_TIMEFRAME`: Timeframe to fetch stats. Currently supports the following values: [`LastHour`, `LastDay`, `LastWeek`, `LastMonth`, `LastYear`].
+- `TECHNITIUM_STATS_TIMEFRAME`: Timeframe to fetch stats. Currently supports the following values: `LastHour`, `LastDay`, `LastWeek`, `LastMonth`, `LastYear`.
 
 ## Configuration
 
