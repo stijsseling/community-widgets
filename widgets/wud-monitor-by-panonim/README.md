@@ -6,13 +6,13 @@ To toggle showing all containers, you need to set the variable `$showAll` to `tr
 This will display all containers, regardless of whether they need an update or not.
 ```
         - type: custom-api
-          title: What's up docker?
+          title: What's Up Docker?
           cache: 2h
-          url: http://{WUD_URL}/api/containers/watch
+          url: http://${WUD_URL}/api/containers/watch
           method: POST
           template: |
             <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
-              {{ $showAll := true }}  {{/* Set this to true to show all containers */}}
+              {{ $showAll := false }}  {{/* Set this to true to show all containers */}}
               {{ $containers := .JSON.Array "" }}
               {{ range $index, $container := $containers }}
                 {{ if $container.Bool "updateAvailable" }}
@@ -52,15 +52,19 @@ This will display all containers, regardless of whether they need an update or n
                   {{ end }}
                 {{ end }}
               {{ end }}
-        </ul>
+            </ul>
 ```
 ### Environment variables
 `WUD_URL` - the URL of the Whats up docker server
+
+Template: `WUD_URL=ip:port` - You can also just reaplace the code var for it to work. 
 
 For grabbing container no matter the state I also recommend adding this to your WUD env:
 ```
 - WUD_WATCHER_LOCAL_WATCHALL=true
 ```
+Please remember to restart your services after applying env vars.
+
 ### Preview
 [![showAll var = false](./preview1.png)](./preview1.png)
 
