@@ -15,6 +15,7 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
 * [Steam specials](widgets/steam-specials-by-svilenmarkov/README.md) by @svilenmarkov - show a list of discounted games on Steam
 * [Steam User](widgets/steam-user-by-lunnosmp4/README.md) by @lunnosmp4 - show information about a Steam user
+* [Tailscale devices](widgets/tailscale-devices-by-not-first/README.md) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
 * [Trending Mastodon Links](widgets/trending-mastodon-links-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending links from a provided Mastodon instance
 
 ## Extension Widgets
@@ -24,5 +25,4 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 > Extension widgets are not actively monitored by the Glance maintainers, use at your own risk.
 
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
-* [Tailscale devices](https://github.com/not-first/tailscale-glance-extension) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
 * [Uptime Kuma](https://github.com/not-first/uptime-kuma-glance-extension/) by @not-first - show the status of Uptime Kuma services on a status page
