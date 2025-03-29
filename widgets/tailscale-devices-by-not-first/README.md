@@ -112,5 +112,5 @@
 
 ## Environment variables
 
-- `TAILSCALE_API_KEY`: Your Tailscale API key with
+- `TAILSCALE_API_KEY`: Your Tailscale API key
 - `TZ`: For correct times, the widget uses the container's timezone. If not already supplied, you can use this variable to provide your timezone.
