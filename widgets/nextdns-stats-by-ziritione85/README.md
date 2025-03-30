@@ -14,14 +14,12 @@
       <div style="display: flex; justify-content: space-between;">
         {{ $total := 0.0 }}
         {{ $blocked := 0.0 }}
-        
         {{ range .JSON.Array "data" }}
           {{ $total = add $total (.Int "queries" | toFloat) }}
           {{ if eq (.String "status") "blocked" }}
             {{ $blocked = add $blocked (.Int "queries" | toFloat) }}
           {{ end }}
         {{ end }}
-        
         <div style="flex: 1; text-align: center;">
           <p>Queries</p>
           <p>{{ printf "%.0f" $total }}</p>
@@ -44,7 +42,6 @@
         Error: {{ .Response.StatusCode }} - {{ .Response.Status }}
       </div>
     {{ end }}
-
 ```
 
 ## Environment variables
