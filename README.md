@@ -22,6 +22,7 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 * [Steam Recently Played Games](widgets/steam-recently-played-games-by-lunnosmp4/README.md) by @lunnosmp4 - show a list of recently played games by a Steam user
 * [Steam specials](widgets/steam-specials-by-svilenmarkov/README.md) by @svilenmarkov - show a list of discounted games on Steam
 * [Steam User](widgets/steam-user-by-lunnosmp4/README.md) by @lunnosmp4 - show information about a Steam user
+* [Tailscale devices](widgets/tailscale-devices-by-not-first/README.md) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
 * [Technitium DNS Stats](widgets/technitium-dns-stats-by-eribbey/README.md) by @eribbey - show stats from Technitium DNS Server
 * [Trending Mastodon Links](widgets/trending-mastodon-links-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending links from a provided Mastodon instance
 * [Trending Bluesky News](widgets/trending-bluesky-news-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending news links from the [Trending News 2.0 Feed](https://bsky.app/profile/did:plc:kkf4naxqmweop7dv4l2iqqf5/feed/news-2-0) on Bluesky
@@ -38,4 +39,3 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
-* [Tailscale devices](https://github.com/not-first/tailscale-glance-extension) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
