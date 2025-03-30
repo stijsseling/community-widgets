@@ -209,10 +209,8 @@ document.addEventListener('keydown', (e) => {
 
 const closeModal = () => {
   modal.classList.remove('show');
-  setTimeout(() => {
-      modal.style.display = 'none';
-      modalBody.innerHTML = '';
-  }, 300);
+  modal.style.display = 'none';
+  modalBody.innerHTML = '';
 }
 ```
 
