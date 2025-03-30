@@ -6,6 +6,10 @@ Before a widget is added to this repository it must receive a vouch which can be
 
 To add your widget to the list, please read the [contribution guidelines](CONTRIBUTING.md).
 
+### What's the difference between a `custom-api` and `extension` widget?
+
+Custom API widgets are much easier to setup and usually only require a copy-paste into your config. Extension widgets are a bit more involved and require running a separate server or Docker container.
+
 ## Custom API Widgets
 
 * [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-gugugiyu/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
@@ -35,7 +39,7 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 
 > [!WARNING]
 >
-> Extension widgets are not actively monitored by the Glance maintainers, use at your own risk.
+> Extension widgets are not actively monitored by the maintainers of Glance, use them at your own risk.
 
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
