@@ -226,7 +226,6 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
   border-radius: 5px;
   animation: modalFrameEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-properties) var(--shadow-color);
-  text-align: center;
 }
 
 .modal.show .modal-content {
