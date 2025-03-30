@@ -175,8 +175,8 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
           modalContent.style.height = '80vh';
           break;
         case 'full':
-          modalContent.style.width = '90vw';
-          modalContent.style.height = '90vh';
+          modalContent.style.width = '100vw';
+          modalContent.style.height = '100vh';
           break;
         default:
           modalContent.style.width = width;
