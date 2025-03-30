@@ -37,11 +37,9 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
         {{ $thumbnail := findSubmatch "img src=\"([^\"]+)" (.String "content_html") }}
         
         <div class="card widget-content-frame thumbnail-parent">
-          <div type="modal">
+          <div type="modal" class="modal-no-background">
             <div modal-content>
-              <div style="display: flex; width: 100%; height: 80vh;">
-                <iframe src="{{ $youtubeEmbedUrl }}" loading="lazy" style="flex-grow: 1; border: none;"></iframe>
-              </div>
+              <iframe src="{{ $youtubeEmbedUrl }}" loading="lazy" class="iframe-embedded-video"></iframe>
             </div>
             <span>
               {{ if ne $thumbnail "" }}
@@ -120,6 +118,19 @@ If you're using [FreshRSS](https://github.com/FreshRSS/FreshRSS) as a backend th
 5. Enable sharing by HTML & RSS then Submit
 6. Copy `Shareable link to the GReader JSON`
 
+### iframe styling
+```css
+iframe.iframe-embedded-video {
+    outline: 1px solid var(--color-primary);
+    outline-offset: 0.1rem;
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: var(--color-popover-background);
+}
+```
+
 ## YouTube embed proxy
 You can replace `https://www.youtube-nocookie.com/embed/` with your instance that supports embedding.
 
@@ -138,63 +149,71 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
 
 ### JavaScript
 ```js
-
-  const modalWrapper = document.createElement('div');
-  modalWrapper.className = 'modal';
-  modalWrapper.innerHTML = `
+const modalWrapper = document.createElement('div');
+modalWrapper.className = 'modal';
+modalWrapper.innerHTML = `
     <div class='modal-content'>
-      <span class='close'>&times;</span>
-      <div class='modal-body'></div>
+        <span class='close'>&times;</span>
+        <div class='modal-body'></div>
     </div>
-  `;
-  document.body.appendChild(modalWrapper);
-  
-  const modal = document.querySelector('.modal');
-  const modalContent = document.querySelector('.modal-content');
-  const modalBody = document.querySelector('.modal-body');
-  const closeBtn = document.querySelector('.close');
-  
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('[type="modal"]')) {
-      const triggerElement = e.target.closest('[type="modal"]');
-      const contentElement = triggerElement.querySelector('[modal-content]');
-      
-      if (contentElement) {
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = contentElement.innerHTML.trim();
-          modalBody.innerHTML = '';
-          modalBody.appendChild(tempDiv);
-      }
-      
-      const width = triggerElement.getAttribute('width') || '90vw';
-      const height = triggerElement.getAttribute('height') || '90vh';
+`;
+document.body.appendChild(modalWrapper);
 
-      switch ( triggerElement.getAttribute('size')) {
-        case 'theater':
-          modalContent.style.width = '80vw';
-          modalContent.style.height = '80vh';
-          break;
-        case 'full':
-          modalContent.style.width = '100vw';
-          modalContent.style.height = '100vh';
-          break;
-        default:
-          modalContent.style.width = width;
-          modalContent.style.height = height;
-          break;
-      }
-      
-      modal.style.display = 'flex';
-      setTimeout(() => modal.classList.add('show'), 10);
+const modal = document.querySelector('.modal');
+const modalContent = document.querySelector('.modal-content');
+const modalBody = document.querySelector('.modal-body');
+const closeBtn = document.querySelector('.close');
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('[type="modal"]')) {
+    const triggerElement = e.target.closest('[type="modal"]');
+    const contentElement = triggerElement.querySelector('[modal-content]');
+    
+    if (contentElement) {
+      modalBody.innerHTML = contentElement.innerHTML.trim();
     }
-    if (e.target === closeBtn || e.target === modal) {
-      modal.classList.remove('show');
-      setTimeout(() => {
-          modal.style.display = 'none';
-          modalBody.innerHTML = ''; // Clear content on close
-      }, 300);
+    
+    modal.className = `modal ${triggerElement.className}`;
+    
+    const width = triggerElement.getAttribute('width') || '90vw';
+    const height = triggerElement.getAttribute('height') || '90vh';
+    
+    switch (triggerElement.getAttribute('size')) {
+      case 'theater':
+        modalContent.style.width = '80vw';
+        modalContent.style.height = '80vh';
+        break;
+      case 'full':
+        modalContent.style.width = '100vw';
+        modalContent.style.height = '100vh';
+        break;
+      default:
+        modalContent.style.width = width;
+        modalContent.style.height = height;
+        break;
     }
-  });
+    
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('show'), 10);
+  }
+  if (e.target === closeBtn || e.target === modal) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (modal.classList.contains('show') && e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+const closeModal = () => {
+  modal.classList.remove('show');
+  setTimeout(() => {
+      modal.style.display = 'none';
+      modalBody.innerHTML = '';
+  }, 300);
+}
 ```
 
 ### CSS
@@ -212,8 +231,23 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
   z-index: 15;
 }
 
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 .modal.show {
   display: flex;
+  opacity: 1;
+}
+
+.modal.show::before {
   opacity: 1;
 }
 
@@ -222,10 +256,16 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
   --shadow-color: hsla(var(--bghs), calc(var(--bgl) * 0.2), 0.5);
   background: var(--color-popover-background);
   border: 1px solid var(--color-popover-border);
-  padding: 45px;
+  padding: 4.5rem;
   border-radius: 5px;
   animation: modalFrameEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-properties) var(--shadow-color);
+}
+
+.modal.modal-no-background .modal-content {
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .modal.show .modal-content {
@@ -243,6 +283,10 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.modal .modal-body {
+  height: 100%;
 }
 
 [modal-content] {
