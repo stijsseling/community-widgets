@@ -25,6 +25,7 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 * [Technitium DNS Stats](widgets/technitium-dns-stats-by-eribbey/README.md) by @eribbey - show stats from Technitium DNS Server
 * [Trending Mastodon Links](widgets/trending-mastodon-links-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending links from a provided Mastodon instance
 * [Trending Bluesky News](widgets/trending-bluesky-news-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending news links from the [Trending News 2.0 Feed](https://bsky.app/profile/did:plc:kkf4naxqmweop7dv4l2iqqf5/feed/news-2-0) on Bluesky
+* [Uptime Kuma](https://github.com/not-first/uptime-kuma-by-not-first/README.md) by @not-first - show the status of Uptime Kuma services
 * [SABnzbd Status](widgets/sabnzbd-stats-by-Neo11Neo/README.md) by @Neo11Neo - show SABnzbd status
 * [Vikunja Taskboard](widgets/vikunja-taskboard-by-gugugiyu//README.md) by @gugugiyu - Real time taskboard using the Vikunja API
 * [What's Up Docker Monitor](widgets/wud-monitor-by-panonim) by @panonim - A customizable widget for displaying the wud data about containers. 
@@ -38,4 +39,3 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
 * [Tailscale devices](https://github.com/not-first/tailscale-glance-extension) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
-* [Uptime Kuma](https://github.com/not-first/uptime-kuma-glance-extension/) by @not-first - show the status of Uptime Kuma services on a status page
