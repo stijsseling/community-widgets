@@ -9,8 +9,9 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 ## Custom API Widgets
 
 * [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-gugugiyu/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
-* [Ghostfolio stats](Glance/widgets/ghostfolio-stats-by-ziritione85) by @yziritione85 - show the status of your investments with today's results, YTD and totals
+* [Ghostfolio stats](Glance/widgets/ghostfolio-stats-by-ziritione85) by @ziritione85 - show the status of your investments with today's results, YTD and totals
 * [Immich stats](widgets/immich-stats-by-svilenmarkov/README.md) by @svilenmarkov - show the number of photos, videos and usage of your Immich server
+* [NextDNS stats](widgets/nextdns-stats-by-ziritione85) by @ziritione85 - show the stats of your NextDNS, total queries, total blocked and percentage. 
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
 * [Speedtest tracker](widgets/speedtest-tracker-by-notfirst/README.md) by @not-first - show the latest internet speed information from speedtest tracker
