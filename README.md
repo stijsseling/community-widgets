@@ -20,6 +20,7 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 * [Steam User](widgets/steam-user-by-lunnosmp4/README.md) by @lunnosmp4 - show information about a Steam user
 * [Trending Mastodon Links](widgets/trending-mastodon-links-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending links from a provided Mastodon instance
 * [Trending Bluesky News](widgets/trending-bluesky-news-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending news links from the [Trending News 2.0 Feed](https://bsky.app/profile/did:plc:kkf4naxqmweop7dv4l2iqqf5/feed/news-2-0) on Bluesky
+* [What's Up Docker Monitor](widgets/wud-monitor-by-panonim) by @panonim - A customizable widget for displaying the wud data about containers. 
 
 ## Extension Widgets
 
