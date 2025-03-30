@@ -1,12 +1,3 @@
-> **NOTE!**
-> 
-> HTTPS may cause issues if your PROXMOXVE_URL is not behind the same reverse proxy as your Glance instance
->
-> `allow-insecure: true` is not yet in the stable release v0.7.7.
->
-> But is in the roadmap for [v0.8.0](https://github.com/glanceapp/glance/issues/361#issuecomment-2667354818)
-
-
 ![](preview.png)
 
 ```yaml
@@ -14,6 +5,7 @@
   title: Proxmox-VE Stats
   cache: 1m
   url: https://${PROXMOXVE_URL}/api2/json/cluster/resources
+  allow-insecure: true
   headers:
     Accept: application/json
     Authorization: PVEAPIToken=${PROXMOXVE_KEY}
