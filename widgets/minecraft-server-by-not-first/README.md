@@ -4,8 +4,7 @@
 - type: custom-api
   title: Minecraft
   url: https://api.mcstatus.io/v2/status/java/${MC_SERVER_URL}
-  allow-potentially-dangerous-html: true
-  cache: 1s
+  cache: 30s
   template: |
     <div style="display:flex; align-items:center; gap:12px;">
       <div style="width:40px; height:40px; flex-shrink:0;  border-radius:4px; display:flex; justify-content:center; align-items:center; overflow:hidden;">
