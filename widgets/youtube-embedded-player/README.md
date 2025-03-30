@@ -39,7 +39,7 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
         <div class="card widget-content-frame thumbnail-parent">
           <div type="modal" class="modal-no-background">
             <div modal-content>
-              <iframe src="{{ $youtubeEmbedUrl }}" loading="lazy" class="iframe-embedded-video"></iframe>
+              <iframe src="{{ $youtubeEmbedUrl }}" loading="lazy" class="iframe-embedded-video" allowfullscreen></iframe>
             </div>
             <span>
               {{ if ne $thumbnail "" }}
