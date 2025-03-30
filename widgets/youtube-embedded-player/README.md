@@ -37,8 +37,8 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
         {{ $thumbnail := findSubmatch "img src=\"([^\"]+)" (.String "content_html") }}
         
         <div class="card widget-content-frame thumbnail-parent">
-          <div type="modal" class="modal-no-background">
-            <div modal-content>
+          <div data-content-type="modal" class="modal-no-background">
+            <div modal-body>
               <iframe src="{{ $youtubeEmbedUrl }}" loading="lazy" class="iframe-embedded-video" allowfullscreen></iframe>
             </div>
             <span>
@@ -139,11 +139,17 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
 
 ### Modal Usage
 ```html
-<div type="modal">
-  <div modal-content>
-    <div>Content here</div>
+<div data-content-type="modal">
+  <!-- <div modal-header>
+    Header, can be omitted
+  </div> -->
+  <div modal-body>
+    Body
   </div>
-  Click me!
+  <!-- <div modal-footer>
+    Footer, can be omitted
+  </div> -->
+  Click me! <!-- Single html tag or plain text as the button -->
 </div>
 ```
 
@@ -152,44 +158,56 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
 const modalWrapper = document.createElement('div');
 modalWrapper.className = 'modal';
 modalWrapper.innerHTML = `
-    <div class='modal-content'>
-        <span class='close'>&times;</span>
-        <div class='modal-body'></div>
+    <div class="modal-container">
+      <span class="close">&times;</span>
+      <div class="modal-content">
+        <div class="modal-header"></div>
+        <div class="modal-body"></div>
+        <div class="modal-footer"></div>
+      </div>
     </div>
 `;
 document.body.appendChild(modalWrapper);
 
 const modal = document.querySelector('.modal');
-const modalContent = document.querySelector('.modal-content');
+const modalContainer = document.querySelector('.modal-container');
+const modalHeader = document.querySelector('.modal-header');
 const modalBody = document.querySelector('.modal-body');
+const modalFooter = document.querySelector('.modal-footer');
 const closeBtn = document.querySelector('.close');
 
 document.addEventListener('click', (e) => {
-  if (e.target.closest('[type="modal"]')) {
-    const triggerElement = e.target.closest('[type="modal"]');
-    const contentElement = triggerElement.querySelector('[modal-content]');
-    
-    if (contentElement) {
-      modalBody.innerHTML = contentElement.innerHTML.trim();
-    }
+  if (e.target.closest('[data-content-type="modal"]')) {
+    const triggerElement = e.target.closest('[data-content-type="modal"]');
+    const headerElement = triggerElement.querySelector('[modal-header]');
+    const bodyElement = triggerElement.querySelector('[modal-body]');
+    const footerElement = triggerElement.querySelector('[modal-footer]');
+
+    if (headerElement) modalHeader.innerHTML = headerElement.innerHTML.trim();
+    if (bodyElement) modalBody.innerHTML = bodyElement.innerHTML.trim();
+    if (footerElement) modalFooter.innerHTML = footerElement.innerHTML.trim();
     
     modal.className = `modal ${triggerElement.className}`;
     
-    const width = triggerElement.getAttribute('width') || '90vw';
-    const height = triggerElement.getAttribute('height') || '90vh';
+    const width = triggerElement.getAttribute('width') || '90%';
+    const height = triggerElement.getAttribute('height') || '90%';
     
     switch (triggerElement.getAttribute('size')) {
       case 'theater':
-        modalContent.style.width = '80vw';
-        modalContent.style.height = '80vh';
+        modalContainer.style.width = '80%';
+        modalContainer.style.height = '80%';
         break;
       case 'full':
-        modalContent.style.width = '100vw';
-        modalContent.style.height = '100vh';
+        modalContainer.style.width = '100%';
+        modalContainer.style.height = '100%';
+        break;
+      case 'medium':
+        modalContainer.style.width = '60%';
+        modalContainer.style.height = '60%';
         break;
       default:
-        modalContent.style.width = width;
-        modalContent.style.height = height;
+        modalContainer.style.width = width;
+        modalContainer.style.height = height;
         break;
     }
     
@@ -249,7 +267,7 @@ const closeModal = () => {
   opacity: 1;
 }
 
-.modal .modal-content {
+.modal .modal-container {
   --shadow-properties: 0 15px 20px -10px;
   --shadow-color: hsla(var(--bghs), calc(var(--bgl) * 0.2), 0.5);
   background: var(--color-popover-background);
@@ -260,13 +278,13 @@ const closeModal = () => {
   box-shadow: var(--shadow-properties) var(--shadow-color);
 }
 
-.modal.modal-no-background .modal-content {
+.modal.modal-no-background .modal-container {
   background: none;
   border: none;
   box-shadow: none;
 }
 
-.modal.show .modal-content {
+.modal.show .modal-container {
   transform: scale(1);
 }
 
@@ -283,15 +301,34 @@ const closeModal = () => {
   right: 10px;
 }
 
-.modal .modal-body {
+.modal .modal-content {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-[modal-content] {
+.modal .modal-content .modal-header,
+.modal .modal-content .modal-footer {
+  flex: 0 0 10%;
+}
+
+.modal .modal-content .modal-header:empty,
+.modal .modal-content .modal-footer:empty {
+  flex: 0 0 0%;
   display: none;
 }
 
-[type="modal"] {
+.modal .modal-body {
+  flex: 1;
+}
+
+[modal-header],
+[modal-body],
+[modal-footer]{
+  display: none;
+}
+
+[data-content-type="modal"] {
   cursor: pointer;
 }
 
