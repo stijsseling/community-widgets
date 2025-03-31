@@ -154,6 +154,21 @@ There's no native modal in Glance as of v0.7.9, so I made one for now based on p
 ```
 
 ### JavaScript
+The JavaScript needs to be loaded after the Glance has fully loaded, so you might need to wrap it with DOMContentLoaded
+```js
+document.addEventListener('DOMContentLoaded', async () => {
+  // wait for Glance to completely load
+  console.log("Waiting for Glance...");
+  while (!document.body.classList.contains('page-columns-transitioned')) {
+    await new Promise(resolve => setTimeout(resolve, 50));
+  }
+  console.log("Glance loaded...");
+
+  // modal.js here, or any script you might want
+});
+```
+
+#### Modal.JS
 ```js
 const modalWrapper = document.createElement('div');
 modalWrapper.className = 'modal';
