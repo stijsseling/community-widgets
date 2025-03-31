@@ -172,6 +172,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modalBody = document.querySelector('.modal-body');
   const modalFooter = document.querySelector('.modal-footer');
   const closeBtn = document.querySelector('.close');
+  const bodyOverflowState = document.body.style.overflow;
 
   document.addEventListener('click', (e) => {
     if (e.target.closest('[data-content-type="modal"]')) {
@@ -226,6 +227,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     modal.classList.remove('show');
     modal.style.display = 'none';
     modalBody.innerHTML = '';
+    document.body.style.overflow = bodyOverflowState;
   }
 });
 ```
