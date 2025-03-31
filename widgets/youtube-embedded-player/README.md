@@ -118,19 +118,6 @@ If you're using [FreshRSS](https://github.com/FreshRSS/FreshRSS) as a backend th
 5. Enable sharing by HTML & RSS then Submit
 6. Copy `Shareable link to the GReader JSON`
 
-### iframe styling
-```css
-iframe.iframe-embedded-video {
-    outline: 1px solid var(--color-primary);
-    outline-offset: 0.1rem;
-    border-radius: var(--border-radius);
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: var(--color-popover-background);
-}
-```
-
 ## YouTube embed proxy
 You can replace `https://www.youtube-nocookie.com/embed/` with your instance that supports embedding.
 
@@ -164,90 +151,101 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   console.log("Glance loaded...");
 
-  // modal.js here, or any script you might want
-});
-```
-
-#### Modal.JS
-```js
-const modalWrapper = document.createElement('div');
-modalWrapper.className = 'modal';
-modalWrapper.innerHTML = `
-    <div class="modal-container">
-      <span class="close">&times;</span>
-      <div class="modal-content">
-        <div class="modal-header"></div>
-        <div class="modal-body"></div>
-        <div class="modal-footer"></div>
+  // Load modal
+  const modalWrapper = document.createElement('div');
+  modalWrapper.className = 'modal';
+  modalWrapper.innerHTML = `
+      <div class="modal-container">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-body"></div>
+          <div class="modal-footer"></div>
+        </div>
       </div>
-    </div>
-`;
-document.body.appendChild(modalWrapper);
+  `;
+  document.body.appendChild(modalWrapper);
 
-const modal = document.querySelector('.modal');
-const modalContainer = document.querySelector('.modal-container');
-const modalHeader = document.querySelector('.modal-header');
-const modalBody = document.querySelector('.modal-body');
-const modalFooter = document.querySelector('.modal-footer');
-const closeBtn = document.querySelector('.close');
+  const modal = document.querySelector('.modal');
+  const modalContainer = document.querySelector('.modal-container');
+  const modalHeader = document.querySelector('.modal-header');
+  const modalBody = document.querySelector('.modal-body');
+  const modalFooter = document.querySelector('.modal-footer');
+  const closeBtn = document.querySelector('.close');
 
-document.addEventListener('click', (e) => {
-  if (e.target.closest('[data-content-type="modal"]')) {
-    const triggerElement = e.target.closest('[data-content-type="modal"]');
-    const headerElement = triggerElement.querySelector('[modal-header]');
-    const bodyElement = triggerElement.querySelector('[modal-body]');
-    const footerElement = triggerElement.querySelector('[modal-footer]');
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-content-type="modal"]')) {
+      const triggerElement = e.target.closest('[data-content-type="modal"]');
+      const headerElement = triggerElement.querySelector('[modal-header]');
+      const bodyElement = triggerElement.querySelector('[modal-body]');
+      const footerElement = triggerElement.querySelector('[modal-footer]');
 
-    if (headerElement) modalHeader.innerHTML = headerElement.innerHTML.trim();
-    if (bodyElement) modalBody.innerHTML = bodyElement.innerHTML.trim();
-    if (footerElement) modalFooter.innerHTML = footerElement.innerHTML.trim();
-    
-    modal.className = `modal ${triggerElement.className}`;
-    
-    const width = triggerElement.getAttribute('width') || '90%';
-    const height = triggerElement.getAttribute('height') || '90%';
-    
-    switch (triggerElement.getAttribute('size')) {
-      case 'theater':
-        modalContainer.style.width = '80%';
-        modalContainer.style.height = '80%';
-        break;
-      case 'full':
-        modalContainer.style.width = '100%';
-        modalContainer.style.height = '100%';
-        break;
-      case 'medium':
-        modalContainer.style.width = '60%';
-        modalContainer.style.height = '60%';
-        break;
-      default:
-        modalContainer.style.width = width;
-        modalContainer.style.height = height;
-        break;
+      if (headerElement) modalHeader.innerHTML = headerElement.innerHTML.trim();
+      if (bodyElement) modalBody.innerHTML = bodyElement.innerHTML.trim();
+      if (footerElement) modalFooter.innerHTML = footerElement.innerHTML.trim();
+      
+      modal.className = `modal ${triggerElement.className}`;
+      
+      const width = triggerElement.getAttribute('width') || '90%';
+      const height = triggerElement.getAttribute('height') || '90%';
+      
+      switch (triggerElement.getAttribute('size')) {
+        case 'theater':
+          modalContainer.style.width = '80%';
+          modalContainer.style.height = '80%';
+          break;
+        case 'full':
+          modalContainer.style.width = '100%';
+          modalContainer.style.height = '100%';
+          break;
+        case 'medium':
+          modalContainer.style.width = '60%';
+          modalContainer.style.height = '60%';
+          break;
+        default:
+          modalContainer.style.width = width;
+          modalContainer.style.height = height;
+          break;
+      }
+      
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('show'), 10);
     }
-    
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('show'), 10);
-  }
-  if (e.target === closeBtn || e.target === modal) {
-    closeModal();
+    if (e.target === closeBtn || e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('show') && e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  const closeModal = () => {
+    modal.classList.remove('show');
+    modal.style.display = 'none';
+    modalBody.innerHTML = '';
   }
 });
-
-document.addEventListener('keydown', (e) => {
-  if (modal.classList.contains('show') && e.key === 'Escape') {
-    closeModal();
-  }
-});
-
-const closeModal = () => {
-  modal.classList.remove('show');
-  modal.style.display = 'none';
-  modalBody.innerHTML = '';
-}
 ```
 
 ### CSS
+
+#### iframe styling
+```css
+iframe.iframe-embedded-video {
+    outline: 1px solid var(--color-primary);
+    outline-offset: 0.1rem;
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: var(--color-popover-background);
+}
+```
+
+#### Modal.css 
 ```css
 .modal {
   display: none;
