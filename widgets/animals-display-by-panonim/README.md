@@ -31,7 +31,7 @@ Simple custom-api widget to display various of animals. Duck as an example.
    template: |
      <img src="{{ .JSON.String "url" }}"></img>
 ```
-<img src="preview.png>
+<img src="preview.png">
 <hr>
 Request more animals via discord: @blue.dev
 
