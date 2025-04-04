@@ -73,7 +73,7 @@ Choose one or more of the following widgets.
     </ul>
 
 - type: custom-api
-  title: Drivers Standings
+  title: Constructors Standings
   cache: 1d
   url: https://f1api.dev/api/current/constructors-championship
   template: |
