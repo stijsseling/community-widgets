@@ -11,61 +11,59 @@ To toggle showing all containers, you need to set the variable `$showAll` to `tr
 
 There's also a toggle to turn on/off a message indicating that all containers are Up-To-Date `{{ $hasUpdates := false }}`.
 ```yaml
-      - size: small
-        widgets:
-        - type: custom-api
-          title: What's Up Docker?
-          cache: 1h
-          url: http://${WUD_URL}/api/containers
-          method: GET
-          template: |
-            <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
-              {{ $showAll := false }}  {{/* Set this to true to show all containers */}}
-              {{ $containers := .JSON.Array "" }}
-              {{ $hasUpdates := false }} {{/* Set to true to hide up-to-date message */}}
-              {{ range $index, $container := $containers }}
-                {{ if $container.Bool "updateAvailable" }}
-                  {{ $hasUpdates = true }}
-                  <li>
-                    <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
-                    <ul class="list-horizontal">
-                      <li>Status:
-                        {{ if eq ( $container.String "status" ) "running" }}
-                          <span class="color-positive">●</span> Running
-                        {{ else }}
-                          <span class="color-negative">●</span> Not Running
-                        {{ end }}
-                      </li>
-                      <li>Watcher: {{ $container.String "watcher" }}</li>
-                      <li>Update Available: <span class="color-positive">Yes</span></li>
-                    </ul>
-                  </li>
-                {{ end }}
-              {{ end }}
-              {{ if not $hasUpdates }}
-                <li><span class="color-positive">You're good to go!</span></li>
-              {{ end }}
-              {{ if $showAll }}
-                {{ range $index, $container := $containers }}
-                  {{ if not ( $container.Bool "updateAvailable" ) }}
-                    <li>
-                      <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
-                      <ul class="list-horizontal">
-                        <li>Status:
-                          {{ if eq ( $container.String "status" ) "running" }}
-                            <span class="color-positive">●</span> Running
-                          {{ else }}
-                            <span class="color-negative">●</span> Not Running
-                          {{ end }}
-                        </li>
-                        <li>Watcher: {{ $container.String "watcher" }}</li>
-                        <li>Update Available: <span class="color-negative">No</span></li>
-                      </ul>
-                    </li>
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            </ul>
+       - type: custom-api
+         title: What's Up Docker?
+         cache: 1h
+         url: http://${WUD_URL}/api/containers
+         method: GET
+         template: |
+           <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
+             {{ $showAll := false }}  {{/* Set this to true to show all containers */}}
+             {{ $containers := .JSON.Array "" }}
+             {{ $hasUpdates := false }} {{/* Set to true to hide up-to-date message */}}
+             {{ range $index, $container := $containers }}
+               {{ if $container.Bool "updateAvailable" }}
+                 {{ $hasUpdates = true }}
+                 <li>
+                   <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
+                   <ul class="list-horizontal">
+                     <li>Status:
+                       {{ if eq ( $container.String "status" ) "running" }}
+                         <span class="color-positive">●</span> Running
+                       {{ else }}
+                         <span class="color-negative">●</span> Not Running
+                       {{ end }}
+                     </li>
+                     <li>Watcher: {{ $container.String "watcher" }}</li>
+                     <li>Update Available: <span class="color-positive">Yes</span></li>
+                   </ul>
+                 </li>
+               {{ end }}
+             {{ end }}
+             {{ if not $hasUpdates }}
+               <li><span class="color-positive">You're good to go!</span></li>
+             {{ end }}
+             {{ if $showAll }}
+               {{ range $index, $container := $containers }}
+                 {{ if not ( $container.Bool "updateAvailable" ) }}
+                   <li>
+                     <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
+                     <ul class="list-horizontal">
+                       <li>Status:
+                         {{ if eq ( $container.String "status" ) "running" }}
+                           <span class="color-positive">●</span> Running
+                         {{ else }}
+                           <span class="color-negative">●</span> Not Running
+                         {{ end }}
+                       </li>
+                       <li>Watcher: {{ $container.String "watcher" }}</li>
+                       <li>Update Available: <span class="color-negative">No</span></li>
+                     </ul>
+                   </li>
+                 {{ end }}
+               {{ end }}
+             {{ end }}
+           </ul>
 ```
 ### Environment variables
 `WUD_URL` - the URL of the Whats up docker server
