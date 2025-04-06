@@ -2,7 +2,7 @@
 This widget uses WUD api. It fetches all the containers and displayes them in Glance. It checks if container needs an update and displayes it. You can also decided if you want to toggle displaying all the container or only one's that needs an update.
 
 **Note:** In newest update WUD Monitor change api fetching from `POST` to `GET`, because many people complained about long waiting times. If you don't like this change change code as shown below. What's the diffrence? Widget now relays on WUD to update the api instead of forcing it, so now updating the information will be slower.
-```
+```txt
 url: http://${WUD_URL}/api/containers/watch
 method: POST
 ```
@@ -10,7 +10,9 @@ method: POST
 To toggle showing all containers, you need to set the variable `$showAll` to `true`. You can do this by changing the line `{{ $showAll := false }}` in the code to `{{ $showAll := true }}`. Setting it to true will also make sure that images needing an update will be displayed on top. This will display all containers, regardless of whether they need an update or not.
 
 There's also a toggle to turn on/off a message indicating that all containers are Up-To-Date `{{ $hasUpdates := false }}`.
-```
+```yaml
+      - size: small
+        widgets:
         - type: custom-api
           title: What's Up Docker?
           cache: 1h
@@ -26,7 +28,7 @@ There's also a toggle to turn on/off a message indicating that all containers ar
                   {{ $hasUpdates = true }}
                   <li>
                     <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
-                    <ul class="list-horizontal-text">
+                    <ul class="list-horizontal">
                       <li>Status:
                         {{ if eq ( $container.String "status" ) "running" }}
                           <span class="color-positive">●</span> Running
@@ -48,7 +50,7 @@ There's also a toggle to turn on/off a message indicating that all containers ar
                   {{ if not ( $container.Bool "updateAvailable" ) }}
                     <li>
                       <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
-                      <ul class="list-horizontal-text">
+                      <ul class="list-horizontal">
                         <li>Status:
                           {{ if eq ( $container.String "status" ) "running" }}
                             <span class="color-positive">●</span> Running
@@ -71,7 +73,7 @@ There's also a toggle to turn on/off a message indicating that all containers ar
 Template: `WUD_URL=ip:port` - You can also just reaplace the code var for it to work. 
 
 For grabbing container no matter the state I also recommend adding this to your WUD env:
-```
+```txt
 - WUD_WATCHER_LOCAL_WATCHALL=true
 ```
 Please remember to restart your services after applying env vars.
