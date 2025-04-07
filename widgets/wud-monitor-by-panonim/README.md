@@ -18,7 +18,7 @@ There's also a toggle to turn on/off a message indicating that all containers ar
          method: GET
          template: |
            <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
-             {{ $showAll := false }}  {{/* Set this to true to show all containers */}}
+             {{ $showAll := true }}  {{/* Set this to true to show all containers */}}
              {{ $containers := .JSON.Array "" }}
              {{ $hasUpdates := false }} {{/* Set to true to hide up-to-date message */}}
              {{ range $index, $container := $containers }}
@@ -47,7 +47,15 @@ There's also a toggle to turn on/off a message indicating that all containers ar
                {{ range $index, $container := $containers }}
                  {{ if not ( $container.Bool "updateAvailable" ) }}
                    <li>
-                     <a class="size-h4 color-highlight block text-truncate" href="https://hub.docker.com/r/{{ $container.String "image.name" }}" target="_blank">{{ $container.String "name" }}</a>
+                    {{ $registryName := $container.String "image.registry.name" }}
+                      {{ $imageName := $container.String "image.name" }}
+                      {{ $hubSource := "#" }}
+                      {{ if eq $registryName "hub.public" }}
+                        {{ $hubSource = concat "https://hub.docker.com/r/" $imageName }}
+                      {{ else if eq $registryName "ghcr.public" }}
+                        {{ $hubSource = concat "https://github.com/" $imageName }}
+                      {{ end }}
+                      <a class="size-h4 color-highlight block text-truncate" href="{{ $hubSource }}" target="_blank" rel="noreferrer">{{ $container.String "name" }}</a>
                      <ul class="list-horizontal">
                        <li>Status:
                          {{ if eq ( $container.String "status" ) "running" }}
@@ -65,7 +73,7 @@ There's also a toggle to turn on/off a message indicating that all containers ar
              {{ end }}
            </ul>
 ```
-### Environment variables
+## Environment variables
 `WUD_URL` - the URL of the Whats up docker server
 
 Template: `WUD_URL=ip:port` - You can also just reaplace the code var for it to work. 
@@ -76,11 +84,18 @@ For grabbing container no matter the state I also recommend adding this to your 
 ```
 Please remember to restart your services after applying env vars.
 
-### Preview
+## Preview
 [![showAll var = false](./preview1.png)](./preview1.png)
 
 [![showAll var = true](./preview_2.png)](./preview2.png)
 <hr>
 Made by: Artur Flis
 
-Contact: @blue.dev on Discord
+Contact: @blue.dev on Project's Discord.
+
+<hr>
+
+### Contributors v1.1
+
+- [**ᴠᴀʀɪᴀʙʟᴇ**](https://github.com/ralphocdol) – Improving linking container images directly to their source (Docker Hub or GitHub).
+
