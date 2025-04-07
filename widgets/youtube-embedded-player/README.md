@@ -49,7 +49,7 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
             if (!popupEmbedExistingDiv) {
               const dimBackground = document.createElement('div');
               dimBackground.className = dimBgClass;
-              dimBackground.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5);';c
+              dimBackground.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-widget-background-highlight); opacity: 0.7;';
               document.body.appendChild(dimBackground);
               
               const popupEmbedDiv = document.createElement('div');
