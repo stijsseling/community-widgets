@@ -18,7 +18,7 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
   frameless: true
   headers:
     content-type: application/json
-  cache: 10m
+  cache: 30m
   template: |
     {{ $arrayList := .JSON.Array "items" }}
     {{ $closeOutsideIframe := false }} {{/* Closes the popup anywhere around the iframe */}}
