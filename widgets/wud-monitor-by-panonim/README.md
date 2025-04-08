@@ -1,15 +1,17 @@
 # What's Up Docker Monitor v1.1
-This widget uses WUD api. It fetches all the containers and displayes them in Glance. It checks if container needs an update and displayes it. You can also decided if you want to toggle displaying all the container or only one's that needs an update.
 
-**Note:** In newest update WUD Monitor change api fetching from `POST` to `GET`, because many people complained about long waiting times. If you don't like this change change code as shown below. What's the diffrence? Widget now relays on WUD to update the api instead of forcing it, so now updating the information will be slower.
+This widget uses the WUD API. It fetches all containers and displays them in Glance. It checks if a container needs an update and displays that information. You can also decide whether you want to toggle displaying all containers or only the ones that need an update.
+
+**Note:** In the newest update, WUD Monitor changed API fetching from `POST` to `GET` because many users complained about long waiting times. If you don’t like this change, you can revert it using the code shown below.  
 ```txt
 url: http://${WUD_URL}/api/containers/watch
 method: POST
 ```
+**What’s the difference?** The widget now relies on WUD to update the API instead of forcing it, so updating the information may be slower.
 
-To toggle showing all containers, you need to set the variable `$showAll` to `true`. You can do this by changing the line `{{ $showAll := false }}` in the code to `{{ $showAll := true }}`. Setting it to true will also make sure that images needing an update will be displayed on top. This will display all containers, regardless of whether they need an update or not.
+To toggle showing all containers, set the variable `$showAll` to `true`. You can do this by changing the line `{{ $showAll := false }}` in the code to `{{ $showAll := true }}`. Setting it to true also ensures that images needing an update will be displayed on top. This will show all containers, whether they need an update or not.
 
-There's also a toggle to turn on/off a message indicating that all containers are Up-To-Date `{{ $hasUpdates := false }}`.
+There’s also a toggle to turn on/off a message indicating that all containers are up to date: `{{ $hasUpdates := false }}`.
 ```yaml
        - type: custom-api
          title: What's Up Docker?
@@ -73,29 +75,34 @@ There's also a toggle to turn on/off a message indicating that all containers ar
              {{ end }}
            </ul>
 ```
-## Environment variables
-`WUD_URL` - the URL of the Whats up docker server
+## Environment Variables
 
-Template: `WUD_URL=ip:port` - You can also just reaplace the code var for it to work. 
+`WUD_URL` – The URL of the What's Up Docker server
 
-For grabbing container no matter the state I also recommend adding this to your WUD env:
+Template: `WUD_URL=ip:port` – You can also just replace the code variable for it to work.
+
+To grab containers regardless of their state, I also recommend adding this to your WUD environment:
+
 ```txt
+
 - WUD_WATCHER_LOCAL_WATCHALL=true
+
 ```
-Please remember to restart your services after applying env vars.
+Please remember to restart your services after applying environment variables.
 
 ## Preview
+
 [![showAll var = false](./preview1.png)](./preview1.png)
 
 [![showAll var = true](./preview_2.png)](./preview2.png)
-<hr>
-Made by: Artur Flis
 
-Contact: @blue.dev on Project's Discord.
+<hr>
+
+**Made by:** Artur Flis  
+**Contact:** @blue.dev on the project’s Discord
 
 <hr>
 
 ### Contributors v1.1
 
-- [**ᴠᴀʀɪᴀʙʟᴇ**](https://github.com/ralphocdol) – Improving linking container images directly to their source (Docker Hub or GitHub).
-
+- [**ᴠᴀʀɪᴀʙʟᴇ**](https://github.com/ralphocdol) – Improved linking of container images directly to their source (Docker Hub or GitHub).
