@@ -32,10 +32,15 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
       {{ else }}
         {{ range $arrayList }}
 
-        {{ $title := .String "title" }}
+        {{ $iframeAllow := "" }}
+
         {{ $youtubeUrl := .String "url" }}
         {{ $youtubeId := .String "_rssbridge.id" }}
-        {{ $youtubeEmbedUrl := concat "https://www.youtube-nocookie.com/embed/" $youtubeId }}
+        {{ $youtubeEmbedInstance := "https://www.youtube-nocookie.com/embed/" }}
+        {{ $youtubeParameters := "" }}
+        {{ $youtubeEmbedUrl := concat $youtubeEmbedInstance $youtubeId $youtubeParameters }}
+
+        {{ $title := .String "title" }}
         {{ $timestamp := .String "date_modified" | parseTime "rfc3339" }}
         {{ $thumbnail := findSubmatch "img src=\"([^\"]+)" (.String "content_html") }}
         
@@ -61,6 +66,7 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
               popupIframe.src = {{ $youtubeEmbedUrl }};
               popupIframe.loading = 'lazy';
               popupIframe.allowFullscreen = true;
+              popupIframe.allow = {{ $iframeAllow }};
               popupIframe.style ='outline: 2px solid var(--color-primary); outline-offset: -0.1rem; border-radius: 20px; width: 100%; height: 100%; border: none; background-color: var(--color-popover-background);';
               
               popupEmbedDiv.appendChild(popupIframe);
@@ -149,25 +155,48 @@ If you're using [FreshRSS](https://github.com/FreshRSS/FreshRSS) as a backend th
       {{ else }}
         {{ range $arrayList }}
 
-        {{ $title := .String "title" }}
-        {{ $author := .String "origin.title" }}
-        {{ $authorUrl := .String "origin.htmlUrl" | trimSuffix "/videos" }}
+        {{ $iframeAllow := "" }}
+
         {{ $youtubeUrl := .String "canonical.0.href" }}
-        {{ $youtubeId := $youtubeUrl | trimPrefix "https://www.youtube.com/watch?v=" }}
-        {{ $youtubeEmbedUrl := concat "https://www.youtube-nocookie.com/embed/" $youtubeId }}
+        {{ $youtubeId := $youtubeUrl | trimPrefix "https://www.youtube.com/watch?" }}
+        {{ $youtubeEmbedInstance := "https://www.youtube-nocookie.com/embed/" }}
+        {{ $youtubeParameters := "" }}
+        {{ $youtubeEmbedUrl := concat $youtubeEmbedInstance $youtubeId $youtubeParameters }}
+
+        {{ $title := .String "title" }}
         {{ $timestamp := .String "published" | parseTime "unix" }}
         {{ $thumbnail := findSubmatch "img src=\"([^\"]+)" (.String "content.content") }}
+
+        {{ $author := .JSON.String "origin.title" }}
+        {{ $authorUrl := .JSON.String "origin.htmlUrl" | trimSuffix "/videos" }}
         
         <div class="card widget-content-frame thumbnail-parent">
 ```
 
-### To generate User Queries
+
+### To generate FreshRSS User Queries
 1. go to https://your-freshrss-domain.com/i/
 2. Select a Category on the left side
 3. Select the bookmark icon and choose Bookmark current query see screenshot
-4. This will create a query Query n°1
-5. Enable sharing by HTML & RSS then Submit
+4. This will create a query `Query n°1`
+5. Enable sharing by HTML & RSS then `Submit`
 6. Copy `Shareable link to the GReader JSON`
 
 ## YouTube embed proxy
-You can replace `https://www.youtube-nocookie.com/embed/` with your instance that supports embedding.
+You can replace `{{ $youtubeEmbedInstance := "https://www.youtube-nocookie.com/embed/" }}` with your instance that supports embedding.
+
+## YouTube player parameters
+See https://developers.google.com/youtube/player_parameters for more parameters.
+
+Some parameters may or may not need `allow` attribute values depending on the browser like `?autoplay=1` may require `popupIframe.allow = 'autoplay'`.
+
+Parameters can be added this way:
+```go
+{{ $youtubeParameters := "?rel=0&autoplay=1&vq=hd1080" }}
+```
+
+and `allow` attribute values 
+```go
+{{ $iframeAllow := "autoplay picture-in-picture" }}
+```
+
