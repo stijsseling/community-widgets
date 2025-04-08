@@ -18,7 +18,7 @@ There's also a toggle to turn on/off a message indicating that all containers ar
          method: GET
          template: |
            <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
-             {{ $showAll := true }}  {{/* Set this to true to show all containers */}}
+             {{ $showAll := false }}  {{/* Set this to true to show all containers */}}
              {{ $containers := .JSON.Array "" }}
              {{ $hasUpdates := false }} {{/* Set to true to hide up-to-date message */}}
              {{ range $index, $container := $containers }}
