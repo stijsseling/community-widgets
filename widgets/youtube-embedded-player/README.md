@@ -74,7 +74,7 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
 
               const closeBtn = document.createElement('span');
               closeBtn.className = closeBtnClass;
-              closeBtn.innerText = '&times';
+              closeBtn.innerHTML = '&times';
               closeBtn.style = 'cursor: pointer; font-size: 3rem; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; position: absolute; top: 3rem; right: 3rem;';
               document.body.appendChild(closeBtn);
               document.body.style.overflowY = 'hidden';
