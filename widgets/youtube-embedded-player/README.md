@@ -199,4 +199,6 @@ and `allow` attribute values
 ```go
 {{ $iframeAllow := "autoplay picture-in-picture" }}
 ```
-
+---
+## Contributors
+* [**Vishal**](https://github.com/vishalkadam47) - Testing and feedback
