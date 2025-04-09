@@ -158,7 +158,7 @@ If you're using [FreshRSS](https://github.com/FreshRSS/FreshRSS) as a backend th
         {{ $iframeAllow := "" }}
 
         {{ $youtubeUrl := .String "canonical.0.href" }}
-        {{ $youtubeId := $youtubeUrl | trimPrefix "https://www.youtube.com/watch?" }}
+        {{ $youtubeId := $youtubeUrl | trimPrefix "https://www.youtube.com/watch?v=" }}
         {{ $youtubeEmbedInstance := "https://www.youtube-nocookie.com/embed/" }}
         {{ $youtubeParameters := "" }}
         {{ $youtubeEmbedUrl := concat $youtubeEmbedInstance $youtubeId $youtubeParameters }}
