@@ -43,6 +43,7 @@
       {{ $homeTeamColor := "" }}
       {{ $situationDescriptionHome := "" }}
       {{ $situationDescriptionAway := "" }}
+      {{ $situationStrength := "" }}
       {{ $homeTeam := .String "homeTeam.abbrev" }}
       {{ $awayTeam := .String "awayTeam.abbrev" }}
       {{ $homeTeamScores := "" }}
@@ -115,6 +116,7 @@
                   {{ $situationDescriptionHome = (printf "%s %s" $situationDescriptionHome $desc.Value) }}
               {{ end }}
           {{ end }}
+        {{ $situationStrength = concat "(" (.String "situation.awayTeam.strength") "v" (.String "situation.homeTeam.strength") ")" }}
       {{ end }}
       <table>
           <tr>
@@ -126,7 +128,7 @@
           </tr>
           <tr>
               <td>
-                  <span class= {{ $awayTeamColor }} > {{ $situationDescriptionAway }} </span> <span class= {{ $homeTeamColor }} > {{ $situationDescriptionHome }} </span> <span> {{ .String "situation.timeRemaining" }} </span>
+                  <span class= {{ $awayTeamColor }} > {{ $situationDescriptionAway }} </span> <span class= {{ $homeTeamColor }} > {{ $situationDescriptionHome }} </span> <span> {{ .String "situation.timeRemaining" }} {{ $situationStrength }}</span>
               </td>
           </tr>
       </table>
