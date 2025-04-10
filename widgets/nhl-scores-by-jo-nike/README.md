@@ -191,5 +191,5 @@
 ```
 
 ## Settings
-- If you only want to show result for a single team, set the value of $myTeam to your team name official abreviation as shown here: https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Ice_Hockey/NHL_team_abbreviations
-- If you want to disable the tooltip, set the value of $toolTipEnabled to false
+- If you only want to show result for a single team, set the value of `$myTeam` to your team name official abreviation as shown here: https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Ice_Hockey/NHL_team_abbreviations
+- If you want to disable the tooltip, set the value of `$toolTipEnabled` to false
