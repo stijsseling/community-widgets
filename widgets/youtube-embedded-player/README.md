@@ -59,7 +59,7 @@ This only supports 1 channel unless you use `By playlist` or `By search result` 
               
               const popupEmbedDiv = document.createElement('div');
               popupEmbedDiv.className = embedClass;
-              popupEmbedDiv.style = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: {{ $popupWidth }}; height: {{ $popupHeight }};';
+              popupEmbedDiv.style = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: {{ $popupWidth }}; height: {{ $popupHeight }}; z-index: 11;';
 
               const popupIframe = document.createElement('iframe');
               popupIframe.className = classPrefix + 'iframe';
