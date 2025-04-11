@@ -9,33 +9,9 @@
 - type: custom-api
   title: NHL Today
   cache: 5s
-  url: https://api-web.nhle.com/v1/score/now 
+  url: https://api-web.nhle.com/v1/score/now
   template: |
     {{ $myTeam := "ALL" }}
-    
-    <style>
-    .tooltip {
-        position: relative;
-        display: inline-block;
-    }
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-
-        /* Position the tooltip */
-        position: absolute;
-        z-index: 1;
-    }
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-    }
-    </style>
-
     {{ $games := .JSON.Array "games" }}
     {{ define "gameItem" }}
       {{ $toolTipEnabled := true }}
@@ -134,36 +110,40 @@
       </table>
       <table>
           <tr>
-              <td class="tooltip">
-                  <img style="float: left" width="50" height="auto" src={{ .String "awayTeam.logo" }}>
+              <td data-popover-type="html">
                   {{ if and (not (eq $awayTeamScores "")) (eq $toolTipEnabled true) }}
-                      <span class="tooltiptext"> {{ $awayTeamScores }} </span>
+                      <div data-popover-html>
+                        {{ $awayTeamScores }}
+                      </div>
                   {{ end }}
+                <img style="float: left" width="50" height="auto" src={{ .String "awayTeam.logo" }}>
               </td>
-              <td class="tooltip">
-                <div>
+              <td data-popover-type="html">
+                  {{ if and (not (eq $awayTeamScores "")) (eq $toolTipEnabled true) }}
+                    <div data-popover-html>
+                      {{ $awayTeamScores }}
+                    </div>
+                  {{ end }}
                 <p style="font-size:25px"> {{ .String "awayTeam.score" }} </p>
-                {{ if and (not (eq $awayTeamScores "")) (eq $toolTipEnabled true) }}
-                    <span class="tooltiptext"> {{ $awayTeamScores }} </span>
-                {{ end }}
-                </div>
               </td>
               <td>
                   <p style="font-size:25px">-</p>
               </td>
-              <td class="tooltip">
-                <div>
-                <p style="font-size:25px"> {{ .String "homeTeam.score" }} </p>
+              <td data-popover-type="html">
                 {{ if and (not (eq $homeTeamScores "")) (eq $toolTipEnabled true) }}
-                    <span class="tooltiptext"> {{ $homeTeamScores }} </span>
+                  <div data-popover-html>
+                    {{ $homeTeamScores }}
+                  </div>
                 {{ end }}
-                </div>
+                <p style="font-size:25px"> {{ .String "homeTeam.score" }} </p>
               </td>
-              <td class="tooltip">
-                  <img style="float: left" width="50" height="auto" src={{ .String "homeTeam.logo" }}>
-                  {{ if and (not (eq $homeTeamScores "")) (eq $toolTipEnabled true) }}
-                  <span class="tooltiptext"> {{ $homeTeamScores }} </span>
-                  {{ end }}
+              <td data-popover-type="html">
+                {{ if and (not (eq $homeTeamScores "")) (eq $toolTipEnabled true) }}
+                  <div data-popover-html>
+                    {{ $homeTeamScores }}
+                  </div>
+                {{ end }}
+                <img style="float: left" width="50" height="auto" src={{ .String "homeTeam.logo" }}>
               </td>
               <td>
                   {{ $currentLabel }}
