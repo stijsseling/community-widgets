@@ -20,8 +20,10 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Mealie Today's Meal](widgets/mealie-todays-meal-by-wtoa/README.md) by @wtoa - show today's meal based off the meal planner from [Mealie](https://mealie.io/)
 * [Minecraft server](widgets/minecraft-server-by-not-first/README.md) by @not-first - show online status, icon, version and player count of a minecraft server
 * [Mullvad VPN status](widgets/mullvad-vpn-status-by-delmonteaj/README.md) by @DelMonteAJ - show VPN connection status, IP, and location
-* [NextDNS Stats](widgets/nextdns-stats-by-ziritione85/README.md) by @ziritione85 - show the basics stats of your nextdns stats. Total queries, total blocked and percentage. 
+* [NextDNS Stats](widgets/nextdns-stats-by-ziritione85/README.md) by @ziritione85 - show the basics stats of your nextdns stats. Total queries, total blocked and percentage.
 * [NHL Scores](widgets/nhl-scores-by-jo-nike/README.md) by @jo-nike - show the schedule, scores, situation for NHL games today
+* [Media Server History](widgets/media-server-history-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what had been played on your Media Server like Plex/Jellyfin
+* [Media Server Playing](widgets/media-server-playing-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what's being played on your Media Server like Plex/Jellyfin
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
