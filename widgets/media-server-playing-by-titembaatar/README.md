@@ -87,7 +87,7 @@ You can modify some variables inside the `template`. They are inside the block `
 ```yaml
 - type: custom-api
   title: plex
-  cache: 10s
+  cache: 1m
   url: ${PLEX_URL}/status/sessions
   headers:
     Accept: application/json
@@ -313,7 +313,7 @@ You can modify some variables inside the `template`. They are inside the block `
 ```yaml
 - type: custom-api
   title: tautulli
-  cache: 10s
+  cache: 1m
   allow-insecure: true
   url: ${TAUTULLI_URL}/api/v2
   parameters:
@@ -539,7 +539,7 @@ You can modify some variables inside the `template`. They are inside the block `
 ```yaml
 - type: custom-api
   title: jellyfin
-  cache: 10s
+  cache: 1m
   url: ${JELLYFIN_URL}/Sessions
   parameters:
     api_key: ${JELLYFIN_KEY}
