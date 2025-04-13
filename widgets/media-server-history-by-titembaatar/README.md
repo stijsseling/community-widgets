@@ -84,8 +84,7 @@ You can modify some variables inside the `template`. They are inside the block `
 
 > [!NOTE]
 >
-> In the `parameters` you can change `limit`
-> I could not find a way to filter by media types. If you want this feature, consider installing/using Tautulli.
+> In the `parameters` you can change `limit`. I could not find a way to filter by media types. If you want this feature, consider installing/using Tautulli.
 
 * `limit` - number of most recent played items to return
 
@@ -491,7 +490,7 @@ You can modify some variables inside the `template`. They are inside the block `
 > In the `parameters` you can change `Limit` and `IncludeItemTypes`
 
 * `Limit` - number of most recent played items to return
-* `IncludeItemTypes` - display the media type(s) you want to display, comma-separated. All options bellow (there is a lot and you probably can stick wihth `Movie`, `Episode` and `Audio` )
+* `IncludeItemTypes` - display the media type(s) you want to display, comma-separated. All options bellow (there is a lot and you probably can stick with `Movie`, `Episode` and `Audio` )
 
 <details>
 <summary>Available media types</summary>

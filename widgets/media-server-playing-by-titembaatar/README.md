@@ -74,7 +74,7 @@ You can modify some variables inside the `template`. They are inside the block `
 > Displaying the thumbnail **WILL** expose your Token/Api Keys in the HTML.
 > Do **NOT** set to true if you are using glance in production or exposing the service to internet.
 
-> [!INFO]
+> [!NOTE]
 >
 > The "Progress Bar" is just for fluff
 > It uses CSS animation and time calculations
