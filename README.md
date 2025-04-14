@@ -11,12 +11,20 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 Custom API widgets are much easier to setup and usually only require a copy-paste into your config. Extension widgets are a bit more involved and require running a separate server or Docker container.
 
 ## Custom API Widgets
-
+* [Animals Display](widgets/animals-display-by-panonim/README.md) by @panonim - Display random images of animals such as cats or dogs.
 * [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-gugugiyu/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
-* [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85) by @yziritione85 - show the status of your investments with today's results, YTD and totals
+* [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
+* [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85/README.md) by @ziritione85 - show the status of your investments with today's results, YTD and totals
+* [Hardcover Currently Reading](widgets/hardcover-currently-reading-by-akasiek/README.md) by @Akasiek - show the currently reading book from [Hardcover](https://hardcover.app/)
 * [Immich stats](widgets/immich-stats-by-svilenmarkov/README.md) by @svilenmarkov - show the number of photos, videos and usage of your Immich server
+* [Last.FM Recent Tracks](widgets/lastfm-recent-tracks-by-akasiek/README.md) by @Akasiek - show recent tracks scrobbled by a Last.FM user
 * [Mealie Today's Meal](widgets/mealie-todays-meal-by-wtoa/README.md) by @wtoa - show today's meal based off the meal planner from [Mealie](https://mealie.io/)
 * [Minecraft server](widgets/minecraft-server-by-not-first/README.md) by @not-first - show online status, icon, version and player count of a minecraft server
+* [Mullvad VPN status](widgets/mullvad-vpn-status-by-delmonteaj/README.md) by @DelMonteAJ - show VPN connection status, IP, and location
+* [NextDNS Stats](widgets/nextdns-stats-by-ziritione85/README.md) by @ziritione85 - show the basics stats of your nextdns stats. Total queries, total blocked and percentage.
+* [NHL Scores](widgets/nhl-scores-by-jo-nike/README.md) by @jo-nike - show the schedule, scores, situation for NHL games today
+* [Media Server History](widgets/media-server-history-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what had been played on your Media Server like Plex/Jellyfin
+* [Media Server Playing](widgets/media-server-playing-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what's being played on your Media Server like Plex/Jellyfin
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
