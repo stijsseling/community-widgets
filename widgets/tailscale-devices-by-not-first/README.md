@@ -60,6 +60,16 @@
         vertical-align: middle;
       }
 
+      .online-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--color-positive);
+        display: inline-block;
+        margin-left: 4px;
+        vertical-align: middle;
+      }
+
       .device-name-container {
         display: flex;
         align-items: center;
@@ -90,6 +100,8 @@
               {{ $lastSeenTimezoned := $lastSeen.In now.Location }}
               <span class="offline-indicator" data-popover-type="text"
                 data-popover-text="Offline - Last seen {{ $lastSeenTimezoned.Format " Jan 2 3:04pm" }}"></span>
+              {{ else }}
+              <span class="online-indicator" data-popover-type="text" data-popover-text="Online"></span>
               {{ end }}
 
             </div>
