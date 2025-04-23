@@ -1,4 +1,4 @@
-# What's Up Docker Monitor v1.1
+# What's Up Docker Monitor v1.1 - Old
 
 This widget uses the WUD API. It fetches all containers and displays them in Glance. It checks if a container needs an update and displays that information. You can also decide whether you want to toggle displaying all containers or only the ones that need an update.
 
