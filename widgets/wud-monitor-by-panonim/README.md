@@ -12,13 +12,17 @@ I decided to keep old version of wud, because I know that for some people it mig
   - Simple interface & structure
   - Displays Docker container statuses and update information
   - Improved performance with `GET` request for fetching data
+    
+  [![1.1 Preview](wud-old/preview_2.png)](wud-old/preview_2.png)
 
-### 2.0 - **Visual Improvment and Overall Info**
+### 2.0 - [**Visual Improvment and Overall Info**](wud-main/README.md)
 - **Description**: In this version I focused on improving visuals of the widget. I also added overall info wich provides quick container's inspection.
 - **Features**:
   - Better look achived by using CSS
   - Added overall info
   - Small bug fixes
+
+    [![2.0 Preview](wud-main/wud_main_preview.png)](wud-main/wud_main_preview.png)
     
 ---
 
