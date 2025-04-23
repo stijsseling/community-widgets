@@ -226,3 +226,14 @@ In this version I tried to focus on improving visuals of the widget. I also adde
             </ul>
           {{ end }}
 ```
+
+<hr>
+
+**Made by:** Artur Flis  
+**Contact:** @blue.dev on the project’s Discord
+
+<hr>
+
+### Contributors v2.0
+
+- [**Gaodes**](https://github.com/gaodes) – Helped with css and general layout.
