@@ -1,4 +1,4 @@
-# What's Up Docker Monitor v2.0
+# What's Up Docker Monitor v1.1
 
 This widget uses the WUD API. It fetches all containers and displays them in Glance. It checks if a container needs an update and displays that information. You can also decide whether you want to toggle displaying all containers or only the ones that need an update.
 
@@ -103,6 +103,6 @@ Please remember to restart your services after applying environment variables.
 
 <hr>
 
-### Contributors v2.0
+### Contributors v1.1
 
-- [**Gaodes**](https://github.com/gaodes) – Helped improve the general styling and layout.
+- [**ᴠᴀʀɪᴀʙʟᴇ**](https://github.com/ralphocdol) – Improved linking of container images directly to their source (Docker Hub or GitHub).
