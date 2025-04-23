@@ -57,6 +57,6 @@
 ## Environment variables
 
 - `MY_LAT_MIN` - Minimum latitude (southern boundary)
-- `MY_LAT_MAX` - Minimum latitude (northern boundary)
+- `MY_LAT_MAX` - Maximum latitude (northern boundary)
 - `MY_LON_MIN` - Minimum longitude (western boundary)
 - `MY_LON_MAX` - Maximum longitude (eastern boundary)
