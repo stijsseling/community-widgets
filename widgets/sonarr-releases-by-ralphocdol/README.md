@@ -115,3 +115,7 @@
     ```
 
 - `showGrabbed` - will show the grab status and removes the Series overview/description. Still available upon hovering the thumbnail.
+
+
+## Credits
+[iwa](https://github.com/iwa) - at https://github.com/glanceapp/glance/pull/112
