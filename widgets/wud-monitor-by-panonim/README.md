@@ -24,6 +24,21 @@ I decided to keep old version of wud, because I know that for some people it mig
     
     [![1.1 Preview](wud-old/preview_2.png)](wud-old/preview_2.png)
  
+## Environment Variables
+
+`WUD_URL` – The URL of the What's Up Docker server
+
+Template: `WUD_URL=ip:port` – You can also just replace the code variable for it to work.
+
+To grab containers regardless of their state, I also recommend adding this to your WUD environment:
+
+```txt
+
+- WUD_WATCHER_LOCAL_WATCHALL=true
+
+```
+Please remember to restart your services after applying environment variables.
+
 ---
 
 **Made by:** Artur Flis  
