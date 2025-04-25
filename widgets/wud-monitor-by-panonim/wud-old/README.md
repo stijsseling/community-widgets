@@ -1,7 +1,5 @@
 # What's Up Docker Monitor v1.1 - Old
 
-This widget uses the WUD API. It fetches all containers and displays them in Glance. It checks if a container needs an update and displays that information. You can also decide whether you want to toggle displaying all containers or only the ones that need an update.
-
 **Note:** In the v1.1 update, WUD Monitor changed API fetching from `POST` to `GET` because many users complained about long waiting times. If you don’t like this change, you can revert it using the code shown below.  
 ```txt
 url: http://${WUD_URL}/api/containers/watch
@@ -75,20 +73,6 @@ There’s also a toggle to turn on/off a message indicating that all containers 
              {{ end }}
            </ul>
 ```
-## Environment Variables
-
-`WUD_URL` – The URL of the What's Up Docker server
-
-Template: `WUD_URL=ip:port` – You can also just replace the code variable for it to work.
-
-To grab containers regardless of their state, I also recommend adding this to your WUD environment:
-
-```txt
-
-- WUD_WATCHER_LOCAL_WATCHALL=true
-
-```
-Please remember to restart your services after applying environment variables.
 
 ## Preview
 
