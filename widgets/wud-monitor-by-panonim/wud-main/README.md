@@ -7,13 +7,13 @@ In this version I tried to focus on improving visuals of the widget. I also adde
 
 ### Code - Menu
 ```yaml
-{{ $showInfo := true }}       {{/* Show the overall info summary (Updates, Total, Running) */}}
-{{ $showList := true }}       {{/* Show the container list section */}}
-{{ $showAll := true }}        {{/* Show all containers (not just ones with updates) */}}
-{{ $showUpdateKind := true }} {{/* Toggle this to false to hide the Update Kind row */}}
+{{ $showInfo := true }}        {{/* Show the overall info summary (Updates, Total, Running) */}}
+{{ $showList := true }}        {{/* Show the container list section */}}
+{{ $showAll := true }}         {{/* Show all containers (not just ones with updates) */}}
+{{ $showUpdateKind := true }}  {{/* Toggle this to false to hide the Update Kind row */}}
 {{ $showUpdateTypes := true }} {{/* Toggle this to false to hide the Update Types breakdown */}}
-{{ $showLocalVersion := true }} {{/* Toggle this to true to show local version instead of update status */}}
-{{ $hasUpdates := false }}    {{/* Set this to true to hide up-to-date message */}}
+{{ $showLocalVersion := true }}{{/* Toggle this to true to show local version instead of update status */}}
+{{ $hasUpdates := false }}     {{/* Set this to true to hide up-to-date message */}}
 ```
 ### Widget Code
 
@@ -96,13 +96,13 @@ In this version I tried to focus on improving visuals of the widget. I also adde
             </style>
 
             {{/* ======================= MENU ======================= */}}
-            {{ $showInfo := true }}       {{/* Show the overall info summary (Updates, Total, Running) */}}
-            {{ $showList := true }}       {{/* Show the container list section */}}
-            {{ $showAll := true }}        {{/* Show all containers (not just ones with updates) */}}
-            {{ $showUpdateKind := true }} {{/* Toggle this to false to hide the Update Kind row */}}
-            {{ $showUpdateTypes := true }} {{/* Toggle this to false to hide the Update Types breakdown */}}
+            {{ $showInfo := true }}         {{/* Show the overall info summary (Updates, Total, Running) */}}
+            {{ $showList := true }}         {{/* Show the container list section */}}
+            {{ $showAll := false }}         {{/* Show all containers (not just ones with updates) */}}
+            {{ $showUpdateKind := true }}   {{/* Toggle this to false to hide the Update Kind row */}}
+            {{ $showUpdateTypes := false }} {{/* Toggle this to false to hide the Update Types breakdown */}}
             {{ $showLocalVersion := true }} {{/* Toggle this to true to show local version instead of update status */}}
-            {{ $hasUpdates := false }}    {{/* Set this to true to hide up-to-date message */}}
+            {{ $hasUpdates := false }}      {{/* Set this to true to hide up-to-date message */}}
 
             {{ $containers := .JSON.Array "" }}
             {{ $total := len $containers }}
