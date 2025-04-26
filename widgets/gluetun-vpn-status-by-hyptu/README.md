@@ -1,4 +1,4 @@
-## Screenshots
+## Version 1
 #### Normal
 ![](./preview.png)
 #### Not connected
@@ -41,6 +41,54 @@
       </div>
     {{ end }}
 ```
+## Version 2
+#### Normal
+![](./preview-v2.png)
+#### Not connected
+![](./preview-notconnected-v2.png)
+```yaml
+- type: custom-api
+  title: Gluetun status
+  cache: 1m
+  url: http://${GLUETUN_URL}/v1/publicip/ip
+  headers:
+    X-API-Key: ${GLUETUN_API_KEY}
+  template: |
+    {{ if eq .Response.StatusCode 200 }}
+      {{ $ip := (.JSON.String "public_ip") }}
+      {{ $city := (.JSON.String "city") }}
+      {{ $country := (.JSON.String "country") }}
+      {{ if eq $ip "" }}
+        <div>
+          <div>
+            <div>
+              <div class="color-highlight size-h3">
+                Your VPN is not connected!
+                <span class="color-negative">●</span> 
+              </div>
+            </dv>
+          </div>
+        </div>
+      {{ else }}
+        <div>
+          <div>
+            <div>
+              <div class="color-highlight size-h3">
+                Your VPN is connected!
+                <span class="color-positive">●</span> 
+              </div>
+            </div>
+            <div class="size-h5">{{ $ip }} - {{ $city }}, {{ $country }}</div>
+          </div>
+        </div>
+      {{ end }}
+    {{ else }}
+      <div style="text-align: center; color: var(--color-negative);">
+        Error: {{ .Response.StatusCode }} - {{ .Response.Status }}
+      </div>
+    {{ end }}
+```
+
 ## Notes
 The Gluetun API `/v1/publicip/ip` returns more attributes than the ones used in the widget. You can change the attributes in the widget as you like.
 Example response:
