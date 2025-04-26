@@ -30,6 +30,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
+* [Sonarr](widgets/sonarr-releases-by-ralphocdol/README.md) by @ralphocdol - TV Series release status
 * [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
 * [St. Louis Fed US Mortgage Rates] by @ehaughee - Show mortgage rates from the St. Louis Federal Reserve's FRED API
@@ -42,7 +43,6 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Trending Bluesky News](widgets/trending-bluesky-news-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending news links from the [Trending News 2.0 Feed](https://bsky.app/profile/did:plc:kkf4naxqmweop7dv4l2iqqf5/feed/news-2-0) on Bluesky
 * [Uptime Kuma](widgets/uptime-kuma-by-not-first/README.md) by @not-first - show the status of Uptime Kuma services
 * [SABnzbd Status](widgets/sabnzbd-stats-by-Neo11Neo/README.md) by @Neo11Neo - show SABnzbd status
-* [Sonarr](widgets/sonarr-releases-by-ralphocdol/README.md) by @ralphocdol - TV Series release status
 * [Vikunja Taskboard](widgets/vikunja-taskboard-by-gugugiyu/README.md) by @gugugiyu - Real time taskboard using the Vikunja API
 * [What's Up Docker Monitor](widgets/wud-monitor-by-panonim/README.md) by @panonim - A customizable widget for displaying the wud data about containers. 
 * [YouTube Embedded Player](widgets/youtube-embedded-player/README.md) by @ralphocdol - A grid-card layout of YouTube List with Embed player pulled from either RSS-Bridge or FreshRSS

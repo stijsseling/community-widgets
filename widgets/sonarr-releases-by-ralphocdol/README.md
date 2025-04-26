@@ -13,11 +13,10 @@
   template: |
     {{ $coverProxy := "" }} {{/* To avoid exposing the API Key */}}
     {{ $showGrabbed := false }}
+    {{ $localTimezone := "2006-01-02T15:04:05+05:00" | parseTime "rfc3339" }}
 
     {{ $coverEndpoint := "https://${SONARR_URL}/api/v3/mediacover" }}
-    {{ $localTimezone := "2006-01-02T15:04:05+05:00" | parseTime "rfc3339" }}
     {{ $apiKey := concat "?apikey=" "${SONARR_KEY}" }}
-    
     <ul class="list list-gap-14 collapsible-container single-line-titles" data-collapse-after="3">
       {{ $hasProxy := ne $coverProxy "" }}
 
@@ -115,6 +114,21 @@
     ```
 
 - `showGrabbed` - will show the grab status and removes the Series overview/description. Still available upon hovering the thumbnail.
+- `localTimezone` - change `+05:00` to your timezone, eg: +9 will be `+09:00`. If your Glance instance has a local timezone then you should be able to change the following:
+  ```html
+  <div class="text-very-compact text-truncate">
+    {{ $airDateUtc := .String "airDateUtc" | parseTime "rfc3339" }}
+    <span>{{ ($airDateUtc.In $localTimezone.Location).Format "01/02 03:04PM" }}</span>
+  </div>
+  ```
+  to
+  ```html
+  <div class="text-very-compact text-truncate">
+    {{ $airDateLocal := .String "airDateUtc" | parseLocalTime "rfc3339" }}
+    <span>{{ $airDateLocal.Format "01/02 03:04PM" }}</span>
+  </div>
+  ```
+  and remove the `$localTimezone` initialization.
 
 
 ## Credits
