@@ -52,6 +52,6 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 > [!WARNING]
 >
 > Extension widgets are not actively monitored by the maintainers of Glance, use them at your own risk.
-
+* [Google Calendar List](https://github.com/anant-j/glance-GoogleCalendar) by @anant-j - List Google Calendar upcoming events
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
