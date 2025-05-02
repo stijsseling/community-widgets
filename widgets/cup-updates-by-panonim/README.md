@@ -52,24 +52,27 @@ Add the following to your dashboard configuration:
                  padding: 1px 0;
                  font-size: 1.1rem;
                }
-               .status-values {
+               .status-values-cup {
                  font-size: 1.8rem;
                }
              </style>
              <div class="flex flex-column gap-4">
                <div class="flex items-center text-center">
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.monitored_images" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.monitored_images" }}</div>
                    <div class="size-h6">TOTAL</div>
                  </div>
                  <div class="vertical-separator-cup"></div>
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.up_to_date" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.up_to_date" }}</div>
                    <div class="size-h6">UP TO DATE</div>
                  </div>
                  <div class="vertical-separator-cup"></div>
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.updates_available" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.updates_available" }}</div>
                    <div class="size-h6">AVAILABLE</div>
                  </div>
                </div>
@@ -77,27 +80,32 @@ Add the following to your dashboard configuration:
                {{ if $showUpdateKind }}
                <div class="flex items-center text-center" style="margin-top: 1rem;">
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.major_updates" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.major_updates" }}</div>
                    <div class="size-h6">MAJOR</div>
                  </div>
                  <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.minor_updates" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.minor_updates" }}</div>
                    <div class="size-h6">MINOR</div>
                  </div>
                  <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.patch_updates" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.patch_updates" }}</div>
                    <div class="size-h6">PATCH</div>
                  </div>
                  <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.other_updates" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.other_updates" }}</div>
                    <div class="size-h6">DIGEST</div>
                  </div>
                  <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
                  <div class="flex-1">
-                   <div class="status-values size-h3">{{ .JSON.Int "metrics.unknown_updates" }}</div>
+                   <!-- Changed status-values to status-values-cup -->
+                   <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.unknown_updates" }}</div>
                    <div class="size-h6">UNKNOWN</div>
                  </div>
                </div>
