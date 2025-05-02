@@ -28,5 +28,5 @@
 
 ## Environment variables
 
-- `SPEEDTEST_TRACKER_URL` - the URL of the Speedtest Tracker instance API
-- `SPEEDTEST_TRACKER_API_TOKEN` - your Speedtest Tracker API token
+- `SPEEDTEST_TRACKER_URL` - The URL of the Speedtest Tracker instance (e.g `http://my.speedtest-tracker.instance`)
+- `SPEEDTEST_TRACKER_API_TOKEN` - Your Speedtest Tracker API token
