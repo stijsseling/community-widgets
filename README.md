@@ -6,36 +6,52 @@ Before a widget is added to this repository it must receive a vouch which can be
 
 To add your widget to the list, please read the [contribution guidelines](CONTRIBUTING.md).
 
-## Custom API Widgets
+### What's the difference between a `custom-api` and `extension` widget?
 
+Custom API widgets are much easier to setup and usually only require a copy-paste into your config. Extension widgets are a bit more involved and require running a separate server or Docker container.
+
+## Custom API Widgets
+* [Animals Display](widgets/animals-display-by-panonim/README.md) by @panonim - Display random images of animals such as cats or dogs.
 * [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-gugugiyu/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
-* [Ghostfolio stats](Glance/widgets/ghostfolio-stats-by-ziritione85) by @yziritione85 - show the status of your investments with today's results, YTD and totals
+* [Cryptopanic News](widgets/cryptopanic-news/README.md) by @herculosh - A real-time cryptocurrency news widget that displays filtered news from CryptoPanic.com with configurable filters for news type, regions, and currencies.
+* [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
+* [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85/README.md) by @ziritione85 - show the status of your investments with today's results, YTD and totals
+* [Gluetun VPN status](widgets/gluetun-vpn-status-by-hyptu/README.md) by @Hyptu - show the public IP, country and city of you [Gluetun VPN client](https://github.com/qdm12/gluetun)
+* [Hardcover Currently Reading](widgets/hardcover-currently-reading-by-akasiek/README.md) by @Akasiek - show the currently reading book from [Hardcover](https://hardcover.app/)
 * [Immich stats](widgets/immich-stats-by-svilenmarkov/README.md) by @svilenmarkov - show the number of photos, videos and usage of your Immich server
+* [Last.FM Recent Tracks](widgets/lastfm-recent-tracks-by-akasiek/README.md) by @Akasiek - show recent tracks scrobbled by a Last.FM user
 * [Mealie Today's Meal](widgets/mealie-todays-meal-by-wtoa/README.md) by @wtoa - show today's meal based off the meal planner from [Mealie](https://mealie.io/)
 * [Minecraft server](widgets/minecraft-server-by-not-first/README.md) by @not-first - show online status, icon, version and player count of a minecraft server
+* [Mullvad VPN status](widgets/mullvad-vpn-status-by-delmonteaj/README.md) by @DelMonteAJ - show VPN connection status, IP, and location
+* [Nearby Aircraft](widgets/nearby-aircraft-by-cristiandiiorio/README.md) by @cristiandiiorio - show nearby aircraft passing over your position using OpenSky network
+* [NextDNS Stats](widgets/nextdns-stats-by-ziritione85/README.md) by @ziritione85 - show the basics stats of your nextdns stats. Total queries, total blocked and percentage.
+* [NHL Scores](widgets/nhl-scores-by-jo-nike/README.md) by @jo-nike - show the schedule, scores, situation for NHL games today
+* [Media Server History](widgets/media-server-history-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what had been played on your Media Server like Plex/Jellyfin
+* [Media Server Playing](widgets/media-server-playing-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what's being played on your Media Server like Plex/Jellyfin
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
-* [Speedtest tracker](widgets/speedtest-tracker-by-notfirst/README.md) by @not-first - show the latest internet speed information from speedtest tracker
+* [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
 * [St. Louis Fed US Mortgage Rates] by @ehaughee - Show mortgage rates from the St. Louis Federal Reserve's FRED API
 * [Steam Recently Played Games](widgets/steam-recently-played-games-by-lunnosmp4/README.md) by @lunnosmp4 - show a list of recently played games by a Steam user
 * [Steam specials](widgets/steam-specials-by-svilenmarkov/README.md) by @svilenmarkov - show a list of discounted games on Steam
 * [Steam User](widgets/steam-user-by-lunnosmp4/README.md) by @lunnosmp4 - show information about a Steam user
+* [Tailscale devices](widgets/tailscale-devices-by-not-first/README.md) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
 * [Technitium DNS Stats](widgets/technitium-dns-stats-by-eribbey/README.md) by @eribbey - show stats from Technitium DNS Server
 * [Trending Mastodon Links](widgets/trending-mastodon-links-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending links from a provided Mastodon instance
 * [Trending Bluesky News](widgets/trending-bluesky-news-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending news links from the [Trending News 2.0 Feed](https://bsky.app/profile/did:plc:kkf4naxqmweop7dv4l2iqqf5/feed/news-2-0) on Bluesky
-* [Uptime Kuma](https://github.com/not-first/uptime-kuma-by-not-first/README.md) by @not-first - show the status of Uptime Kuma services
+* [Uptime Kuma](widgets/uptime-kuma-by-not-first/README.md) by @not-first - show the status of Uptime Kuma services
 * [SABnzbd Status](widgets/sabnzbd-stats-by-Neo11Neo/README.md) by @Neo11Neo - show SABnzbd status
-* [Vikunja Taskboard](widgets/vikunja-taskboard-by-gugugiyu//README.md) by @gugugiyu - Real time taskboard using the Vikunja API
-* [What's Up Docker Monitor](widgets/wud-monitor-by-panonim) by @panonim - A customizable widget for displaying the wud data about containers. 
+* [Vikunja Taskboard](widgets/vikunja-taskboard-by-gugugiyu/README.md) by @gugugiyu - Real time taskboard using the Vikunja API
+* [What's Up Docker Monitor](widgets/wud-monitor-by-panonim/README.md) by @panonim - A customizable widget for displaying the wud data about containers. 
+* [YouTube Embedded Player](widgets/youtube-embedded-player-by-ralphocdol/README.md) by @ralphocdol - A grid-card layout of YouTube List with Embed player pulled from either RSS-Bridge or FreshRSS
 
 ## Extension Widgets
 
 > [!WARNING]
 >
-> Extension widgets are not actively monitored by the Glance maintainers, use at your own risk.
-
+> Extension widgets are not actively monitored by the maintainers of Glance, use them at your own risk.
+* [Google Calendar List](https://github.com/anant-j/glance-GoogleCalendar) by @anant-j - List Google Calendar upcoming events
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
-* [Tailscale devices](https://github.com/not-first/tailscale-glance-extension) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
