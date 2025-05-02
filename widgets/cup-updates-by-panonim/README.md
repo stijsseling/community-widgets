@@ -24,7 +24,7 @@ Add the following to your dashboard configuration:
         - type: custom-api
           title: Cup Updates
           cache: 1h
-          url: http://{CUP_URL}/api/v3/json
+          url: http://${CUP_URL}/api/v3/json
           method: GET
           template: |
              {{ $showUpdateKind := true }}
