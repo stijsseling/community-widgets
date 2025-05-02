@@ -46,7 +46,7 @@ Add the following to your dashboard configuration:
         margin: 0;
         line-height: 1.2;
       }
-      .container-list-cup {
+      .container-list-cup a {
         text-decoration: none;
         display: block;
         padding: 1px 0;
