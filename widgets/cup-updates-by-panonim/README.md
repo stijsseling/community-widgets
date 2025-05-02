@@ -134,7 +134,7 @@ Add the following to your dashboard configuration:
                            {{ end }}
                          {{ end }}
 
-                         <a class="block text-truncate" href="{{ $url }}" target="_blank" rel="noreferrer" style="font-size: 1.4rem;">{{ $repository }}</a>
+                         <a class="block text-truncate" href="{{ $url }}" target="_blank" rel="noreferrer" style="font-size: 1.47rem;">{{ $repository }}</a>
 
                          {{ $currentVersion := .String "result.info.current_version" }}
                          {{ $newVersion := .String "result.info.new_version" }}
