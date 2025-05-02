@@ -37,11 +37,11 @@ Add the following to your dashboard configuration:
         align-self: center;
         background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05) 20%, rgba(255,255,255,0.05) 80%, transparent);
       }
-      .container-list-cup {
+      .container-list-cup li {
         text-align: center;
         margin-top: 1.5rem;
       }
-      .container-list-cup li {
+      .container-list-cup {
         padding: 0;
         margin: 0;
         line-height: 1.2;
@@ -137,7 +137,7 @@ Add the following to your dashboard configuration:
                   <div style="margin: 0.2rem 0;">
                     <span>{{ $currentVersion }}</span>
                     <span> → </span>
-                    <span class="size-h4">{{ $newVersion }}</span>
+                    <span class="size-h4 color-positive">{{ $newVersion }}</span>
                   </div>
                 {{ else }}
                   <div style="margin: 0.2rem 0;">
