@@ -3,6 +3,7 @@
 ```yaml
 - type: custom-api
   title: Uptime Kumas
+  title-url: ${UPTIME_KUMA_URL}
   url: ${UPTIME_KUMA_URL}/api/status-page/${UPTIME_KUMA_STATUS_SLUG}
   subrequests:
     heartbeats:
