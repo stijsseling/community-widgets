@@ -147,7 +147,8 @@ Add the following to your dashboard configuration:
 
                 {{ if $localDigests }}
                   <div class="flex gap-10" style="margin-top: 0.5rem;">
-                    <span>Local Digest: {{ slice (index $localDigests 0) 0 4 }}</span>
+                    {{ $digest := index $localDigests 0 }}
+                    <span>Local Digest: {{ slice $digest 0 4 }}</span>
                     <span>→</span>
                     <span class="size-h4">Remote Digest: {{ slice $remoteDigest 0 4 }}</span>
                   </div>
