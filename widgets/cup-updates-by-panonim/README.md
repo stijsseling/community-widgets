@@ -148,9 +148,9 @@ Add the following to your dashboard configuration:
                 {{ if $localDigests }}
                   <div class="flex gap-10" style="margin-top: 0.5rem;">
                     {{ $digest := index $localDigests 0 }}
-                    <span>Local: {{ slice $digest 0 4 }}</span>
+                    <span>Local: {{ if $digest }}{{ slice (printf "%s" $digest) 0 4 }}{{ end }}</span>
                     <span>→</span>
-                    <span class="size-h4">Remote: {{ slice $remoteDigest 0 4 }}</span>
+                    <span class="size-h4">Remote: {{ if $remoteDigest }}{{ slice (printf "%s" $remoteDigest) 0 4 }}{{ end }}</span>
                   </div>
                 {{ end }}
               </li>
@@ -165,7 +165,6 @@ Add the following to your dashboard configuration:
         </ul>
       </div>
     </div>
-
 ```
 
 ### Environment Variables
