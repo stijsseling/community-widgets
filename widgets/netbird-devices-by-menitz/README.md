@@ -1,6 +1,6 @@
 ![](preview.png)
 
-```yamal
+```yaml
 - type: custom-api
   title: Netbird Devices
   title-url: https://app.netbird.io/peers
