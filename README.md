@@ -33,7 +33,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
 * [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
-* [St. Louis Fed US Mortgage Rates] by @ehaughee - Show mortgage rates from the St. Louis Federal Reserve's FRED API
+* [St. Louis Fed US Mortgage Rates](widgets/st-louis-fed-us-mortgage-rates-by-ehaughee/README.md) by @ehaughee - Show mortgage rates from the St. Louis Federal Reserve's FRED API
 * [Steam Recently Played Games](widgets/steam-recently-played-games-by-lunnosmp4/README.md) by @lunnosmp4 - show a list of recently played games by a Steam user
 * [Steam specials](widgets/steam-specials-by-svilenmarkov/README.md) by @svilenmarkov - show a list of discounted games on Steam
 * [Steam User](widgets/steam-user-by-lunnosmp4/README.md) by @lunnosmp4 - show information about a Steam user
