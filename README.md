@@ -25,6 +25,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Minecraft server](widgets/minecraft-server-by-not-first/README.md) by @not-first - show online status, icon, version and player count of a minecraft server
 * [Mullvad VPN status](widgets/mullvad-vpn-status-by-delmonteaj/README.md) by @DelMonteAJ - show VPN connection status, IP, and location
 * [Nearby Aircraft](widgets/nearby-aircraft-by-cristiandiiorio/README.md) by @cristiandiiorio - show nearby aircraft passing over your position using OpenSky network
+* [Netbird devices](widgets/netbird-devices-by-menitz/README.md) by @menitz - show all devices inside to a Netbird network along with their connection status, update availability and IP
 * [NextDNS Stats](widgets/nextdns-stats-by-ziritione85/README.md) by @ziritione85 - show the basics stats of your nextdns stats. Total queries, total blocked and percentage.
 * [NHL Scores](widgets/nhl-scores-by-jo-nike/README.md) by @jo-nike - show the schedule, scores, situation for NHL games today
 * [Media Server History](widgets/media-server-history-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what had been played on your Media Server like Plex/Jellyfin
