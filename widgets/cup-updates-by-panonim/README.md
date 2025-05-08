@@ -194,6 +194,7 @@ Add the following to your dashboard configuration:
 You can show or hide the update types section (Major, Minor, Patch, Digest, Unknown) by changing the `$showUpdateKind` variable:
 
 ```
+{{ $defaultServerName := "Glance" }}  {{/* Set your default server name here */}}
 {{ $showUpdateKind := true }}  {{/* Toggle this to false to hide the Update Kind row */}}
 ```
 
