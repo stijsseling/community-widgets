@@ -4,7 +4,8 @@
 
 The Cup Updates widget provides a dashboard interface to monitor container update status across your Docker environment. It displays summary statistics and detailed information about containers that need updates.
 
-[![Preview](./preview.jpeg)](./preview.jpeg)
+<img style="width: 500px;" src="./preview.jpeg" alt="Preview Image"/>
+
 ## Features
 
 - **Quick Status Overview**: View total monitored images, up-to-date images, and available updates at a glance
