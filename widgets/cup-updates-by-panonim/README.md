@@ -27,7 +27,9 @@ Add the following to your dashboard configuration:
   url: http://${CUP_URL}/api/v3/json
   method: GET
   template: |
+    {{ $defaultServerName := "Glance" }}  {{/* Set your default server name here */}}
     {{ $showUpdateKind := true }}  {{/* Toggle this to false to hide the Update Kind row */}}
+
     <style>
       .vertical-separator-cup {
         width: 3px;
@@ -51,11 +53,13 @@ Add the following to your dashboard configuration:
         display: block;
         padding: 1px 0;
         font-size: 1.1rem;
+        margin-top: 1rem;
       }
       .status-values-cup {
         font-size: 1.8rem;
       }
     </style>
+
     <div class="flex flex-column gap-4">
       <div class="flex items-center text-center">
         <div class="flex-1">
@@ -75,32 +79,32 @@ Add the following to your dashboard configuration:
       </div>
 
       {{ if $showUpdateKind }}
-      <div class="flex items-center text-center" style="margin-top: 1rem;">
-        <div class="flex-1">
-          <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.major_updates" }}</div>
-          <div class="size-h6">MAJOR</div>
+        <div class="flex items-center text-center" style="margin-top: 1rem;">
+          <div class="flex-1">
+            <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.major_updates" }}</div>
+            <div class="size-h6">MAJOR</div>
+          </div>
+          <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
+          <div class="flex-1">
+            <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.minor_updates" }}</div>
+            <div class="size-h6">MINOR</div>
+          </div>
+          <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
+          <div class="flex-1">
+            <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.patch_updates" }}</div>
+            <div class="size-h6">PATCH</div>
+          </div>
+          <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
+          <div class="flex-1">
+            <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.other_updates" }}</div>
+            <div class="size-h6">DIGEST</div>
+          </div>
+          <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
+          <div class="flex-1">
+            <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.unknown_updates" }}</div>
+            <div class="size-h6">UNKNOWN</div>
+          </div>
         </div>
-        <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
-        <div class="flex-1">
-          <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.minor_updates" }}</div>
-          <div class="size-h6">MINOR</div>
-        </div>
-        <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
-        <div class="flex-1">
-          <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.patch_updates" }}</div>
-          <div class="size-h6">PATCH</div>
-        </div>
-        <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
-        <div class="flex-1">
-          <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.other_updates" }}</div>
-          <div class="size-h6">DIGEST</div>
-        </div>
-        <div class="vertical-separator-cup" style="width: 2px; margin: 0 0.25rem;"></div>
-        <div class="flex-1">
-          <div class="status-values-cup size-h3">{{ .JSON.Int "metrics.unknown_updates" }}</div>
-          <div class="size-h6">UNKNOWN</div>
-        </div>
-      </div>
       {{ end }}
 
       <div class="container-list-cup">
@@ -132,6 +136,15 @@ Add the following to your dashboard configuration:
                 {{ $newVersion := .String "result.info.new_version" }}
                 {{ $localDigests := .Array "result.info.local_digests" }}
                 {{ $remoteDigest := .String "result.info.remote_digest" }}
+                {{ $serverName := .String "server" }}
+
+                {{ if or (eq $serverName "") (eq $serverName "null") (not $serverName) }}
+                  {{ $serverName = $defaultServerName }}
+                {{ end }}
+
+                <div style="margin: 0.5rem 0; font-size: 1rem; color: #6c757d;">
+                  Server: {{ $serverName }}
+                </div>
 
                 {{ if and $currentVersion $newVersion }}
                   <div style="margin: 0.2rem 0;">
@@ -139,18 +152,20 @@ Add the following to your dashboard configuration:
                     <span> → </span>
                     <span class="size-h4 color-positive">{{ $newVersion }}</span>
                   </div>
-                {{ else }}
-                  <div style="margin: 0.2rem 0;">
-                    <span class="size-h4">No version info available</span>
-                  </div>
                 {{ end }}
 
                 {{ if $localDigests }}
-                  <div class="flex gap-10" style="margin-top: 0.5rem;">
-                    {{ $digest := index $localDigests 0 }}
-                    <span>Local: {{ if $digest }}{{ slice (printf "%s" $digest) 0 4 }}{{ end }}</span>
+                  {{ $digest := index $localDigests 0 }}
+                  {{ $digestStr := printf "%s" $digest }}
+                  {{ $remoteDigestStr := printf "%s" $remoteDigest }}
+
+                  {{ $shortLocal := slice $digestStr 8 14 }}
+                  {{ $shortRemote := slice $remoteDigestStr 7 13 }}
+
+                  <div class="flex gap-10 justify-center items-center" style="margin-top: 0.5rem;">
+                    <span>Dig: {{ $shortLocal }}</span>
                     <span>→</span>
-                    <span class="size-h4">Remote: {{ if $remoteDigest }}{{ slice (printf "%s" $remoteDigest) 0 4 }}{{ end }}</span>
+                    <span class="size-h4">Dig: <span class="color-positive">{{ $shortRemote }}</span></span>
                   </div>
                 {{ end }}
               </li>
@@ -204,7 +219,7 @@ You can show or hide the update types section (Major, Minor, Patch, Digest, Unkn
 <hr>
 
 **Created by:**
-- [**Artur Flis**](https://github.com/panonim)
+- [**Artur Flis**](https://github.com/panonim) - Updated the code to make it accessible for everyone added styling and made bug fixes.
 - [**Gaodes**](https://github.com/gaodes) – Base of the code.
 
 **Contact:** @blue.dev on the project’s Discord
