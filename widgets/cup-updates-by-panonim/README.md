@@ -143,7 +143,7 @@ Add the following to your dashboard configuration:
                   {{ $serverName = $defaultServerName }}
                 {{ end }}
 
-                <div style="margin: 0.5rem 0; font-size: 1rem; color: #6c757d;">
+                <div style="margin: 0.5rem 0; font-size: 1.28rem; color: #6c757d;">
                   Server: {{ $serverName }}
                 </div>
 
