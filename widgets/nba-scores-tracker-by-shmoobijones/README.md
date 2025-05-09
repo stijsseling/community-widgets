@@ -28,11 +28,6 @@
               <span style="display:flex;align-items:flex-start;gap:6px;">
                 <span style="display:flex;flex-direction:column;align-items:center;width:24px;">
                   <img src="{{ $away.String "team.logo" }}" alt="{{ $away.String "team.abbreviation" }}" style="width:24px;height:24px;"/>
-                  {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
-                    {{ if eq ($g.String "competitions.0.situation.possession") ($away.String "team.id") }}
-                      <span style="margin-top:2px;font-size:0.7em;">🏀</span>
-                    {{ end }}
-                  {{ end }}
                 </span>
                 <span style="display:flex;flex-direction:column;">
                   <span style="display:flex;align-items:center;">
@@ -57,11 +52,6 @@
               <span style="display:flex;align-items:flex-start;gap:6px;">
                 <span style="display:flex;flex-direction:column;align-items:center;width:24px;">
                   <img src="{{ $home.String "team.logo" }}" alt="{{ $home.String "team.abbreviation" }}" style="width:24px;height:24px;"/>
-                  {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
-                    {{ if eq ($g.String "competitions.0.situation.possession") ($home.String "team.id") }}
-                      <span style="margin-top:2px;font-size:0.7em;">🏀</span>
-                    {{ end }}
-                  {{ end }}
                 </span>
                 <span style="display:flex;flex-direction:column;">
                   <span style="display:flex;align-items:center;">
@@ -89,11 +79,6 @@
                       <span style="display:flex;align-items:flex-start;gap:6px;">
                         <span style="display:flex;flex-direction:column;align-items:center;width:24px;">
                           <img src="{{ $away.String "team.logo" }}" alt="{{ $away.String "team.abbreviation" }}" style="width:24px;height:24px;"/>
-                          {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
-                            {{ if eq ($g.String "competitions.0.situation.possession") ($away.String "team.id") }}
-                              <span style="margin-top:2px;font-size:0.7em;">🏀</span>
-                            {{ end }}
-                          {{ end }}
                         </span>
                         <span style="display:flex;flex-direction:column;">
                           <span style="display:flex;align-items:center;">
@@ -118,11 +103,6 @@
                       <span style="display:flex;align-items:flex-start;gap:6px;">
                         <span style="display:flex;flex-direction:column;align-items:center;width:24px;">
                           <img src="{{ $home.String "team.logo" }}" alt="{{ $home.String "team.abbreviation" }}" style="width:24px;height:24px;"/>
-                          {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
-                            {{ if eq ($g.String "competitions.0.situation.possession") ($home.String "team.id") }}
-                              <span style="margin-top:2px;font-size:0.7em;">🏀</span>
-                            {{ end }}
-                          {{ end }}
                         </span>
                         <span style="display:flex;flex-direction:column;">
                           <span style="display:flex;align-items:center;">
