@@ -8,7 +8,7 @@
 
 ```yaml
 - type: custom-api
-  title: NBA Today
+  title: NBA Today (Jan 24, 2024 Test)
   url: "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
   cache: 35s
   template: |
@@ -16,6 +16,13 @@
     {{ if eq (len $events) 0 }}
       <div>No games scheduled today.</div>
     {{ else }}
+      {{ if gt (len $events) 6 }}
+        <details style="margin:0;padding:0;border:none">
+          <summary style="cursor:pointer;padding:4px 0;font-weight:600">
+            Show {{ len $events }} games
+          </summary>
+      {{ end }}
+
       <ul style="list-style:none;padding:0;margin:0;">
       {{ range $events }}
         {{ $g := . }}
@@ -32,18 +39,16 @@
           "{{ end }}>
 
           <span style="display:flex;align-items:flex-start;gap:6px;">
-            <!-- Logo + Possession Column -->
             <span style="display:flex;flex-direction:column;align-items:center;width:24px;">
               <img src="{{ $away.String "team.logo" }}"
                   alt="{{ $away.String "team.abbreviation" }}"
                   style="width:24px;height:24px;"/>
               {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
                 {{ if eq ($g.String "competitions.0.situation.possession") ($away.String "team.id") }}
-                  <span style="margin-top:2px; font-size:0.7em;">🏀</span>
+                  <span style="margin-top:2px;font-size:0.7em;">🏀</span>
                 {{ end }}
               {{ end }}
             </span>
-            
             <span style="display:flex;flex-direction:column;">
               <span style="display:flex;align-items:center;">
                 {{ $away.String "team.abbreviation" }}
@@ -75,18 +80,16 @@
           </span>
 
           <span style="display:flex;align-items:flex-start;gap:6px;">
-            <!-- Home Logo + Possession Column - Now matches away team structure -->
             <span style="display:flex;flex-direction:column;align-items:center;width:24px;">
               <img src="{{ $home.String "team.logo" }}"
                   alt="{{ $home.String "team.abbreviation" }}"
                   style="width:24px;height:24px;"/>
               {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
                 {{ if eq ($g.String "competitions.0.situation.possession") ($home.String "team.id") }}
-                  <span style="margin-top:2px; font-size:0.7em;">🏀</span>
+                  <span style="margin-top:2px;font-size:0.7em;">🏀</span>
                 {{ end }}
               {{ end }}
             </span>
-            
             <span style="display:flex;flex-direction:column;">
               <span style="display:flex;align-items:center;">
                 {{ $home.String "team.abbreviation" }}
@@ -101,13 +104,9 @@
         </li>
       {{ end }}
       </ul>
-    {{ end }}
-    {{ if eq (len $events) 0 }}
-      <style>
-        .glance-card {
-          background-color: var(--glance-card-background);
-          color: var(--glance-card-text);
-        }
-      </style>
+
+      {{ if gt (len $events) 6 }}
+        </details>
+      {{ end }}
     {{ end }}
 ```
