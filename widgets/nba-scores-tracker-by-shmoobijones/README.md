@@ -11,7 +11,3 @@ A simple community widget for Glance that shows today’s NBA games using ESPN�
 - Shows team logos, abbreviations, scores, and win–loss records  
 - Hover tooltip with detailed box-score by quarter (and OT)  
 - Series summary for playoff matchups  
-
-## Preview
-
-![Preview](preview.png)
