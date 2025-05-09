@@ -8,7 +8,7 @@
 
 ```yaml
 - type: custom-api
-  title: NBA Today (Jan 24, 2024 Test)
+  title: NBA Today
   url: "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
   cache: 35s
   template: |
