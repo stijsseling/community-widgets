@@ -37,7 +37,7 @@
                   style="width:24px;height:24px;"/>
               {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
                 {{ if eq ($g.String "competitions.0.situation.possession") ($away.String "team.id") }}
-                  <span style="margin-top:2px;">🏀</span>
+                  <span style="margin-top:2px; font-size:0.7em;">🏀</span>
                 {{ end }}
               {{ end }}
             </span>
@@ -80,7 +80,7 @@
                   style="width:24px;height:24px;"/>
               {{ if and (eq $state "STATUS_IN_PROGRESS") ($g.Exists "competitions.0.situation.possession") }}
                 {{ if eq ($g.String "competitions.0.situation.possession") ($home.String "team.id") }}
-                  <span style="margin-top:2px;">🏀</span>
+                  <span style="margin-top:2px; font-size:0.7em;">🏀</span>
                 {{ end }}
               {{ end }}
             </span>
