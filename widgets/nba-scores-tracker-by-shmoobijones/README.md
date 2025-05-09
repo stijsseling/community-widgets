@@ -5,7 +5,7 @@
 ## Configuration
 
 ```yaml
-type: custom-api
+- type: custom-api
 title: NBA Today
 url: "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
 cache: 20s
