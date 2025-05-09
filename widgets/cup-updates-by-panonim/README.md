@@ -188,19 +188,29 @@ Add the following to your dashboard configuration:
 - `CUP_URL`: The IP address or hostname of your Cup Update server
   - Example: `CUP_URL=IP:PORT`
 
-## Customization Options
+### Configuration Options
 
-### Toggle Update Type Display
+You can customize the display behavior and default labels using the following variables:
 
-You can show or hide the update types section (Major, Minor, Patch, Digest, Unknown) by changing the `$showUpdateKind` variable:
-
-```
+```go
 {{ $defaultServerName := "Glance" }}  {{/* Set your default server name here */}}
-{{ $showUpdateKind := true }}  {{/* Toggle this to false to hide the Update Kind row */}}
+{{ $showUpdateKind := true }}         {{/* Toggle this to false to hide the Update Kind row */}}
 ```
 
-- Set to `true` to show the update type breakdown (default)
-- Set to `false` to hide this section for a more compact view
+#### `$defaultServerName`
+
+* **Purpose:** Sets the default name shown for the server.
+* **Default:** `"Glance"`
+* **Customization:** Change the string value to your preferred default server name.
+
+#### `$showUpdateKind`
+
+* **Purpose:** Controls visibility of the update types section (Major, Minor, Patch, Digest, Unknown).
+* **Default:** `true` (update kind section is visible)
+* **Customization:**
+
+  * Set to `true` to **show** the update type breakdown
+  * Set to `false` to **hide** the update type section for a more compact view
 
 ## Understanding the Display
 
