@@ -10,7 +10,7 @@
 - type: custom-api
   title: NBA Today
   url: "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
-  cache: 35s
+  cache: 15s
   template: |
     {{ $events := .JSON.Array "events" }}
     {{ if eq (len $events) 0 }}
