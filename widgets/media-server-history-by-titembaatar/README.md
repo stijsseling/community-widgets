@@ -109,7 +109,7 @@ parameters:
     sort: viewedAt:desc
   headers:
     Accept: application/json
-        X-Plex-Token: ${PLEX_TOKEN}
+    X-Plex-Token: ${PLEX_TOKEN}
   template: |
     {{ $isSmallColumn := .Options.BoolOr "small-column" false }}
     {{ $isCompact := .Options.BoolOr "compact" true }}
