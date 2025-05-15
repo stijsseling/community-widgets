@@ -5,26 +5,39 @@
 - type: custom-api
   title: Sonarr
   title-url: https://${SONARR_URL}
-  url: https://${SONARR_URL}/api/v3/calendar?includeSeries=true
-  headers:
-    content-type: application/json
-    x-api-key: ${SONARR_KEY}
   cache: 30m
+  options:
+    collapse-after: 3
+    show-grabbed: false
+    timezone: +08
+    # cover-proxy: https://${SONARR_URL}/cover
   template: |
-    {{ $coverProxy := "" }} {{/* To avoid exposing the API Key */}}
-    {{ $showGrabbed := false }}
-    {{ $localTimezone := "2006-01-02T15:04:05+05:00" | parseTime "rfc3339" }}
+    {{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
+    {{ $showGrabbed := .Options.BoolOr "show-grabbed" false }}
+    {{ $timezone := concat "2006-01-02T15:04:05" (.Options.StringOr "timezone" "+00") ":00" | parseTime "rfc3339" }}
+    {{ $coverProxy := .Options.StringOr "cover-proxy" "" }} {{/* To avoid exposing the API Key */}}
+    {{
+      $sonarr := newRequest "https://${SONARR_URL}/api/v3/calendar"
+        | withParameter "includeSeries" "true"
+        | withParameter "start" (offsetNow "-24h" | startOfDay | formatTime "rfc3339")
+        | withParameter "end" (offsetNow "24h" | endOfDay | formatTime "rfc3339")
+        | withHeader "Accept" "application/json"
+        | withHeader "x-api-key" "${SONARR_KEY}"
+        | getResponse
+    }}
+    {{ $sonarrData := $sonarr.JSON.Array "" }}
 
     {{ $coverEndpoint := "https://${SONARR_URL}/api/v3/mediacover" }}
     {{ $apiKey := concat "?apikey=" "${SONARR_KEY}" }}
-    <ul class="list list-gap-14 collapsible-container single-line-titles" data-collapse-after="3">
+    
+    <ul class="list list-gap-14 collapsible-container single-line-titles" data-collapse-after="{{ $collapseAfter }}">
       {{ $hasProxy := ne $coverProxy "" }}
 
       {{ $notificationCount := 0 }}
-      {{ if eq (len (.JSON.Array "")) 0 }}
+      {{ if eq (len ($sonarrData)) 0 }}
         <li>No release this day!</li>
       {{ end }}
-      {{ range .JSON.Array "" }}
+      {{ range $sonarrData }}
 
       {{ $coverUrl := "" }}
       {{ if $hasProxy }}
@@ -73,7 +86,7 @@
             </div>
             <div class="text-very-compact text-truncate">
               {{ $airDateUtc := .String "airDateUtc" | parseTime "rfc3339" }}
-              <span>{{ ($airDateUtc.In $localTimezone.Location).Format "01/02 03:04PM" }}</span>
+              <span>{{ ($airDateUtc.In $timezone.Location).Format "01/02 03:04PM" }}</span>
             </div>
             {{ if $showGrabbed }}
             <div class="flex gap-10 items-center" style="position: absolute; bottom: 10px;">
@@ -99,9 +112,16 @@
 - `SONARR_URL` - Your Sonarr URL, eg: your-sonarr-domain.com
 - `SONARR_KEY` - Your Sonarr API key, it should be under Settings > General > Security
 
-### User variables
+### User variables/options
 
-- `coverProxy` - to avoid exposing the API key, this can be done through your proxy manager of choice. For Nginx Proxy Manager specifically, inside the `Advanced` tab:
+| Options           | Short Description              |
+| ----------------- | ------------------------------ |
+| collapse-after    | Glance's collapsible container |
+| show-grabbed      | This will show the grab status |
+| timezone          | change `+05` to your timezone, eg: +9 will be `+09` |
+| cover-proxy       | Avoids exposing the API key    |
+
+- `cover-proxy` - This can be done through your proxy manager of choice. For Nginx Proxy Manager specifically, inside the `Advanced` tab:
     ```nginx
     location /cover/ {
         rewrite ^/cover/(.*)$ /api/v3/mediacover/$1?apikey=your-api-key-here break;
@@ -113,22 +133,8 @@
     {{ $coverProxy := "https://${SONARR_URL}/cover" }}
     ```
 
-- `showGrabbed` - will show the grab status and removes the Series overview/description. Still available upon hovering the thumbnail.
-- `localTimezone` - change `+05:00` to your timezone, eg: +9 will be `+09:00`. If your Glance instance has a local timezone then you should be able to change the following:
-  ```html
-  <div class="text-very-compact text-truncate">
-    {{ $airDateUtc := .String "airDateUtc" | parseTime "rfc3339" }}
-    <span>{{ ($airDateUtc.In $localTimezone.Location).Format "01/02 03:04PM" }}</span>
-  </div>
-  ```
-  to
-  ```html
-  <div class="text-very-compact text-truncate">
-    {{ $airDateLocal := .String "airDateUtc" | parseLocalTime "rfc3339" }}
-    <span>{{ $airDateLocal.Format "01/02 03:04PM" }}</span>
-  </div>
-  ```
-  and remove the `$localTimezone` initialization.
+- `show-grabbed` - will show the grab status and removes the Series overview/description. Still available upon hovering the thumbnail.
+- `timezone` - change `+05` to your timezone, eg: +9 will be `+09`.
 
 
 ## Credits
