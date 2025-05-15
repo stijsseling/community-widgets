@@ -1,5 +1,19 @@
 ![](preview.png)
 
+# !!!!!!! IMPORTANT - PLEASE READ
+> [!CAUTION]     
+> Using the play(▶) and pause(⏸) buttons sends a request directly from the browser to Spotify's Play/Pause API's respectively. These PUT requests require the bearer token to be sent in the auth header, which means the $accessToken is exposed to the client-side/browser.  
+There are many security implications of this. For example, if a malicious actor get's access to this token, they can completely control and view your Spotify playlists/currently playing.  
+Please use this at your own risk. [Spotify Authorization](https://developer.spotify.com/documentation/web-api/tutorials/code-flow)  
+It is highly suggested to use [Glance Auth](https://github.com/glanceapp/glance/releases/tag/v0.8.0#g-rh-7). However, please note using this does not mitigate the above mentioned security risk.
+
+Choose from one of the following otpions:  
+1. Use Play/Pause in current-implementation at your own risk.
+2. Move Play/Pause functionality behind an external service so accessToken is not exposed on client-side.
+3. Remove Play/Pause from config below and the $accessToken will not be revealed on client-side.    
+
+<hr>
+
 ```yaml
 - type: custom-api
   hide-header: true
@@ -101,18 +115,18 @@
 
 ### ENV Variables
 1. Log into [Spotify for Developers](https://developer.spotify.com/).
-2. Navigate to the dashboard and create a new app, using `https://localhost:3000` (or whatever) as the callback. Make sure to use https.
+2. Navigate to the dashboard and create a new app, using `http://127.0.0.1:8888/callback` (or whatever) as the callback. Make sure to use https.
 3. Record the `client_id` and `client_secret`. You will need this later.
 4. Grab a scope variable by navigating into this link: 
 `
-https://accounts.spotify.com/en/authorize?client_id=<your_client_id>&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A3000&scope=user-read-currently-playing%20user-read-playback-state%20user-modify-playback-state
+https://accounts.spotify.com/en/authorize?client_id=<your_client_id>&response_type=code&redirect_uri=http://127.0.0.1:8888/callback&scope=user-read-currently-playing%20user-read-playback-state%20user-modify-playback-state
 ` 
-It will redirect to a localhost url with this format: `http://localhost:3000/?code=<scope_variable>` - store this.  
+It will redirect to a localhost url with this format: `http://127.0.0.1:8888/callback?code=<scope_variable>` - store this.  
 5. [Base64 encode](https://www.base64encode.org/) the string `client_id:clientsecret`.  
 6. Store this b64 encoded value as **"SPOTIFY_BTOA"** in Glance .env.  
 7. [Run](https://reqbin.com/curl) the following cURL command: 
   `
   curl -H "Authorization: Basic <base64_encoded_string>"
-  -d grant_type=authorization_code -d code=<scope_variable> -d redirect_uri=https%3A%2F%2Flocalhost:3000 https://accounts.spotify.com/api/token
+  -d grant_type=authorization_code -d code=<scope_variable> -d redirect_uri=http://127.0.0.1:8888/callback https://accounts.spotify.com/api/token
   `
 8. Record the **"refresh_token"** in the resultant `.json` file, and store as SPOTIFY_REFRESH in Glance .env.
