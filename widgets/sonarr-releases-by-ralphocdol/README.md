@@ -66,7 +66,7 @@
                     TBA
                     {{ end }}
                   </p>
-                  {{ if gt (len "series.genres") 0 }}
+                  {{ if gt (len (.Array "series.genres")) 0 }}
                   <ul class="attachments margin-top-20">
                     {{ range .Array "series.genres" }}
                       <li>{{ .String "" }}</li>
