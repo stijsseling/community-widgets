@@ -2,122 +2,139 @@
 ![](preview.png)
 
 ```yaml
-        - type: group
-          widgets:
-            - type: custom-api
-              title: Day
-              body-type: string
-              skip-json-validation: true
-              cache: 1s
-              template: |
-                {{ $secondsPerDay := 86400 }}
-                {{ $localTime := offsetNow "-7h" }}  <!-- America/Vancouver timezone -->
+- type: group
+  widgets:
+    - type: custom-api
+      title: Day
+      body-type: string
+      skip-json-validation: true
+      cache: 1s
+      template: |
+        {{ $localTime := now }}
+        {{ $secondsPerDay := 86400 }}
+        {{ $elapsedSeconds := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
+        {{ $dayProgress := div (mul $elapsedSeconds 100.0) $secondsPerDay }}
 
-                {{ $elapsedSeconds := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-                {{ $dayProgress := div (mul $elapsedSeconds 100.0) $secondsPerDay }}
+        {{ $gradient := "" }}
+        {{ if lt $dayProgress 10.0 }}
+          {{ $gradient = "#70a1ff" }}
+        {{ else if lt $dayProgress 25.0 }}
+          {{ $gradient = "#ff6b6b, #70a1ff" }}
+        {{ else if lt $dayProgress 50.0 }}
+          {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df" }}
+        {{ else }}
+          {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df, #70a1ff" }}
+        {{ end }}
 
-                {{ $gradient := "" }}
-                {{ if lt $dayProgress 10.0 }}
-                  {{ $gradient = "#70a1ff" }}
-                {{ else if lt $dayProgress 25.0 }}
-                  {{ $gradient = "#ff6b6b, #70a1ff" }}
-                {{ else if lt $dayProgress 50.0 }}
-                  {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df" }}
-                {{ else }}
-                  {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df, #70a1ff" }}
-                {{ end }}
+        <div style="font-family: sans-serif; text-align: center;">
+          <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
+            <div style="
+              height: 100%;
+              width: {{ $dayProgress }}%;
+              background: linear-gradient(90deg, {{ $gradient }});
+            "></div>
+          </div>
+          <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $dayProgress }}% of the day has passed</div>
+        </div>
 
-                <div style="font-family: sans-serif; text-align: center;">
-                  <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                    <div style="
-                      height: 100%;
-                      width: {{ $dayProgress }}%;
-                      background: linear-gradient(90deg, {{ $gradient }});
-                    "></div>
-                  </div>
-                  <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $dayProgress }}% of the day has passed</div>
-                </div>
+    - type: custom-api
+      title: Month
+      body-type: string
+      skip-json-validation: true
+      cache: 1s
+      template: |
+        {{ $localTime := now }}
 
-            - type: custom-api
-              title: Month
-              body-type: string
-              skip-json-validation: true
-              cache: 1h
-              template: |
-                {{ $localTime := offsetNow "-7h" }}  <!-- America/Vancouver timezone -->
+        {{ $month := $localTime.Month }}
+        {{ $dayOfMonth := $localTime.Day }}
 
-                {{ $month := $localTime.Month }}
-                {{ $dayOfMonth := $localTime.Day }}
+        {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
+        {{ $fractionOfDay := div $secondsToday 86400.0 }}
 
-                {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-                {{ $fractionOfDay := div $secondsToday 86400.0 }}
+        {{ $daysInMonth := 31 }}
+        {{ if eq $month 2 }} {{ $daysInMonth = 28 }} {{ end }}
+        {{ if or (eq $month 4) (eq $month 6) (eq $month 9) (eq $month 11) }} {{ $daysInMonth = 30 }} {{ end }}
 
-                {{ $daysInMonth := 31 }}
-                {{ if eq $month 2 }} {{ $daysInMonth = 28 }} {{ end }}
-                {{ if or (eq $month 4) (eq $month 6) (eq $month 9) (eq $month 11) }} {{ $daysInMonth = 30 }} {{ end }}
+        {{ $daysElapsed := add (sub $dayOfMonth 1) $fractionOfDay }}
+        {{ $monthProgress := mul (div $daysElapsed $daysInMonth) 100.0 }}
 
-                {{ $daysElapsed := add (sub $dayOfMonth 1) $fractionOfDay }}
-                {{ $monthProgress := mul (div $daysElapsed $daysInMonth) 100.0 }}
+        {{ $gradient := "" }}
+        {{ if lt $monthProgress 10.0 }}
+          {{ $gradient = "#70a1ff" }}
+        {{ else if lt $monthProgress 25.0 }}
+          {{ $gradient = "#ff6b6b, #70a1ff" }}
+        {{ else if lt $monthProgress 50.0 }}
+          {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df" }}
+        {{ else }}
+          {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df, #70a1ff" }}
+        {{ end }}
 
-                {{ $gradient := "" }}
-                {{ if lt $monthProgress 10.0 }}
-                  {{ $gradient = "#70a1ff" }}
-                {{ else if lt $monthProgress 25.0 }}
-                  {{ $gradient = "#ff6b6b, #70a1ff" }}
-                {{ else if lt $monthProgress 50.0 }}
-                  {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df" }}
-                {{ else }}
-                  {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df, #70a1ff" }}
-                {{ end }}
+        <div style="font-family: sans-serif; text-align: center;">
+          <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
+            <div style="
+              height: 100%;
+              width: {{ $monthProgress }}%;
+              background: linear-gradient(90deg, {{ $gradient }});
+            "></div>
+          </div>
+          <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $monthProgress }}% of the month has passed</div>
+        </div>
 
-                <div style="font-family: sans-serif; text-align: center;">
-                  <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                    <div style="
-                      height: 100%;
-                      width: {{ $monthProgress }}%;
-                      background: linear-gradient(90deg, {{ $gradient }});
-                    "></div>
-                  </div>
-                  <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $monthProgress }}% of the month has passed</div>
-                </div>
+    - type: custom-api
+      title: Year
+      body-type: string
+      skip-json-validation: true
+      cache: 1s
+      template: |
+        {{ $localTime := now }}
+        
+        {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
+        {{ $dayOfYear := $localTime.YearDay }}
+        {{ $secondsElapsed := add (mul (sub $dayOfYear 1) 86400) $secondsToday }}
 
-            - type: custom-api
-              title: Year
-              body-type: string
-              skip-json-validation: true
-              cache: 1d
-              template: |
-                {{ $localTime := offsetNow "-7h" }}  <!-- America/Vancouver timezone -->
+        {{ $totalSecondsInYear := mul 365 86400 }}
+        {{ $yearProgress := div (mul $secondsElapsed 100.0) $totalSecondsInYear }}
 
-                {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-                {{ $dayOfYear := $localTime.YearDay }}
-                {{ $secondsElapsed := add (mul (sub $dayOfYear 1) 86400) $secondsToday }}
+        {{ $gradient := "" }}
+        {{ if lt $yearProgress 10.0 }}
+          {{ $gradient = "#70a1ff" }}
+        {{ else if lt $yearProgress 25.0 }}
+          {{ $gradient = "#ff6b6b, #70a1ff" }}
+        {{ else if lt $yearProgress 50.0 }}
+          {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df" }}
+        {{ else }}
+          {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df, #70a1ff" }}
+        {{ end }}
 
-                {{ $totalSecondsInYear := mul 365 86400 }}
-                {{ $yearProgress := div (mul $secondsElapsed 100.0) $totalSecondsInYear }}
+        <div style="font-family: sans-serif; text-align: center;">
+          <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
+            <div style="
+              height: 100%;
+              width: {{ $yearProgress }}%;
+              background: linear-gradient(90deg, {{ $gradient }});
+            "></div>
+          </div>
+          <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $yearProgress }}% of the year has passed</div>
+        </div>
+```
 
-                {{ $gradient := "" }}
-                {{ if lt $yearProgress 10.0 }}
-                  {{ $gradient = "#70a1ff" }}
-                {{ else if lt $yearProgress 25.0 }}
-                  {{ $gradient = "#ff6b6b, #70a1ff" }}
-                {{ else if lt $yearProgress 50.0 }}
-                  {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df" }}
-                {{ else }}
-                  {{ $gradient = "#ff6b6b, #f8e71c, #7ed6df, #70a1ff" }}
-                {{ end }}
-
-                <div style="font-family: sans-serif; text-align: center;">
-                  <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                    <div style="
-                      height: 100%;
-                      width: {{ $yearProgress }}%;
-                      background: linear-gradient(90deg, {{ $gradient }});
-                    "></div>
-                  </div>
-                  <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $yearProgress }}% of the year has passed</div>
-                </div>
-
+**Please ensure your timezone is updated in `docker-compose.yml`**:
+```yaml
+services:
+  glance:
+    environment:
+    - TZ=America/Vancouver #https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    container_name: glance
+    image: glanceapp/glance
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+      - ./assets:/app/assets
+      # Optionally, also mount docker socket if you want to use the docker containers widget
+      # - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 8080:8080
+    env_file: .env
 ```
 
 ## Note
