@@ -24,6 +24,7 @@
       {{ $isCurrentlyPlaying := $currentlyPlaying.JSON.Bool "is_playing" }}
       {{ $isDeviceActive := $currentlyPlaying.JSON.Bool "device.is_active" }}
       {{ $isPrivateSession := $currentlyPlaying.JSON.Bool "device.is_private_session" }}
+      {{ $deviceName := $currentlyPlaying.JSON.String "device.name" }}
       {{ $queueRes := newRequest "https://api.spotify.com/v1/me/player/queue"
           | withHeader "Authorization" (print "Bearer " $accessToken)
           | getResponse
@@ -39,33 +40,43 @@
         <div class="size-h1">Spotify Now Playing</div>
         <div class="widget-content-frame flex flex-row items-center gap-20">
           <div>
-            <img src="{{ $data.String "currently_playing.album.images.0.url" }}" style="border-radius: 5px; width: 6rem;" class="card">
+            <img src="{{ $data.String "currently_playing.album.images.0.url" }}" style="border-radius: 5px; width: 5rem;" class="card">
           </div>
           <div class="flex grow flex-column justify-center pr-2">
-            <div class="color-positive size-h3 font-bold">{{ $data.String "currently_playing.name" }}</div>
-            <div class="size-h4">{{ $artist }}</div>
+            <div class="color-positive size-h4 font-bold">{{ $data.String "currently_playing.name" }}</div>
+            <div class="size-h5">{{ $artist }}</div>
           </div>
           {{ if and $isDeviceActive (not $isPrivateSession) }}
             {{ if $isCurrentlyPlaying }}
-            <button style="font-size:25px; margin-right:10px;" onclick="fetch('https://api.spotify.com/v1/me/player/pause',{method:'PUT',headers:{'Authorization':'Bearer {{$accessToken}}'}}); setTimeout(function(){ location.reload(); }, 2000);">⏸</button>
+              <div style="margin-right:10px;">
+                <button style="font-size:25px;" onclick="fetch('https://api.spotify.com/v1/me/player/pause',{method:'PUT',headers:{'Authorization':'Bearer {{$accessToken}}'}}); setTimeout(function(){ location.reload(); }, 2000);">⏸</button>
+                <p>{{ $deviceName }}</p>
+              </div>
             {{ else }}
-              <button style="font-size:25px; margin-right:10px;" onclick="fetch('https://api.spotify.com/v1/me/player/play',{method:'PUT',headers:{'Authorization':'Bearer {{$accessToken}}'}}); setTimeout(function(){ location.reload(); }, 2000);">▶</button>
-            {{ end }} 
+              <div style="margin-right:10px;">
+                <button style="font-size:25px;" onclick="fetch('https://api.spotify.com/v1/me/player/play',{method:'PUT',headers:{'Authorization':'Bearer {{$accessToken}}'}}); setTimeout(function(){ location.reload(); }, 2000);">▶</button>
+                <p>{{ $deviceName }}</p>
+              </div>
+            {{ end }}
+          {{ else if $isPrivateSession }}
+          <p style="margin-right:10px;">Private session is<br> active on {{ $deviceName }}</p> 
+          {{ else }}
+          <p style="margin-right:10px;">Device is inactive</p>
           {{ end }}
         </div>
         {{ end }}
-  
+
         {{ if gt (len $queue) 0 }}
-          <div class="size-h1 color-muted font-bold mb-1">Upcoming:</div>
+          <div class="size-h1 color-muted font-bold">Upcoming:</div>
           {{ range $i, $track := $queue }}
             {{ if lt $i 5 }}
               <div class="widget-content-frame flex flex-row items-center gap-20">
                 <div>
-                  <img src="{{ $track.String "album.images.0.url" }}" style="border-radius: 5px; width: 6rem;" class="card">
+                  <img src="{{ $track.String "album.images.0.url" }}" style="border-radius: 5px; width: 5rem;" class="card">
                 </div>
                 <div class="flex grow flex-column justify-center pr-2">
-                  <div class="color-positive size-h3 font-bold">{{ $track.String "name" }}</div>
-                  <div class="size-h4">{{ $track.String "artists.0.name" }}</div>
+                  <div class="color-positive size-h4 font-bold">{{ $track.String "name" }}</div>
+                  <div class="size-h5">{{ $track.String "artists.0.name" }}</div>
                 </div>
               </div>
             {{ end }}
