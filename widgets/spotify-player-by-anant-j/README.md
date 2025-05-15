@@ -17,6 +17,13 @@
     {{ if eq $tokenRes.Response.StatusCode 200 }}
       {{ $accessToken := $tokenRes.JSON.String "access_token" }}
 
+      {{ $currentlyPlaying := newRequest "https://api.spotify.com/v1/me/player" 
+          | withHeader "Authorization" (print "Bearer " $accessToken)
+          | getResponse          
+      }}
+      {{ $isCurrentlyPlaying := $currentlyPlaying.JSON.Bool "is_playing" }}
+      {{ $isDeviceActive := $currentlyPlaying.JSON.Bool "device.is_active" }}
+      {{ $isPrivateSession := $currentlyPlaying.JSON.Bool "device.is_private_session" }}
       {{ $queueRes := newRequest "https://api.spotify.com/v1/me/player/queue"
           | withHeader "Authorization" (print "Bearer " $accessToken)
           | getResponse
@@ -38,9 +45,16 @@
             <div class="color-positive size-h3 font-bold">{{ $data.String "currently_playing.name" }}</div>
             <div class="size-h4">{{ $artist }}</div>
           </div>
+          {{ if and $isDeviceActive (not $isPrivateSession) }}
+            {{ if $isCurrentlyPlaying }}
+            <button style="font-size:25px; margin-right:10px;" onclick="fetch('https://api.spotify.com/v1/me/player/pause',{method:'PUT',headers:{'Authorization':'Bearer {{$accessToken}}'}}); setTimeout(function(){ location.reload(); }, 2000);">⏸</button>
+            {{ else }}
+              <button style="font-size:25px; margin-right:10px;" onclick="fetch('https://api.spotify.com/v1/me/player/play',{method:'PUT',headers:{'Authorization':'Bearer {{$accessToken}}'}}); setTimeout(function(){ location.reload(); }, 2000);">▶</button>
+            {{ end }} 
+          {{ end }}
         </div>
         {{ end }}
-
+  
         {{ if gt (len $queue) 0 }}
           <div class="size-h1 color-muted font-bold mb-1">Upcoming:</div>
           {{ range $i, $track := $queue }}
@@ -76,11 +90,11 @@
 
 ### ENV Variables
 1. Log into [Spotify for Developers](https://developer.spotify.com/).
-2. Navigate to the dashboard and create a new app, using `http://localhost:3000` (or whatever) as the callback.
+2. Navigate to the dashboard and create a new app, using `https://localhost:3000` (or whatever) as the callback. Make sure to use https.
 3. Record the `client_id` and `client_secret`. You will need this later.
 4. Grab a scope variable by navigating into this link: 
 `
-https://accounts.spotify.com/en/authorize?client_id=<your_client_id>&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing
+https://accounts.spotify.com/en/authorize?client_id=<your_client_id>&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A3000&scope=user-read-currently-playing%20user-read-playback-state%20user-modify-playback-state
 ` 
 It will redirect to a localhost url with this format: `http://localhost:3000/?code=<scope_variable>` - store this.  
 5. [Base64 encode](https://www.base64encode.org/) the string `client_id:clientsecret`.  
@@ -88,6 +102,6 @@ It will redirect to a localhost url with this format: `http://localhost:3000/?co
 7. [Run](https://reqbin.com/curl) the following cURL command: 
   `
   curl -H "Authorization: Basic <base64_encoded_string>"
-  -d grant_type=authorization_code -d code=<scope_variable> -d redirect_uri=http%3A%2F%2Flocalhost:3000 https://accounts.spotify.com/api/token
+  -d grant_type=authorization_code -d code=<scope_variable> -d redirect_uri=https%3A%2F%2Flocalhost:3000 https://accounts.spotify.com/api/token
   `
 8. Record the **"refresh_token"** in the resultant `.json` file, and store as SPOTIFY_REFRESH in Glance .env.
