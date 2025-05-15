@@ -8,7 +8,6 @@
               title: Day
               body-type: string
               skip-json-validation: true
-              url: https://google.com/robots.txt
               cache: 1s
               template: |
                 {{ $secondsPerDay := 86400 }}
@@ -43,7 +42,6 @@
               title: Month
               body-type: string
               skip-json-validation: true
-              url: https://google.com/robots.txt
               cache: 1h
               template: |
                 {{ $localTime := offsetNow "-7h" }}  <!-- America/Vancouver timezone -->
@@ -87,7 +85,6 @@
               title: Year
               body-type: string
               skip-json-validation: true
-              url: https://google.com/robots.txt
               cache: 1d
               template: |
                 {{ $localTime := offsetNow "-7h" }}  <!-- America/Vancouver timezone -->
@@ -124,8 +121,7 @@
 ```
 
 ## Note
-- All logic for time calculation happens on device. Therefore the result of the url does not matter. 
-- I've used Google's robots.txt as a url is needed otherwise the custom-api widget crashes. You can chose to use any other endpoint or migrate the progress logic to an external server. 
+- All logic for time calculation happens on device. 
 - This on-device version **does not support leap years** as at the time of writing, Glance does not support the mod or % operator. If leap year support is needed, please host an external service. Example code below:  
 
 ```
