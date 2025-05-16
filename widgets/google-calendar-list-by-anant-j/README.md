@@ -34,19 +34,30 @@
         <div>
           {{ range $events.JSON.Array "items" }}
           {{ $start := .String "start.dateTime" }}
+          {{ $end := .String "end.dateTime" }}
           {{ $isAllDay := eq $start "" }}
           {{ if $isAllDay }}
-            {{ $start = print (.String "start.date") "T09:00:00Z" | parseTime "2006-01-02T15:04:05Z" }}
+            {{ $start = print (.String "start.date") | parseLocalTime "DateOnly" }}
+            {{ $end = print (.String "end.date") | parseLocalTime "DateOnly" }}
           {{ else }}
             {{ $start = $start | parseTime "rfc3339" }}
+            {{ $end = $end | parseTime "rfc3339" }}            
           {{ end }}
+          {{ $startDateOnly := $start | formatTime "DateOnly" }}
+          {{ $endDateOnly := $end | formatTime "DateOnly" }}
+          {{ $isStartAndEndDateSame := eq $startDateOnly $endDateOnly }}
 
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
             <a href="https://calendar.google.com/calendar/u/0" target="_blank" class="size-h1" style="text-align: left; width: 215px;">
               {{ .String "summary" }}
             </a>
             <a href="https://calendar.google.com/calendar/u/0" target="_blank" class="size-h3" style="text-align: left;">
-              {{ $start | formatTime "Mon, Jan 2 · 3:04 PM" }}
+              {{ $start | formatTime "Mon, Jan 2 · 3:04 PM" }} 
+              {{ if $isStartAndEndDateSame }}
+                  - {{ $end | formatTime "3:04 PM" }}
+                {{ else }}
+                  - {{ $end | formatTime "Mon, Jan 2 · 3:04 PM" }}
+              {{ end }}
             </a>
             <div class="color-primary size-h3" style="text-align: right; width: 75px;" {{ $start | toRelativeTime }}>
             </div>
@@ -55,7 +66,6 @@
         </div>
       {{ end }}
     {{ end }}
-
 ```
 
 ## Info
