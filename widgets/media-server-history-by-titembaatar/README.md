@@ -1,4 +1,4 @@
-* [Presentation](#presentation)
+* [Introduction](#introduction)
 * [Preview](#preview)
     * [Full Size Column](#full-size-column)
     * [Small Size Column](#small-size-column)
@@ -11,7 +11,7 @@
     * [Tautulli YAML](#tautulli-yaml)
     * [Jellyfin YAML](#jellyfin-yaml)
 
-## Presentation
+## Introduction
 This is a collection of widgets for various media servers.
 
 > [!NOTE]
@@ -40,8 +40,8 @@ Customisation can be applied using the `options:` field. See [Options](#options)
 ### Plex
 > [!IMPORTANT]
 >
-> For URLS, you **NEED** to add `http://` or `https://`
-> Do **NOT** leave a trailing `/` at the end of your URLs
+> For URLs, you **MUST** include `http://` or `https://`.
+> Do **NOT** include a trailing `/` at the end of URLs.
 
 * `PLEX_URL` - the Plex URL, can be `http://<ip_address>:<port>` or `https://<domain>`
 * `PLEX_TOKEN` - the Plex token, follow [this guide](https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/) if you don't know how to get it
@@ -70,21 +70,21 @@ Default options are:
 ```yaml
 options:
   small-column: false        # `true` if using the widget in a small column
-  compact: true              # `false` to use a more spread out layout
+  compact: true              # `false` for a more spread-out layout
   show-thumbnail: false      # `true` to show thumbnails
   thumbnail-aspect-ratio: "" # Options: "square", "portrait", "landscape", ""
-  show-user: true            # `false` to hide user name
-  time-absolute: false       # `true` to get absolute time format
+  show-user: true            # `false` to hide username
+  time-absolute: false       # `true` for absolute time format
 
-# Jellyfin specific options
-  user-name: "titem"                # Name of the user to get history from
-  media-type: "Movie,Episode,Audio" # Media type to display, capitalise and comma separated
+  # Jellyfin-specific options
+  user-name: "titem"                # Username for retrieving history
+  media-type: "Movie,Episode,Audio" # Media types to display, capitalized and comma-separated
 ```
 
 > [!IMPORTANT]
 >
-> Jellyfin API doesn't allow to get a played history for all users.
-> It is user specific. You need to set up the `user-name` option with your Jellyfin user name.
+> The Jellyfin API only retrieves playback history for a specific user.
+> You must set the `user-name` option to your Jellyfin username.
 
 On top of options, there is some paramaters you can change:
 ```yaml
@@ -93,7 +93,7 @@ parameters:
   limit: 20                        # Modify this value for the length of the history
   # Tautulli
   length: 10                       # Modify this value for the length of the history
-  media_type: movie,episode,track  # movie,episode,track,live,collection,playlist
+  media_type: movie,episode,track  # Media types: movie, episode, track, live, collection, playlist
 ```
 
 ## Widget YAML
@@ -129,7 +129,7 @@ parameters:
       {{ $history := .JSON.Array "MediaContainer.Metadata" }}
 
       {{ if eq (len $history) 0 }}
-        <p>stop what you are doing and go watch something !</p>
+        <p>Nothing is playing. Start watching something!</p>
       {{ else }}
         <div class="carousel-container show-right-cutoff">
           <div class="cards-horizontal carousel-items-container">
@@ -280,7 +280,7 @@ parameters:
 
       {{ if eq (len $history) 0 }}
         <div class="card widget-content-frame padding-widget">
-          <p>stop what you are doing and go watch something !</p>
+          <p>Nothing is playing. Start watching something!</p>
         </div>
       {{ else }}
         <div class="carousel-container show-right-cutoff">
@@ -441,7 +441,7 @@ parameters:
       {{ $history := $historyCall.JSON.Array "Items" }}
 
       {{ if eq (len $history) 0 }}
-        <p>stop what you are doing and go watch something !</p>
+        <p>Nothing is playing. Start watching something!</p>
       {{ else }}
         <div class="carousel-container show-right-cutoff">
           <div class="cards-horizontal carousel-items-container">

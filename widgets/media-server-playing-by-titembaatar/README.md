@@ -1,6 +1,6 @@
 * [Introduction](#introduction)
 * [Preview](#preview)
-    * [Full-Size Column](#grid-layout-for-full-size-column)
+    * [Full-Size Column](#full-size-column)
     * [Small-Size Column](#vertical-layout-for-small-size-column)
     * [Compact Mode](#compact-mode)
 * [Environment Variables](#environment-variables)
@@ -27,7 +27,7 @@ The appearance is consistent across all media servers.
 Customisation can be applied using the `options:` field. See [Options](#options) for more details.
 
 ## Preview
-### Grid Layout for Full-Size Column
+### Full-Size Column
 ![Preview](preview.png)
 
 ### Vertical Layout for Small-Size Column
@@ -64,25 +64,25 @@ Since `v0.8.0`, you can use the `options:` field to customise the widget.
 
 > [!CAUTION]
 >
-> Displaying thumbnails **WILL** expose your token/API keys in the HTML.
-> Do **NOT** enable this option if you are using Glance in production or exposing the service to the internet.
+> Enabling thumbnails **will** expose your token/API keys in the HTML.
+> Do **not** enable this in production or on internet-exposed services.
 
+Default options are:
 ```yaml
 options:
   small-column: false      # `true` if using the widget in a small column
-  compact: true            # `false` to use a more spread out layout
-  play-state: "text"       # Options: "text" (plain text), "indicator" (small dot pulsing when playing)
+  compact: true            # `false` for a more spread-out layout
+  play-state: "text"       # Options: "text" (plain text), "indicator" (pulsing dot when playing)
   show-thumbnail: false    # `true` to show thumbnails
   show-paused: false       # `true` to display paused items
   show-progress-bar: false # `true` to display the progress bar
-  show-progress-info: true # `false` to hide progress information; depends on `show-progress-bar`
+  show-progress-info: true # `false` to hide progress info; requires `show-progress-bar`
 ```
 
 > [!NOTE]
 >
-> The progress bar is purely cosmetic.
-> It uses CSS animation and time calculations.
-> It is **NOT** dynamic and will not automatically refresh the widget when it reaches 100%.
+> The progress bar is cosmetic, using CSS animation and time calculations.
+> It is **not** dynamic and does not auto-refresh when reaching 100%.
 
 ## Widget YAML
 ### Plex YAML
@@ -106,7 +106,7 @@ options:
     {{ if eq .Response.StatusCode 200 }}
       {{ $sessions := .JSON.Array "MediaContainer.Metadata" }}
       {{ if eq (len $sessions) 0 }}
-        <p>nothing is playing right now.</p>
+        <p>Nothing is playing right now.</p>
       {{ else }}
         {{ if $isSmallColumn }}
           <div class="flex flex-column gap-10">
@@ -289,7 +289,7 @@ options:
     {{ if eq .Response.StatusCode 200 }}
       {{ $sessions := .JSON.Array "response.data.sessions" }}
       {{ if eq (len $sessions) 0 }}
-        <p>nothing is playing right now.</p>
+        <p>Nothing is playing right now.</p>
       {{ else }}
         {{ if $isSmallColumn }}
           <div class="flex flex-column gap-10">
@@ -472,7 +472,7 @@ options:
     {{ if eq .Response.StatusCode 200 }}
       {{ $sessions := .JSON.Array "" }}
       {{ if eq (len $sessions) 0 }}
-        <p>nothing is playing right now.</p>
+        <p>Nothing is playing right now.</p>
       {{ else }}
         {{ if $isSmallColumn }}
           <div class="flex flex-column gap-10">
