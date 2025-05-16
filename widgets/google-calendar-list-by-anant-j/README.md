@@ -47,7 +47,7 @@
           {{ $endDateOnly := $end | formatTime "DateOnly" }}
           {{ $isStartAndEndDateSame := eq $startDateOnly $endDateOnly }}
 
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
             <a href="https://calendar.google.com/calendar/u/0" target="_blank" class="size-h1" style="text-align: left; width: 215px;">
               {{ .String "summary" }}
             </a>
