@@ -2,15 +2,14 @@
 
 ```yaml
 - type: custom-api
-  title: Tailscale Devices
-  title-url: https://login.tailscale.com/admin/machines
-  url: https://api.tailscale.com/api/v2/tailnet/-/devices
+  title: Netbird Devices
+  title-url: https://app.netbird.io/peers
+  url: https://api.netbird.io/api/peers
   headers:
-    Authorization: Bearer ${TAILSCALE_API_KEY}
+    Accept: application/json
+    Authorization: Token ${Netbird_API_KEY}
   cache: 10m
   template: |
-    {{/* User Variables */}}
-    {{/* Set to true if you'd like an indicator for online devices */}}
     {{ $enableOnlineIndicator := false }}
 
     <style>
@@ -44,34 +43,22 @@
         opacity: 1;
       }
 
-      .update-indicator {
+      .offline-indicator,
+      .online-indicator {
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background-color: var(--color-primary);
-        display: inline-block;
-        margin-left: 4px;
-        vertical-align: middle;
-      }
-
-      .offline-indicator {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: var(--color-negative);
         display: inline-block;
         margin-left: 4px;
         vertical-align: middle;
       }
 
       .online-indicator {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
         background-color: var(--color-positive);
-        display: inline-block;
-        margin-left: 4px;
-        vertical-align: middle;
+      }
+
+      .offline-indicator {
+        background-color: var(--color-negative);
       }
 
       .device-name-container {
@@ -86,26 +73,23 @@
         gap: 4px;
       }
     </style>
+
     <ul class="list list-gap-10 collapsible-container" data-collapse-after="4">
-      {{ range .JSON.Array "devices" }}
+      {{ range .JSON.Array "" }}
       <li>
         <div class="flex items-center gap-10">
           <div class="device-name-container grow">
             <span class="size-h4 block text-truncate color-primary">
-              {{ findMatch "^([^.]+)" (.String "name") }}
+              {{ .String "hostname" }}
             </span>
             <div class="indicators-container">
-              {{ if (.Bool "updateAvailable") }}
-              <span class="update-indicator" data-popover-type="text" data-popover-text="Update Available"></span>
-              {{ end }}
-
-              {{ $lastSeen := .String "lastSeen" | parseTime "rfc3339" }}
-              {{ if not ($lastSeen.After (offsetNow "-10s")) }}
-              {{ $lastSeenTimezoned := $lastSeen.In now.Location }}
-              <span class="offline-indicator" data-popover-type="text"
-                data-popover-text="Offline - Last seen {{ $lastSeenTimezoned.Format " Jan 2 3:04pm" }}"></span>
-              {{ else if $enableOnlineIndicator }}
+              {{ if .Bool "connected" }}
+                {{ if $enableOnlineIndicator }}
                 <span class="online-indicator" data-popover-type="text" data-popover-text="Online"></span>
+                {{ end }}
+              {{ else }}
+                {{ $lastSeen := .String "last_seen" | parseTime "rfc3339" }}
+                <span class="offline-indicator" data-popover-type="text" data-popover-text="Offline - Last seen {{ $lastSeen.Format "Jan 2 3:04pm" }}"></span>
               {{ end }}
             </div>
           </div>
@@ -113,10 +97,11 @@
         <div class="device-info-container">
           <ul class="list-horizontal-text device-info">
             <li>{{ .String "os" }}</li>
-            <li>{{ .String "user" }}</li>
+            <li>{{ .String "city_name" }}, {{ .String "country_code"}}</li>
           </ul>
           <div class="device-ip">
-            {{ .String "addresses.0"}}
+            {{ .String "ip" }}
+            {{ .String "dns_label"}}
           </div>
         </div>
       </li>
@@ -126,5 +111,9 @@
 
 ## Environment variables
 
-- `TAILSCALE_API_KEY`: Your Tailscale API key
+- `NETBIRD_API_KEY`: Your Netbird API key, you can create one in the [NetBird dashboard](https://app.netbird.io/users) under User settings. 
 - `TZ`: For correct times, the widget uses the container's timezone. If not already supplied, you can use this variable to provide your timezone.
+
+## Disclaimer
+
+Some parts of this widget's code are inspired by the [Tailscale Devices widget](widgets/tailscale-devices-by-not-first/README.md) created by @not-first.

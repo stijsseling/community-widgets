@@ -21,7 +21,7 @@ Simple custom-api widget to display various of animals. Duck as an example.
    template: |
      <img src="{{ .JSON.String "url" }}"></img>
 ```
-**Random Duck**
+**Random Ducks**
 ```
  - type: custom-api
    height: 200px
@@ -30,6 +30,16 @@ Simple custom-api widget to display various of animals. Duck as an example.
    url: https://random-d.uk/api/v2/random
    template: |
      <img src="{{ .JSON.String "url" }}"></img>
+```
+**Random Fox's**
+```
+- type: custom-api
+  height: 200px
+  title: Random Fox
+  cache: 2m
+  url: https://randomfox.ca/floof/?ref=public_apis&utm_medium=website
+  template: |
+  <img src="{{ .JSON.String "image" }}"></img
 ```
 <img src="preview.png">
 <hr>
