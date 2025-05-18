@@ -12,6 +12,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 
 ## Custom API Widgets
 * [Animals Display](widgets/animals-display-by-panonim/README.md) by @panonim - Display random images of animals such as cats or dogs.
+* [Arr Releases](widgets/arr-releases-by-erkston/README.md) by @erkston - Show upcoming, recently downloaded, or missing items from Sonarr, Radarr, or Lidarr
 * [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-gugugiyu/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
 * [Cryptopanic News](widgets/cryptopanic-news/README.md) by @herculosh - A real-time cryptocurrency news widget that displays filtered news from CryptoPanic.com with configurable filters for news type, regions, and currencies.
 * [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
