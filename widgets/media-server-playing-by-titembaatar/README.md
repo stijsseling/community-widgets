@@ -206,6 +206,7 @@ options:
       </style>
       <div class="gap-10 {{ if $isSmallColumn }}flex flex-column{{ else }}media-server-session-container--grid{{ end }}">
       {{ range $i, $session := $sessions }}
+        {{ $isClient := true }}
         {{ $isPlaying := false }}
         {{ $state := "playing" }}
         {{ $isMovie := false }}
@@ -281,6 +282,9 @@ options:
           {{ $offset = $session.Float "view_offset" }}
           {{ $remainingSeconds = div (sub $duration $offset) 1000 | toInt }}
         {{ else if or (eq $mediaServer "jellyfin") (eq $mediaServer "emby") }}
+          {{ if eq $mediaServer "emby" }}
+            {{ $isClient = ne (len ($session.Array "PlayableMediaTypes")) 0 }}
+          {{ end }}
           {{ $isPaused := $session.Bool "PlayState.IsPaused" }}
           {{ $isPlaying = not $isPaused }}
           {{ if not $isPlaying }}
@@ -319,7 +323,7 @@ options:
           {{ $showInfoFormat = concat "S" $showSeason "E" $showEpisode}}
         {{ end }}
 
-        {{ if or $isPlaying $showPaused}}
+        {{ if and $isClient (or $isPlaying $showPaused) }}
         <div class="card gap-5">
           <div class="flex items-center gap-10 size-h3">
             <span class="color-primary">{{ $userName }}</span>
