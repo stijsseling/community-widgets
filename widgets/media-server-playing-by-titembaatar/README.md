@@ -447,7 +447,7 @@ options:
 ```
 
 ## 🍻 Cheers
-* [svilenmarkov](https://github.com/svilenmarkov) for glance, helping, and providing these amazing tools
-* [erkston](https://github.com/erkston) for his help on discord (and his great ideas that I did not copy at all)
-* [ralphocdol](https://github.com/ralphocdol) for his ideas definitly not used here
+* [svilenmarkov](https://github.com/svilenmarkov)
+* [erkston](https://github.com/erkston)
+* [ralphocdol](https://github.com/ralphocdol)
 
