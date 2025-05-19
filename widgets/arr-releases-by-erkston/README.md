@@ -25,6 +25,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
     show-grabbed: false
     timezone: "-04"          # must have quotes
     interval: 20             # optional, days
+    #sort-time: asc          # optional, asc or desc (default)
     #cover-proxy: "https://proxy.example.com/radarrcover" # optional
     api-base-url: ${RADARR_API_URL}
     key: ${RADARR_KEY}
@@ -35,7 +36,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
     {{ $tzOffset := .Options.StringOr "timezone" "+00" }} 
     {{ $tzTime := (printf "2006-01-02T15:04:05%s:00" $tzOffset) | parseTime "rfc3339" }}
     {{ $timezone := $tzTime.Location }}
-
+    {{ $sortTime := .Options.StringOr "sort-time" "desc" }}
     {{ $coverProxy := .Options.StringOr "cover-proxy" "" }}
     {{ $size := .Options.StringOr "size" "medium" }}
     {{ $service := .Options.StringOr "service" "" }}
@@ -64,14 +65,13 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
           Some options are not set or malformed
         </p>
     {{ else }}
-
       {{ $requestUrl := "" }}
   
       {{ if eq $service "sonarr" }}
         {{ if eq $type "recent" }}
           {{ $requestUrl = printf "%s/api/v3/history/since?includeSeries=true&includeEpisode=true&eventType=grabbed&date=%s" $apiBaseUrl $negInterval }}
         {{ else if eq $type "missing" }}
-          {{ $requestUrl = printf "%s/api/v3/wanted/missing?page=1&pageSize=50&includeSeries=true&sortKey=episodeMetadata.releaseDate" $apiBaseUrl }}
+          {{ $requestUrl = printf "%s/api/v3/wanted/missing?page=1&pageSize=50&includeSeries=true" $apiBaseUrl }}
         {{ else if eq $type "upcoming" }}
           {{ $requestUrl = printf "%s/api/v3/calendar?includeSeries=true&start=%s&end=%s" $apiBaseUrl $now $posInterval }}
         {{ end }}
@@ -80,7 +80,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
         {{ if eq $type "recent" }}
           {{ $requestUrl = printf "%s/api/v3/history/since?includeMovie=true&eventType=grabbed&date=%s" $apiBaseUrl $negInterval }}
         {{ else if eq $type "missing" }}
-          {{ $requestUrl = printf "%s/api/v3/wanted/missing?page=1&pageSize=50&sortKey=movieMetadata.physicalRelease" $apiBaseUrl }}
+          {{ $requestUrl = printf "%s/api/v3/wanted/missing?page=1&pageSize=50" $apiBaseUrl }}
         {{ else if eq $type "upcoming" }}
           {{ $requestUrl = printf "%s/api/v3/calendar?start=%s&end=%s" $apiBaseUrl $now $posInterval }}
         {{ end }}
@@ -102,15 +102,29 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
   
       <ul class="list list-gap-14 collapsible-container single-line-titles" data-collapse-after="{{ $collapseAfter }}">
         {{ $array := "" }}
+        {{ $sortByField := "" }}
         {{ $itemDisplayed := false }}
         {{ $itemDate := "" }}
         {{ $isAvailable := false }}
   
         {{ if eq $type "missing" }}
           {{ $array = "records" }}
+          {{ if eq $service "sonarr" }}
+            {{ $sortByField = "airDateUtc" }}
+          {{ else }}
+            {{ $sortByField = "releaseDate" }}
+          {{ end }}
+        {{ else if eq $type "recent" }}
+          {{ $sortByField = "date" }}
+        {{ else }}
+          {{ if eq $service "sonarr" }}
+            {{ $sortByField = "airDateUtc" }}
+          {{ else }}
+            {{ $sortByField = "releaseDate" }}
+          {{ end }}
         {{ end }}
   
-        {{ range $data.JSON.Array $array }}
+        {{ range $data.JSON.Array $array | sortByTime $sortByField "rfc3339" $sortTime }}
            
           {{ if eq $service "sonarr" }}
             {{ $itemDate = .String "airDateUtc" }}
@@ -465,8 +479,9 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
 | size              | Thumbnail size: small, medium, large, or huge         |
 | collapse-after    | Collapse after this many items                        |
 | show-grabbed      | Show a clickable button displaying grabbed status     |
-| timezone          | change `"+05"` to your timezone, eg: +9 will be `+09` |
-| interval          | (optional, in days) for "upcoming" it's days to look ahead, otherwise it's within past X days |
+| timezone          | Timezone offset from UTC. Must have quotes.           |
+| interval          | (optional, in days) only show items within this time  |
+| sort-time         | (optional) controls the sorting direction             |
 | cover-proxy       | (optional) Avoids exposing the API key                |
 | api-base-url      | See Environmental Variables above                     |
 | key               | See Environmental Variables above                     |
@@ -483,6 +498,12 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
 
 - `show-grabbed` - will show the grab status and removes the overview/description. Still available upon hovering the thumbnail.
 
+- `timezone` - change `"-04"` to your timezone, eg: +9 will be `"+09"`. Must have quotes.
+
+- `interval` - If set will only show items for the given interval in days. For "upcoming" it's days to look ahead, otherwise it's within past X days.
+
+- `sort-time` - If set to `asc` (ascending time) will invert the default sort direction `desc` (descending time).
+
 - `cover-proxy` - This can be done through your proxy manager of choice. For Nginx Proxy Manager specifically, inside the `Advanced` tab:
     ```nginx
     location /radarrcover/ {
@@ -496,8 +517,6 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
     ```
 > [!TIP]  
 > If using a cover-proxy for Lidarr, you must replace `v3` in the proxy rewrite url with `v1`.
-
-- `timezone` - change `-04` to your timezone, eg: +9 will be `+09`. Must have quotes.
 
 ## Widget reuse for multiple services/types
 
