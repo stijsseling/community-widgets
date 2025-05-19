@@ -7,7 +7,7 @@
 * [🍻 Cheers](#cheers)
 
 ## Introduction
-This is a widget for various media servers to display played items history.
+This is a widget for various media servers to display the history of played items.
 
 > [!NOTE]
 >
@@ -38,16 +38,16 @@ Customisation can be applied using the `options:` field. See [Options](#options)
 > Do **NOT** include a trailing `/` at the end of URLs.
 
 ### Plex
-* `PLEX_URL` - the Plex URL, can be `http://<ip_address>:<port>` or `https://<domain>`
-* `PLEX_TOKEN` - the Plex token, follow [this guide](https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/) if you don't know how to get it
+* `PLEX_URL` - The Plex URL, e.g., `http://<ip_address>:<port>` or `https://<domain>`
+* `PLEX_TOKEN` - The Plex token; follow [this guide](https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/) if you need help obtaining it.
 
 ### Tautulli
-* `TAUTULLI_URL` - the Tautulli URL, can be `http://<ip_address>:<port>` or `https://<domain>`
-* `TAUTULLI_KEY` - the Tautulli API key, can be found in `Settings` -> `Web Interface `-> `API key`
+* `TAUTULLI_URL` - The Tautulli URL, e.g., `http://<ip_address>:<port>` or `https://<domain>`
+* `TAUTULLI_KEY` - The Tautulli API key, available in `Settings` -> `Web Interface `-> `API key`
 
 ### Jellyfin
-* `JELLYFIN_URL` - the Jellyfin URL, can be `http://<ip_address>:<port>` or `https://<domain>`
-* `JELLYFIN_KEY` - the Jellyfin API key, use or create one in `Administration` -> `Dashboard` -> `API Keys`
+* `JELLYFIN_URL` - The Jellyfin URL, e.g., `http://<ip_address>:<port>` or `https://<domain>`
+* `JELLYFIN_KEY` - The Jellyfin API key, available in `Administration` -> `Dashboard` -> `API Keys`
 
 ### Emby
 * `EMBY_URL` - The Emby URL, e.g., `http://<ip_address>:<port>` or `https://<domain>`
@@ -81,7 +81,7 @@ options:
   # Required for Jellyfin/Emby (See `Important` note above)
   user-name: "yourUserName" # Your Jellyfin/Emby user name.
 
-  # Optionals options
+  # Optional options
   history-length: "10"               # number of items to fetch; must be between ""
   media-types: "movie,episode,track" # see options below
   small-column: false                # `true` if using the widget in a small column
@@ -217,7 +217,6 @@ e.g., for only Shows and Movies in Jellyfin, use `"Episode,Movie"`.
 
     {{ else if or (eq $mediaServer "jellyfin") (eq $mediaServer "emby") }}
       {{ $usersRequestURL = concat $baseURL "/Users" }}
-
       {{ $usersCall = newRequest $usersRequestURL
         | withParameter "api_key" $apiKey
         | withHeader "Accept" "application/json"

@@ -7,7 +7,7 @@
 * [🍻 Cheers](#cheers)
 
 ## Introduction
-This is a widget for various media servers to display active sessions.
+This is a widget for various media servers to display currently active sessions.
 
 > [!NOTE]
 >
@@ -43,7 +43,7 @@ Customisation can be applied using the `options:` field. See [Options](#options)
 
 ### Tautulli
 * `TAUTULLI_URL` - The Tautulli URL, e.g., `http://<ip_address>:<port>` or `https://<domain>`
-* `TAUTULLI_KEY` - The Tautulli API key, found in `Settings` -> `Web Interface` -> `API Key`
+* `TAUTULLI_KEY` - The Tautulli API key, available in `Settings` -> `Web Interface `-> `API key`
 
 ### Jellyfin
 * `JELLYFIN_URL` - The Jellyfin URL, e.g., `http://<ip_address>:<port>` or `https://<domain>`
@@ -74,7 +74,7 @@ options:
   base-url: ${PLEX_URL}    # Your environment-variables for the URL
   api-key: ${PLEX_TOKEN}   # Your environment-variables for the API key/token. Can a secret as well `${secret:plex-token}`
 
-  # Optionals options
+  # Optional options
   small-column: false      # `true` if using the widget in a small column
   compact: true            # `false` for a more spread-out layout
   play-state: "indicator"  # `"text"` for plain text, `"indicator"` for a pulsing dot
@@ -83,7 +83,7 @@ options:
   show-paused: false       # `true` to display paused items
   show-progress-bar: false # `true` to display the progress bar
   show-progress-info: true # `false` to hide progress info; requires `show-progress-bar`
-  time-format: "15:04"     # `"03:04pm"` if you prefere 12h format
+  time-format: "15:04"     # `"03:04pm"` if you prefer 12h format
 ```
 
 > [!NOTE]
