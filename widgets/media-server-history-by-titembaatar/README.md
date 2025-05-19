@@ -243,6 +243,7 @@ e.g., for only Shows and Movies in Jellyfin, use `"Episode,Movie"`.
         | withParameter "isPlayed" "true"
         | withParameter "sortBy" "DatePlayed"
         | withParameter "sortOrder" "Descending"
+        | withParameter "Fields" "UserDataLastPlayedDate"
         | withHeader "Accept" "application/json"
         | getResponse }}
 
