@@ -4,6 +4,7 @@
 * [Secrets](#secrets)
 * [Options](#options)
 * [Widget YAML](#widget-yaml)
+* [🍻 Cheers](#cheers)
 
 ## Introduction
 This is a widget for various media servers to display active sessions.
@@ -443,3 +444,9 @@ options:
     {{ end }}
     {{ end }}
 ```
+
+## 🍻 Cheers
+* [svilenmarkov](https://github.com/svilenmarkov) for glance, helping, and providing these amazing tools
+* [erkston](https://github.com/erkston) for his help on discord (and his great ideas that I did not copy at all)
+* [ralphocdol](https://github.com/ralphocdol) for his ideas definitly not used here
+
