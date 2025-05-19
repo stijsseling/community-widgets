@@ -4,7 +4,8 @@
 - type: custom-api
   cache: 1h
   title: Internet Speed
-  url: http://${SPEEDTEST_API_URL}/api/v1/results/latest
+  title-url: ${SPEEDTEST_TRACKER_URL}
+  url: ${SPEEDTEST_TRACKER_URL}/api/v1/results/latest
   headers:
     Authorization: Bearer ${SPEEDTEST_TRACKER_API_TOKEN}
     Accept: application/json
@@ -27,5 +28,5 @@
 
 ## Environment variables
 
-- `SPEEDTEST_API_URL` - the URL of the Speedtest Tracker instance API
-- `SPEEDTEST_TRACKER_API_TOKEN` - your Speedtest Tracker API token
+- `SPEEDTEST_TRACKER_URL` - The URL of the Speedtest Tracker instance (e.g `http://my.speedtest-tracker.instance`)
+- `SPEEDTEST_TRACKER_API_TOKEN` - Your Speedtest Tracker API token
