@@ -110,10 +110,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
           {{ $array = "records" }}
         {{ end }}
   
-        <pre> requesturl: {{ $requestUrl }}</pre>
-        <pre> key: {{ $key }}</pre>
-  
-        {{ range $data.JSON.Array $array | sortByTime "date" "rfc3339" "desc" }}
+        {{ range $data.JSON.Array $array }}
            
           {{ if eq $service "sonarr" }}
             {{ $itemDate = .String "airDateUtc" }}
