@@ -24,8 +24,8 @@ Customisation can be applied using the `options:` field. See [Options](#options)
 ### Full-Size Column
 ![Preview](preview.png)
 
-### Vertical Layout for Small-Size Column
-![Preview small](preview-small.png)
+### Small-Size Column
+![Preview Small](preview-small.png)
 
 ### Compact Mode
 ![Preview Compact](preview-compact.png)
@@ -204,7 +204,22 @@ options:
             flex-direction: column;
           }
         }
+        .media-server-progress-container {
+          height: 1rem;
+          max-width: 32rem;
+          border: 1px solid var(--color-text-base);
+          border-radius: var(--border-radius);
+          overflow: hidden;
+        }
+        .media-server-progress-bar {
+          height: 100%;
+          background: var(--color-primary);
+          border-radius: 3px;
+          transition: width 1s linear;
+        }
+        @keyframes progress-animation { to { width: 100%; } }
       </style>
+
       <div class="gap-10 {{ if $isSmallColumn }}flex flex-column{{ else }}media-server-session-container--grid{{ end }}">
       {{ range $i, $session := $sessions }}
         {{ $isClient := true }}
@@ -399,29 +414,15 @@ options:
               <li>
                 {{ if and $isPlaying $showProgressBar }}
                   <div class="flex gap-10 items-center">
-                    <style>
-                      .media-server-progress-container {
-                        height: 1rem;
-                        max-width: 32rem;
-                        border: 1px solid var(--color-text-base);
-                        border-radius: var(--border-radius);
-                        overflow: hidden;
-                      }
-                      .media-server-progress-bar {
-                        height: 100%;
-                        width: {{ $progress }}%;
-                        background: var(--color-primary);
-                        border-radius: 3px;
-                        transition: width 1s linear;
-                        animation: progress-animation {{ $remainingSeconds }}s linear forwards;
-                      }
-                      @keyframes progress-animation { to { width: 100%; } }
-                    </style>
                     <div class="media-server-progress-container grow">
                       <div
                         class ="media-server-progress-bar"
                         data-progress="{{ $progress }}"
-                        data-remaining="{{ $remainingSeconds }}">
+                        data-remaining="{{ $remainingSeconds }}"
+                        style="
+                          width: {{ $progress }}%;
+                          animation: progress-animation {{ $remainingSeconds }}s linear forwards;"
+                      >
                       </div>
                     </div>
                     {{ if $showProgressInfo }}
