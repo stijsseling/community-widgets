@@ -358,7 +358,7 @@ options:
 
           <div class="flex items-center gap-10" style="align-items: stretch;">
             {{ if $showThumbnail }}
-              <img src="{{ $thumbURL }}"
+              <img src="{{ $thumbURL | safeURL }}"
                 alt="{{ $title }} thumbnail"
                 class="shrink-0"
                 loading="lazy"
