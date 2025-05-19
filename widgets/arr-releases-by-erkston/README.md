@@ -1,13 +1,16 @@
+## *arr Releases Widget
+
+A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent downloads, or missing items.
 
 <img src=sonarrrecent.png width="700">
 
 <img src=radarrmissing.png width="320"> <img src=lidarrupcoming.png width="385">
 
-A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent downloads, or missing items.
+### Widget yaml
 
 <details>
 
-<summary>WIDGET YAML</summary>
+<summary>Click</summary>
 
 ```yaml
 - type: custom-api
