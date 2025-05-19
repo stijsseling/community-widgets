@@ -1,4 +1,5 @@
 ## Preview
+
 ![preview](preview.png)
 
 ## Config
@@ -88,7 +89,7 @@ Choose one or more of the following widgets.
 
 - type: custom-api
   title: Next Race Detailed
-  #cache: 5m
+  cache: 1h
   url: https://f1api.dev/api/current/next
   template: |
     <div class="flex flex-column gap-10">
@@ -98,7 +99,7 @@ Choose one or more of the following widgets.
       </p>
 
       <div class="margin-block-4">
-        <p class="color-primary">{{ $session.String "raceName" }}</p>
+        <p class="color-highlight">{{ $session.String "raceName" }}</p>
 
         <div class="margin-block-10"></div>
 
@@ -116,8 +117,8 @@ Choose one or more of the following widgets.
             <span class="color-highlight" {{ $raceDateTime | parseRelativeTime "rfc3339" }}></span>
           {{ end }}
         </p>
-        <p class="size-h5">Starting {{ $raceDate }} at {{ $raceTime }} (UTC)</p>
-        
+        <p class="size-h5">{{ $raceDate }} at {{ $raceTime }} (UTC)</p>
+
         <!-- Qualifying -->
         <p class="color-primary">
           <span>Qualifying</span>
@@ -132,8 +133,8 @@ Choose one or more of the following widgets.
             <span class="color-highlight" {{ $qualyDateTime | parseRelativeTime "rfc3339" }}></span>
           {{ end }}
         </p>
-        <p class="size-h5">Starting {{ $qualyDate }} at {{ $qualyTime }} (UTC)</p>
-        
+        <p class="size-h5">{{ $qualyDate }} at {{ $qualyTime }} (UTC)</p>
+
         <!-- Free Practice 1 -->
         <p class="color-primary">
           <span>Free Practice 1</span>
@@ -148,8 +149,8 @@ Choose one or more of the following widgets.
             <span class="color-highlight" {{ $fp1DateTime | parseRelativeTime "rfc3339" }}></span>
           {{ end }}
         </p>
-        <p class="size-h5">Starting {{ $fp1Date }} at {{ $fp1Time }} (UTC)</p>
-        
+        <p class="size-h5">{{ $fp1Date }} at {{ $fp1Time }} (UTC)</p>
+
         <!-- Free Practice 2 -->
         <p class="color-primary">
           <span>Free Practice 2</span>
@@ -164,8 +165,8 @@ Choose one or more of the following widgets.
             <span class="color-highlight" {{ $fp2DateTime | parseRelativeTime "rfc3339" }}></span>
           {{ end }}
         </p>
-        <p class="size-h5">Starting {{ $fp2Date }} at {{ $fp2Time }} (UTC)</p>
-        
+        <p class="size-h5">{{ $fp2Date }} at {{ $fp2Time }} (UTC)</p>
+
         <!-- Free Practice 3 -->
         <p class="color-primary">
           <span>Free Practice 3</span>
@@ -180,8 +181,8 @@ Choose one or more of the following widgets.
             <span class="color-highlight" {{ $fp3DateTime | parseRelativeTime "rfc3339" }}></span>
           {{ end }}
         </p>
-        <p class="size-h5">Starting {{ $fp3Date }} at {{ $fp3Time }} (UTC)</p>
-        
+        <p class="size-h5">{{ $fp3Date }} at {{ $fp3Time }} (UTC)</p>
+
         <!-- Sprint Qualifying - only if date is not null -->
         {{ if and (ne ($session.String "schedule.sprintQualy.date") "null") (ne ($session.String "schedule.sprintQualy.date") "") }}
         <p class="color-primary">
@@ -197,9 +198,9 @@ Choose one or more of the following widgets.
             <span class="color-highlight" {{ $sprintQualyDateTime | parseRelativeTime "rfc3339" }}></span>
           {{ end }}
         </p>
-        <p class="size-h5">Starting {{ $sprintQualyDate }} at {{ $sprintQualyTime }} (UTC)</p>
+        <p class="size-h5">{{ $sprintQualyDate }} at {{ $sprintQualyTime }} (UTC)</p>
         {{ end }}
-        
+
         <!-- Sprint Race - only if date is not null -->
         {{ if and (ne ($session.String "schedule.sprintRace.date") "null") (ne ($session.String "schedule.sprintRace.date") "") }}
         <p class="color-primary">
@@ -215,7 +216,7 @@ Choose one or more of the following widgets.
             <span class="color-highlight" {{ $sprintRaceDateTime | parseRelativeTime "rfc3339" }}></span>
           {{ end }}
         </p>
-        <p class="size-h5">Starting {{ $sprintRaceDate }} at {{ $sprintRaceTime }} (UTC)</p>
+        <p class="size-h5">{{ $sprintRaceDate }} at {{ $sprintRaceTime }} (UTC)</p>
         {{ end }}
       </div>
 
@@ -223,8 +224,7 @@ Choose one or more of the following widgets.
         <li>{{ $session.String "circuit.country" }}</li>
         <li>{{ $session.String "circuit.city" }}</li>
         <li>{{ $session.String "laps" }} Laps</li>
-        <li>{{ $session.String "circuit.circuitName" }}</li>                
+        <li>{{ $session.String "circuit.circuitName" }}</li>
       </ul>
     </div>
-
 ```
