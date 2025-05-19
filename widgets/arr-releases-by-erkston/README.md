@@ -23,6 +23,9 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
     timezone: "-04"          # must have quotes
     interval: 20             # optional, days
     #cover-proxy: "https://proxy.example.com/radarrcover" # optional
+    api-base-url: ${RADARR_API_URL}
+    key: ${RADARR_KEY}
+    url: ${RADARR_URL}
   template: |
     {{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
     {{ $showGrabbed := .Options.BoolOr "show-grabbed" false }}
@@ -41,24 +44,11 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
     {{ $posInterval := ((offsetNow (printf "+%dh" $intervalH)).In $timezone) | formatTime "rfc3339" }}
     {{ $negInterval := ((offsetNow (printf "-%dh" $intervalH)).In $timezone) | formatTime "rfc3339" }}
 
-    {{ $apiBaseUrl := "" }}
-    {{ $requestUrl := "" }}
-    {{ $key := "" }}
-    {{ $url := "" }}
+    {{ $apiBaseUrl := .Options.StringOr "api-base-url" "" }}
+    {{ $key := .Options.StringOr "key" "" }}
+    {{ $url := .Options.StringOr "url" "" }}
 
-    {{ if eq $service "sonarr" }}
-      {{ $apiBaseUrl = "${SONARR_API_URL}" }}
-      {{ $key = "${SONARR_KEY}" }}
-      {{ $url = "${SONARR_URL}" }}
-    {{ else if eq $service "radarr" }}
-      {{ $apiBaseUrl = "${RADARR_API_URL}" }}
-      {{ $key = "${RADARR_KEY}" }}
-      {{ $url = "${RADARR_URL}" }}
-    {{ else if eq $service "lidarr" }}
-      {{ $apiBaseUrl = "${LIDARR_API_URL}" }}
-      {{ $key = "${LIDARR_KEY}" }}
-      {{ $url = "${LIDARR_URL}" }}
-    {{ end }}
+    {{ $requestUrl := "" }}
 
     {{ if eq $service "sonarr" }}
       {{ if eq $type "recent" }}
@@ -142,7 +132,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
             {{ $series := "" }}
             {{ if eq $coverProxy "" }}
               {{ $coverBase = printf "%s/api/v3/mediacover" $apiBaseUrl }}
-              {{ $coverUrl = printf "%s/%s/poster-500.jpg?apikey=%s" $coverBase (.String "seriesId") "${SONARR_KEY}" }}
+              {{ $coverUrl = printf "%s/%s/poster-500.jpg?apikey=%s" $coverBase (.String "seriesId") $key }}
             {{ else }}
               {{ $coverBase = $coverProxy }}
               {{ $coverUrl = printf "%s/%s/poster-500.jpg" $coverBase (.String "seriesId") }}
@@ -234,7 +224,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
  
             {{ if eq $type "recent" }}
               {{ if eq $coverProxy "" }}
-                {{ $coverUrl = printf "%s/%s/poster-500.jpg?apikey=%s" $coverBase (.String "movie.id") "${RADARR_KEY}" }}
+                {{ $coverUrl = printf "%s/%s/poster-500.jpg?apikey=%s" $coverBase (.String "movie.id") $key }}
               {{ else }}
                 {{ $coverUrl = printf "%s/%s/poster-500.jpg" $coverBase (.String "movie.id") }}
               {{ end }}
@@ -254,7 +244,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
               {{ end }}
             {{ else }}
               {{ if eq $coverProxy "" }}
-                {{ $coverUrl = printf "%s/%s/poster-500.jpg?apikey=%s" $coverBase (.String "id") "${RADARR_KEY}" }}
+                {{ $coverUrl = printf "%s/%s/poster-500.jpg?apikey=%s" $coverBase (.String "id") $key }}
               {{ else }}
                 {{ $coverUrl = printf "%s/%s/poster-500.jpg" $coverBase (.String "id") }}
               {{ end }}
@@ -292,7 +282,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
               {{ $album = .Get "album" }}
               {{ $artist = $album.Get "artist" }}
               {{ if eq $coverProxy "" }}
-                {{ $coverUrl = printf "%s/album/%s/cover-500.jpg?apikey=%s" $coverBase (.String "albumId") "${LIDARR_KEY}" }}
+                {{ $coverUrl = printf "%s/album/%s/cover-500.jpg?apikey=%s" $coverBase (.String "albumId") $key }}
               {{ else }}
                 {{ $coverUrl = printf "%s/album/%s/cover-500.jpg" $coverBase (.String "albumId") }}
               {{ end }}
@@ -321,7 +311,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
                 {{ break }}
               {{ end }}
               {{ if eq $coverProxy "" }}
-                {{ $coverUrl = printf "%s/album/%s/cover-500.jpg?apikey=%s" $coverBase $albumId "${LIDARR_KEY}" }}
+                {{ $coverUrl = printf "%s/album/%s/cover-500.jpg?apikey=%s" $coverBase $albumId $key }}
               {{ else }}
                 {{ $coverUrl = printf "%s/album/%s/cover-500.jpg" $coverBase $albumId }}
               {{ end }}
@@ -443,20 +433,12 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
 </details>
 
 ### Environment variables
-- `SONARR_API_URL` - Your Sonarr API URL, eg: `http://192.168.1.36:8989`
-- `SONARR_KEY` - Your Sonarr API key, it should be under Settings > General > Security
-- `SONARR_URL` - URL used for links, eg: `https://your-sonarr-domain.com`
-- `RADARR_API_URL` - Your Radarr API URL, eg: `http://192.168.1.36:7878`
-- `RADARR_KEY` - Your Radarr API key, it should be under Settings > General > Security
-- `RADARR_URL` - URL used for links, eg: `https://your-radarr-domain.com`
-- `LIDARR_API_URL` - Your Lidarr API URL, eg: `http://192.168.1.36:8686`
-- `LIDARR_KEY` - Your Lidarr API key, it should be under Settings > General > Security
-- `LIDARR_URL` - URL used for links, eg: `https://your-lidarr-domain.com`
+- `*ARR_API_URL` - Your *arr API URL, eg: `http://192.168.1.36:8989`. Used for option `api-base-url`.
+- `*ARR_KEY` - Your *arr API key, it should be under Settings > General > Security. Used for option `key`.
+- `*ARR_URL` - (optional) URL used for links, eg: `https://your-arr-domain.com`. Used for option `url` and `title-url`.
 
-> [!IMPORTANT]  
-> All of the above environment variables must be set, even if you're not using some of the services. 
->
-> Alternatively you can replace unused variables at the beginning of the template (they are all only used once).
+> [!NOTE]  
+>  If you don't need a separate url for links or the titlebar, use `*ARR_API_URL` for `url`, `api-base-url` and `title-url`.
 
 ### User variables/options
 
@@ -470,6 +452,9 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
 | timezone          | change `"+05"` to your timezone, eg: +9 will be `+09` |
 | interval          | (optional, in days) for "upcoming" it's days to look ahead, otherwise it's within past X days |
 | cover-proxy       | (optional) Avoids exposing the API key                |
+| api-base-url      | See Environmental Variables above                     |
+| key               | See Environmental Variables above                     |
+| url               | See Environmental Variables above                     |
 
 - `service` - `sonarr`, `radarr`, or `lidarr`. All `types` are available for all three.
 
