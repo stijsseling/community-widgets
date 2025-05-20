@@ -190,7 +190,7 @@ options:
     {{ end }}
 
     {{ if and (eq $sessionsCall.Response.StatusCode 200) (eq (len $sessions) 0) }}
-    <p>Nothing is playing right now.</p>
+      <p>Nothing is playing right now.</p>
     {{ else }}
 
       <style>
@@ -299,10 +299,9 @@ options:
           {{ $remainingSeconds = div (sub $duration $offset) 1000 | toInt }}
         {{ else if or (eq $mediaServer "jellyfin") (eq $mediaServer "emby") }}
           {{ if eq $mediaServer "emby" }}
-            {{ $isClient = ne (len ($session.Array "PlayableMediaTypes")) 0 }}
+            {{ $isClient = $session.Bool "PlayState.CanSeek" }}
           {{ end }}
-          {{ $isPaused := $session.Bool "PlayState.IsPaused" }}
-          {{ $isPlaying = not $isPaused }}
+          {{ $isPlaying = and ($session.Exists "NowPlayingItem") (not ($session.Bool "PlayState.IsPaused")) }}
           {{ if not $isPlaying }}
             {{ $state = "paused"}}
           {{ end }}
