@@ -189,8 +189,8 @@ options:
       {{ end }}
     {{ end }}
 
-    {{ if and ($sessions) (eq (len $sessions) 0) }}
-    <p>Nothing is playing. Start watching something!</p>
+    {{ if and (eq $sessionsCall.Response.StatusCode 200) (eq (len $sessions) 0) }}
+    <p>Nothing is playing right now.</p>
     {{ else }}
 
       <style>

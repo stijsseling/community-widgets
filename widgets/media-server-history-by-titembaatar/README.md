@@ -249,8 +249,8 @@ e.g., for only Shows and Movies in Jellyfin, use `"Episode,Movie"`.
       {{ $history = $historyCall.JSON.Array "Items" }}
     {{ end }}
 
-    {{ if and ($history) (eq (len $history) 0) }}
-      <p>Nothing is playing. Start watching something!</p>
+    {{ if and (eq $historyCall.Response.StatusCode 200) (eq (len $history) 0) }}
+      <p>Nothing has been played. Start streaming something!</p>
     {{ else }}
       <div class="carousel-container show-right-cutoff">
         <div class="cards-horizontal carousel-items-container">
