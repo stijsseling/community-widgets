@@ -146,6 +146,7 @@ options:
     {{ $sessionsRequestURL := "" }}
     {{ $sessionsCall := "" }}
     {{ $sessions := "" }}
+    {{ $activeSessions := 0 }}
 
     {{ if eq $mediaServer "plex" }}
       {{ $sessionsRequestURL = concat $baseURL "/status/sessions" }}
@@ -156,6 +157,7 @@ options:
 
       {{ if $sessionsCall.JSON.Exists "MediaContainer" }}
         {{ $sessions = $sessionsCall.JSON.Array "MediaContainer.Metadata" }}
+        {{ $activeSessions = len $sessions }}
       {{ else }}
         {{ template "errorMsg" (concat "Could not fetch " $mediaServer " API.") }}
       {{ end }}
@@ -170,6 +172,7 @@ options:
 
       {{ if eq $sessionsCall.Response.StatusCode 200 }}
         {{ $sessions = $sessionsCall.JSON.Array "response.data.sessions" }}
+        {{ $activeSessions = len $sessions }}
       {{ else }}
         {{ template "errorMsg" (concat "Could not fetch " $mediaServer " API.") }}
       {{ end }}
@@ -184,12 +187,22 @@ options:
 
       {{ if eq $sessionsCall.Response.StatusCode 200 }}
         {{ $sessions = $sessionsCall.JSON.Array "" }}
+        {{ if eq $mediaServer "emby" }}
+          {{ range $session := $sessions }}
+            {{ if $session.Bool "PlayState.CanSeek" }}
+              {{ $activeSessions = 1 }}
+              {{ break }}
+            {{ end }}
+          {{ end }}
+        {{ else }}
+          {{ $activeSessions = len $sessions }}
+        {{ end }}
       {{ else }}
         {{ template "errorMsg" (concat "Could not fetch " $mediaServer " API.") }}
       {{ end }}
     {{ end }}
 
-    {{ if and (eq $sessionsCall.Response.StatusCode 200) (eq (len $sessions) 0) }}
+    {{ if and (eq $sessionsCall.Response.StatusCode 200) (eq $activeSessions 0) }}
       <p>Nothing is playing right now.</p>
     {{ else }}
 
