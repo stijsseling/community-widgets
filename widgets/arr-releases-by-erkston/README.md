@@ -63,6 +63,12 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
         </div>
         <p class="break-all">
           Some options are not set or malformed
+            <table style="border-spacing: 1rem;">
+              <tr><td>service</td><td>{{ $service }}</td><td>must be sonarr, radarr, or lidarr</td></tr>
+              <tr><td>type</td><td>{{ $type }}</td><td>must be upcoming, recent, or missing</td></tr>
+              <tr><td>api-base-url</td><td>{{ $apiBaseUrl }}</td><td>should include http(s):// and port if needed</td></tr>
+              <tr><td>key</td><td>{{ $key }}</td><td></td></tr>
+            </table> 
         </p>
     {{ else }}
       {{ $requestUrl := "" }}
