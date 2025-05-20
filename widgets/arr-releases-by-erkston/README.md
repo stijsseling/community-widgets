@@ -29,7 +29,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
     #cover-proxy: "https://proxy.example.com/radarrcover" # optional
     api-base-url: ${RADARR_API_URL}
     key: ${RADARR_KEY}
-    url: ${RADARR_URL}
+    url: ${RADARR_URL}       # optional
   template: |
     {{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
     {{ $showGrabbed := .Options.BoolOr "show-grabbed" false }}
@@ -50,7 +50,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
 
     {{ $apiBaseUrl := .Options.StringOr "api-base-url" "" }}
     {{ $key := .Options.StringOr "key" "" }}
-    {{ $url := .Options.StringOr "url" "" }}
+    {{ $url := .Options.StringOr "url" $apiBaseUrl }}
 
     {{ if or (and (ne $service "sonarr") (ne $service "radarr") (ne $service "lidarr"))
              (and (ne $type "upcoming") (ne $type "recent") (ne $type "missing")) 
@@ -474,7 +474,7 @@ A widget for Sonarr, Radarr, or Lidarr that shows upcoming releases, recent down
 - `*ARR_URL` - (optional) URL used for links, eg: `https://your-arr-domain.com`. Used for option `url` and `title-url`.
 
 > [!NOTE]  
->  If you don't need a separate url for links or the titlebar, use `*ARR_API_URL` for `url`, `api-base-url` and `title-url`.
+>  If you don't need a separate url for links or the titlebar there's no need to set the `url` option.
 
 ### User variables/options
 
