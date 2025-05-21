@@ -1,6 +1,7 @@
 ## Preview
 
-![preview](preview.png)
+![preview](preview1.png)
+![preview](preview2.png)
 
 ## Config
 
