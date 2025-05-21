@@ -11,7 +11,7 @@
     X-Auth-Token: ${FOOTBALL_DATA_TOKEN}
 
   template: |
-    <div class="football-fixtures" style="font-family: sans-serif; padding: 10px;">
+    <div class="football-fixtures" style="padding: 10px;">
       {{ $timezoneOffsetHours := ${TZ_OFFSET_HOURS} }}
 
       {{ $jsonData := .JSON }}
@@ -68,7 +68,7 @@
 
         {{/* --- Display Last Match --- */}}
         {{ if $lastFound }}
-          <div class="color-primary" style="font-size: 1.1em; font-weight: bold;">
+          <div class="color-primary" style="font-size: 1.1em;">
             {{ $lastHomeTeam }} {{ $lastHomeScore }} - {{ $lastAwayScore }} {{ $lastAwayTeam }}
           </div>
           {{ $dateStr := $lastDate }}
@@ -124,7 +124,7 @@
 
         {{/* --- Display Next Match --- */}}
         {{ if $nextFound }}
-          <div class="color-primary" style="font-size: 1.1em; font-weight: bold;">
+          <div class="color-primary" style="font-size: 1.1em;">
             {{ $nextHomeTeam }} vs {{ $nextAwayTeam }}
           </div>
           {{ $dateStr := $nextDate }}
