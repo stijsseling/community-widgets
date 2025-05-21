@@ -66,3 +66,4 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [iCal (ICS) Calendar List](https://github.com/AWildLeon/Glance-iCal-Events) by @AWildLeon - List a ICS File's upcoming events (Like [Google Calendar List](https://github.com/anant-j/glance-GoogleCalendar))
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
+* [Kubernetes nodes and apps](https://github.com/lukasdietrich/glance-k8s) by @lukasdietrich - List Kubernetes nodes and applications. Also including helm charts
