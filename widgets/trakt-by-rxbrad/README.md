@@ -1,5 +1,5 @@
 ## Preview
-![image](https://github.com/user-attachments/assets/47fe6cb6-4d0f-47ea-922d-a9ed83bfbdb7)
+![image](preview.png)
 
 This widget uses the Trakt API, therefore no paid Trakt subscription is required.
 
