@@ -154,3 +154,7 @@ the URL of the Proxmox VE server
 You need to generate an API token for it, follow the steps below if you don't have one
 
 #### [See proxmox-ve-stats widget](/widgets/proxmox-ve-stats-by-ralphocdol#proxmoxve_key) on how to make one.
+
+-------
+## Credits
+[titembaataar](https://github.com/titembaatar) - For testing with multiple nodes
