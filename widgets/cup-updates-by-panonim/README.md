@@ -30,7 +30,7 @@ Add the following to your dashboard configuration:
   template: |
     {{ $defaultServerName := "Glance" }}  {{/* Set your default server name here */}}
     {{ $showUpdateKind := true }}  {{/* Toggle this to false to hide the Update Kind row */}}
-
+    {{ $filterInactiveImages := true }}  {{/* Set to false to stop filtering unused images */}}
 
     <style>
       .vertical-separator-cup {
@@ -199,6 +199,7 @@ You can customize the display behavior and default labels using the following va
 ```go
 {{ $defaultServerName := "Glance" }}  {{/* Set your default server name here */}}
 {{ $showUpdateKind := true }}         {{/* Toggle this to false to hide the Update Kind row */}}
+{{ $filterInactiveImages := true }}  {{/* Set to false to stop filtering unused images */}}
 ```
 
 #### `$defaultServerName`
