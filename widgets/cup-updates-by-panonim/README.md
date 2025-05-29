@@ -178,7 +178,7 @@ Add the following to your dashboard configuration:
           {{ end }}
 
           {{ if not $hasUpdates }}
-            <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center" style="margin-top: 1.5rem;">
               <span class="color-positive size-h4">All images are up to date!</span>
             </div>
           {{ end }}
