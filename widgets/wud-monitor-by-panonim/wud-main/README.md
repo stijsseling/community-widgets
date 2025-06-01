@@ -1,5 +1,5 @@
-# What's Up Docker Monitor v2.0 - Main
-In this version I tried to focus on improving visuals of the widget. I also added overall info and menu. 
+# What's Up Docker Monitor v2.1 - Main
+Fixed bug wich caused sha to be displayed incorrectly.
 
 [![2.0 Preview](./wud_main_preview.png)](./wud_main_preview.png)
 
