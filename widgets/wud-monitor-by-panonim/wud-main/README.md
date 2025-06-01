@@ -365,6 +365,4 @@ Fixed bug wich caused sha to be displayed incorrectly.
 
 <hr>
 
-### Contributors v2.0
-
-- [**Gaodes**](https://github.com/gaodes) – Helped with css and general layout.
+### Contributors v2.1
