@@ -1,7 +1,7 @@
 ## Preview
 ![image](preview.png)
 
-This widget uses the Trakt & TMDB APIs. No paid Trakt subscriptions are required.
+This widget uses the Trakt & TMDB APIs. No paid subscriptions are required.
 
 > [!NOTE]
 >
