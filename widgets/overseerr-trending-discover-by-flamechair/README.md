@@ -50,3 +50,10 @@
 
 - `OVERSEERR_URL` - the URL of the Overseerr instance, please include `http://` or `https://` (preferred: `https://`)
 - `OVERSEERR_API_KEY` - the API key of the server which can be found in `Overseerr settings -> General -> API key`
+
+## Additional notes
+
+- You can replace `trending` with `movies` or `tv` in the `title-url:` and `url:` keys if you want movies or tv shows *only*
+- The thumbnail and title are linked to the respective media item in your Overseerr instance
+- The TMDB rating links to TMDB's page for the media item
+- The title and overview sometimes cut off, you can hover your mouse over them to see the full title or overview
