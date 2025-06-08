@@ -16,6 +16,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Cryptopanic News](widgets/cryptopanic-news/README.md) by @herculosh - A real-time cryptocurrency news widget that displays filtered news from CryptoPanic.com with configurable filters for news type, regions, and currencies.
 * [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
 * [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85/README.md) by @ziritione85 - show the status of your investments with today's results, YTD and totals
+* [GitHub personal repositories](widgets/github-personal-repos-by-menitz/README.md) by @menitz - show your own personal respositories on GitHub
 * [Gluetun VPN status](widgets/gluetun-vpn-status-by-hyptu/README.md) by @Hyptu - show the public IP, country and city of you [Gluetun VPN client](https://github.com/qdm12/gluetun)
 * [Hardcover Currently Reading](widgets/hardcover-currently-reading-by-akasiek/README.md) by @Akasiek - show the currently reading book from [Hardcover](https://hardcover.app/)
 * [Immich stats](widgets/immich-stats-by-svilenmarkov/README.md) by @svilenmarkov - show the number of photos, videos and usage of your Immich server
