@@ -11,16 +11,20 @@ To add your widget to the list, please read the [contribution guidelines](CONTRI
 Custom API widgets are much easier to setup and usually only require a copy-paste into your config. Extension widgets are a bit more involved and require running a separate server or Docker container.
 
 ## Custom API Widgets
+* [AFL Widgets](widgets/afl-widgets-by-0099FF/README.md) by @0099FF - Statistics about the current Australian Football League (AFL) season using the [Squiggle](https://api.squiggle.com.au) API.
 * [Animals Display](widgets/animals-display-by-panonim/README.md) by @panonim - Display random images of animals such as cats or dogs.
 * [Arr Releases](widgets/arr-releases-by-erkston/README.md) by @erkston - Show upcoming, recently downloaded, or missing items from Sonarr, Radarr, or Lidarr
+* [Audiobookshelf stats](widgets/audiobookshelf-by-ferdyverse/README.md) by @ferdyverse - Show the number of books and podcasts in your Audiobookshelf server, along with their total duration.
 * [Calibre-Web Stats](widgets/calibre-web-stats-by-rvelasq/README.md) by @rvelasq - Display a summary of books from your Calibre-Web server.
 * [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-gugugiyu/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
+* [Chess.com Daily Puzzle](widgets/chess-puzzle-by-panonim/README.md) by @panonim - Display daily chess puzzle from chess.com
 * [Cryptopanic News](widgets/cryptopanic-news/README.md) by @herculosh - A real-time cryptocurrency news widget that displays filtered news from CryptoPanic.com with configurable filters for news type, regions, and currencies.
-* [Cup Updates](widgets/cup-updates-by-panonim/README.md) by @panonim - Displays information about containers needing an update from Cup. 
+* [Cup Updates](widgets/cup-updates-by-panonim/README.md) by @panonim - Displays information about containers needing an update from Cup.
 * [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
 * [Football Fixtures](widgets/football-fixtures-by-cristiandiiorio/README.md) by @cristiandiiorio - show the last match and the next match of your favourite football team using football-data api
 * [Frigate stats](widgets/frigate-stats-by-Pimer0/README.md) by @Pimer0 - show alerts and detections from the last 24 hours from your Frigate service [Frigate](https://frigate.video/)
 * [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85/README.md) by @ziritione85 - show the status of your investments with today's results, YTD and totals
+* [GitHub personal repositories](widgets/github-personal-repos-by-menitz/README.md) by @menitz - show your own personal respositories on GitHub
 * [Gluetun VPN status](widgets/gluetun-vpn-status-by-hyptu/README.md) by @Hyptu - show the public IP, country and city of you [Gluetun VPN client](https://github.com/qdm12/gluetun)
 * [Google Calendar List](widgets/google-calendar-list-by-anant-j/README.md) by @anant-j - List Google Calendar upcoming events
 * [Hardcover Currently Reading](widgets/hardcover-currently-reading-by-akasiek/README.md) by @Akasiek - show the currently reading book from [Hardcover](https://hardcover.app/)
@@ -37,9 +41,12 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [NHL Scores](widgets/nhl-scores-by-jo-nike/README.md) by @jo-nike - show the schedule, scores, situation for NHL games today
 * [Media Server History](widgets/media-server-history-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what had been played on your Media Server like Plex/Jellyfin
 * [Media Server Playing](widgets/media-server-playing-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what's being played on your Media Server like Plex/Jellyfin
+* [Proxmox VE Nodes](widgets/proxmox-ve-nodes-by-ralphocdol/README.md) by @ralphocdol - show the Node's CPU, RAM and Disk usage of your Proxmox Virtual Environment servers
+* [MLB Scores](widgets/mlb-scores-tracker-by-ShmoobiJones/README.md) by @ShmoobiJones - Lists all MLB scores daily, with baserunner info and inning scores.
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
+* [Slack Status](widgets/slack-status-by-cartwatson/README.md) by @cartwatson - show slack status from api
 * [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
 * [Spotify Player](widgets/spotify-player-by-anant-j/README.md) by @anant-j - Show currently playing Spotify song along with the queue and ability to play/pause.
@@ -51,14 +58,15 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Tailscale devices](widgets/tailscale-devices-by-not-first/README.md) by @not-first - show all devices inside to a Tailscale tailnet along with their connection status, update availability and IP
 * [Technitium DNS Stats](widgets/technitium-dns-stats-by-eribbey/README.md) by @eribbey - show stats from Technitium DNS Server
 * [Time Bar](widgets/time-bar-by-anant-j/README.md) by @anant-j - show percentage of day/month/year elapsed
+* [Trakt](widgets/trakt-by-rxbrad/README.md) by @RxBrad - shows your last-watched movies & TV shows on Trakt
 * [Trending Mastodon Links](widgets/trending-mastodon-links-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending links from a provided Mastodon instance
 * [Trending Bluesky News](widgets/trending-bluesky-news-by-tomcasavant/README.md) by @tomcasavant - shows a list of trending news links from the [Trending News 2.0 Feed](https://bsky.app/profile/did:plc:kkf4naxqmweop7dv4l2iqqf5/feed/news-2-0) on Bluesky
 * [Uptime Kuma](widgets/uptime-kuma-by-not-first/README.md) by @not-first - show the status of Uptime Kuma services
 * [SABnzbd Status](widgets/sabnzbd-stats-by-Neo11Neo/README.md) by @Neo11Neo - show SABnzbd status
 * [Vikunja Taskboard](widgets/vikunja-taskboard-by-gugugiyu/README.md) by @gugugiyu - Real time taskboard using the Vikunja API
-* [What's Up Docker Monitor](widgets/wud-monitor-by-panonim/README.md) by @panonim - A customizable widget for displaying the wud data about containers. 
+* [What's Up Docker Monitor](widgets/wud-monitor-by-panonim/README.md) by @panonim - A customizable widget for displaying the wud data about containers.
 * [YouTube Embedded Player](widgets/youtube-embedded-player-by-ralphocdol/README.md) by @ralphocdol - A grid-card layout of YouTube List with Embed player pulled from either RSS-Bridge or FreshRSS
-* [Homeassitant Sensor Stats](widgets/homeassistant-sensor-stats-by-awildleon/README.md) by @AWildLeon - Display's configured Sensors values from Homeassitant 
+* [Home Assistant Sensor Stats](widgets/homeassistant-sensor-stats-by-awildleon/README.md) by @AWildLeon - Display's configured Sensors values from Home Assistant 
 
 ## Extension Widgets
 

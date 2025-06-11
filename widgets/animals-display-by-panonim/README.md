@@ -39,7 +39,7 @@ Simple custom-api widget to display various of animals. Duck as an example.
   cache: 2m
   url: https://randomfox.ca/floof/?ref=public_apis&utm_medium=website
   template: |
-  <img src="{{ .JSON.String "image" }}"></img
+  <img src="{{ .JSON.String "image" }}"></img>
 ```
 <img src="preview.png">
 <hr>
