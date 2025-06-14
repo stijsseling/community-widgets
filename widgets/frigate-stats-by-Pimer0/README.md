@@ -41,6 +41,8 @@ Add the following configuration to your `home.yml` file:
 - type: custom-api
           title: Frigate
           url: https://${FRIGATE_URL}/api/review/summary
+          # headers:
+          #   Cookie: frigate_token=${FRIGATE_TOKEN}
           allow-insecure: true
           skip-tls-verify: true
           cache: 30s
