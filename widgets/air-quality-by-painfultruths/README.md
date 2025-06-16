@@ -24,7 +24,7 @@ Each station varies how often their data is updated.
 
 ## Preview
 
-![Air Quality Widget Preview](./preview/air-quality.png)
+![Air Quality Widget Preview](preview.png)
 
 ## How to Use
 1. Copy the contents of the file below into your glance.yml file. (This works best as a -size: small widget)
