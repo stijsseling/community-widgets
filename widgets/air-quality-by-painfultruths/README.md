@@ -44,7 +44,7 @@ Make sure your theme has these defined:
 - type: custom-api
   title: Air Quality
   cache: 10m
-  url: https://api.waqi.info/feed/geo:36.6002;-121.8947/?token=${YOUR_TOKEN}
+  url: https://api.waqi.info/feed/geo:${LAT};${LON}/?token=${YOUR_TOKEN}
   template: |
     {{ $aqi := printf "%03s" (.JSON.String "data.aqi") }}
     {{ $aqiraw := .JSON.String "data.aqi" }}
