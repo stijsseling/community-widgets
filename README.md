@@ -12,6 +12,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 
 ## Custom API Widgets
 * [AFL Widgets](widgets/afl-widgets-by-0099FF/README.md) by @0099FF - Statistics about the current Australian Football League (AFL) season using the [Squiggle](https://api.squiggle.com.au) API.
+* [Air Quality](widgets/air-quality-by-painfultruths/README.md) by @painfultruths - Displays information about air quality using data from the World Air Quality Index (WAQI) API.
 * [Animals Display](widgets/animals-display-by-panonim/README.md) by @panonim - Display random images of animals such as cats or dogs.
 * [Arr Releases](widgets/arr-releases-by-erkston/README.md) by @erkston - Show upcoming, recently downloaded, or missing items from Sonarr, Radarr, or Lidarr
 * [Audiobookshelf stats](widgets/audiobookshelf-by-ferdyverse/README.md) by @ferdyverse - Show the number of books and podcasts in your Audiobookshelf server, along with their total duration.
