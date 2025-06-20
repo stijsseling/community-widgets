@@ -32,6 +32,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
+* [Should I Deploy Today](widgets/should-i-deploy-today/README.md) by @hohaithuy - remind to deploy today
 * [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
 * [St. Louis Fed US Mortgage Rates] by @ehaughee - Show mortgage rates from the St. Louis Federal Reserve's FRED API
