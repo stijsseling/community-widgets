@@ -11,13 +11,11 @@
   cache: 10m
   template: |
     {{ $hb := .Subrequest "heartbeats" }}
-
     {{ if not (.JSON.Exists "publicGroupList") }}
     <p class="color-negative">Error reading response</p>
     {{ else if eq (len (.JSON.Array "publicGroupList")) 0 }}
     <p>No monitors found</p>
     {{ else }}
-    
     <ul class="dynamic-columns list-gap-8">
       {{ range .JSON.Array "publicGroupList" }}
       {{ range .Array "monitorList" }}
@@ -27,7 +25,6 @@
         <a class="size-title-dynamic color-highlight text-truncate block grow" href="${UPTIME_KUMA_URL}/dashboard/{{ $id }}"
           target="_blank" rel="noreferrer">
           {{ .String "name" }} </a>
-    
         {{ if gt (len $hbArray) 0 }}
           {{ $latest := index $hbArray (sub (len $hbArray) 1) }}
           {{ if eq ($latest.Int "status") 1 }}
@@ -58,8 +55,6 @@
       {{ end }}
     </ul>
     {{ end }}
-
-
 ```
 
 ## Environment variables
