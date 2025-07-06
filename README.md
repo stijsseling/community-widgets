@@ -23,6 +23,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Cryptopanic News](widgets/cryptopanic-news/README.md) by @herculosh - A real-time cryptocurrency news widget that displays filtered news from CryptoPanic.com with configurable filters for news type, regions, and currencies.
 * [Cup Updates](widgets/cup-updates-by-panonim/README.md) by @panonim - Displays information about containers needing an update from Cup.
 * [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
+* [Forgejo repos](widgets/foregejo-repos-by-dodecube/README.md) by @dodecube - show data about latest repos from forgejo instance.
 * [Football Fixtures](widgets/football-fixtures-by-cristiandiiorio/README.md) by @cristiandiiorio - show the last match and the next match of your favourite football team using football-data api
 * [Frigate stats](widgets/frigate-stats-by-Pimer0/README.md) by @Pimer0 - show alerts and detections from the last 24 hours from your Frigate service [Frigate](https://frigate.video/)
 * [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85/README.md) by @ziritione85 - show the status of your investments with today's results, YTD and totals
