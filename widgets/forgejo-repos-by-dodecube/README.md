@@ -31,7 +31,7 @@
       <div class="header">
           <div>Forgejo Server</div>
           {{ if gt (len $repos) 0 }}
-          <div>{{ (index $repos 0).String "owner.login" }}</div>  <!-- Fixed path -->
+          <div>{{ (index $repos 0).String "owner.login" }}</div>
           {{ end }}
       </div>
 
@@ -40,7 +40,7 @@
       {{ else }}
           {{ range $repo := $repos }}
           <div class="repo">{{ $repo.String "full_name" }}</div>
-          <div class="meta">Updated: {{ $repo.String "updated_at" | parseTime "iso8601" | toRelativeTime }}</div>  <!-- Fixed time format -->
+          <div class="meta">Updated: {{ ($repo.String "updated_at" | parseTime "2006-01-02T15:04:05Z07:00").Format "2006-01-02 15:04:05" }}</div>
           {{ end }}
       {{ end }}
       {{ end }}
