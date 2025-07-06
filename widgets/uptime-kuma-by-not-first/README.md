@@ -17,7 +17,7 @@
     {{ else if eq (len (.JSON.Array "publicGroupList")) 0 }}
     <p>No monitors found</p>
     {{ else }}
-    
+
     <ul class="dynamic-columns list-gap-8">
       {{ range .JSON.Array "publicGroupList" }}
       {{ range .Array "monitorList" }}
