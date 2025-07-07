@@ -23,7 +23,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Cryptopanic News](widgets/cryptopanic-news/README.md) by @herculosh - A real-time cryptocurrency news widget that displays filtered news from CryptoPanic.com with configurable filters for news type, regions, and currencies.
 * [Cup Updates](widgets/cup-updates-by-panonim/README.md) by @panonim - Displays information about containers needing an update from Cup.
 * [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
-* [Forgejo repos](widgets/foregejo-repos-by-dodecube/README.md) by @dodecube - show data about latest repos from forgejo instance.
+* [Forgejo repos](widgets/forgejo-repos-by-dodecube/README.md) by @dodecube - show data about latest repos from forgejo instance.
 * [Football Fixtures](widgets/football-fixtures-by-cristiandiiorio/README.md) by @cristiandiiorio - show the last match and the next match of your favourite football team using football-data api
 * [Frigate stats](widgets/frigate-stats-by-Pimer0/README.md) by @Pimer0 - show alerts and detections from the last 24 hours from your Frigate service [Frigate](https://frigate.video/)
 * [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85/README.md) by @ziritione85 - show the status of your investments with today's results, YTD and totals
@@ -49,6 +49,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
+* [RomM Stats](widgets/romm-stats-by-milktoastrat/README.md) by @milktoastrat - show the stats of your [RomM](https://github.com/rommapp/romm) instance
 * [Slack Status](widgets/slack-status-by-cartwatson/README.md) by @cartwatson - show slack status from api
 * [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
@@ -69,14 +70,14 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Vikunja Taskboard](widgets/vikunja-taskboard-by-gugugiyu/README.md) by @gugugiyu - Real time taskboard using the Vikunja API
 * [What's Up Docker Monitor](widgets/wud-monitor-by-panonim/README.md) by @panonim - A customizable widget for displaying the wud data about containers.
 * [YouTube Embedded Player](widgets/youtube-embedded-player-by-ralphocdol/README.md) by @ralphocdol - A grid-card layout of YouTube List with Embed player pulled from either RSS-Bridge or FreshRSS
-* [Home Assistant Sensor Stats](widgets/homeassistant-sensor-stats-by-awildleon/README.md) by @AWildLeon - Display's configured Sensors values from Home Assistant 
+* [Home Assistant Sensor Stats](widgets/homeassistant-sensor-stats-by-awildleon/README.md) by @AWildLeon - Display's configured Sensors values from Home Assistant
 
 ## Extension Widgets
 
 > [!WARNING]
 >
 > Extension widgets are not actively monitored by the maintainers of Glance, use them at your own risk.
-* [Glance F1](https://github.com/SkyAllinott/glance-F1) by @SkyAllinott - Adds user customization to widget by @abaza738 like local timezones, a track map, and more. 
+* [Glance F1](https://github.com/SkyAllinott/glance-F1) by @SkyAllinott - Adds user customization to widget by @abaza738 like local timezones, a track map, and more.
 * [iCal (ICS) Calendar List](https://github.com/AWildLeon/Glance-iCal-Events) by @AWildLeon - List a ICS File's upcoming events (Like [Google Calendar List](widgets/google-calendar-list-by-anant-j/README.md))
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
