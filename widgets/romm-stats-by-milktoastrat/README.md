@@ -1,6 +1,6 @@
 # RomM Stats Widget
 
-![RomM Widget Preview](./romm-widget-preview.png)
+![RomM Widget Preview](https://github.com/milktoastrat/community-widgets/blob/main/widgets/romm-stats-by-milktoastrat/romm-stats-example.png?raw=true)
 
 This custom-api widget displays key statistics from a RomM server using the `/api/stats` endpoint. No authentication is required by default.
 
