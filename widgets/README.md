@@ -23,7 +23,7 @@ echo
 ```
 
 ```shell
-curl -X POST "BASE_URL/api/collections/users/auth-with-password" \
+curl -X POST "http://IP:PORT/api/collections/users/auth-with-password" \
   -H "Content-Type: application/json" \
   -d '{"identity":"USERNAME","password":"PASSWORD"}'
 ```
