@@ -50,6 +50,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
+* [RetroAchievement](widgets/retroachievement-of-the-week-by-milktoastrat/README.md) by @milktoastrat - displays the current RetroAchievements.org Achievement of the week
 * [RomM Stats](widgets/romm-stats-by-milktoastrat/README.md) by @milktoastrat - show the stats of your [RomM](https://github.com/rommapp/romm) instance
 * [Slack Status](widgets/slack-status-by-cartwatson/README.md) by @cartwatson - show slack status from api
 * [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
