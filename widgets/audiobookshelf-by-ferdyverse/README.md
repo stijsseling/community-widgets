@@ -22,10 +22,11 @@
       <p class="break-all">{{ . }}</p>
     {{ end }}
 
+    {{ $bearer := printf "Bearer %s" $apiKey }}
     {{ $librariesRequestURL := concat $baseURL "/api/libraries" }}
     {{ $librariesResponse := newRequest $librariesRequestURL
       | withHeader "Content-Type" "application/json"
-      | withHeader "Authorization" "Bearer ${AUDIOBOOKSHELF_KEY}"
+      | withHeader "Authorization" $bearer
       | getResponse }}
 
     {{ if $librariesResponse.JSON.Exists "libraries" }}
@@ -41,7 +42,7 @@
         {{ $lib_request_url := concat $baseURL "/api/libraries/" $lib_id "/stats"}}
         {{ $lib_stats := newRequest $lib_request_url
           | withHeader "Content-Type" "application/json"
-          | withHeader "Authorization" "Bearer ${AUDIOBOOKSHELF_KEY}"
+          | withHeader "Authorization" $bearer
           | getResponse }}
         {{ $lib_type := $library.String "mediaType" }}
         {{ $lib_item_count := $lib_stats.JSON.Int "totalItems" }}
