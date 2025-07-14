@@ -1,5 +1,7 @@
 # Karakeep Dashboard
-- This project includes a Karakeep Dashboard for an enhanced overview and management experience.
+- The widget returns statistics on the number of bookmarks and the number of tags and the most recently added bookmarks.
+
+![](preview.png)
 
 ```yaml
 - type: custom-api
@@ -79,3 +81,4 @@
 | `limit`         | Number of latest bookmarks to list            | 10, 20, or 30      |
 | `in-new-tab`    | Open links in a new browser tab                | `true` or `false`  |
 | `collapse-after`| Collapse list after this many items            | Integer (e.g. 5,10)|
+| `cache`         | Cache time                                     | 30m, 60m, 1d       |
