@@ -80,6 +80,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 >
 > Extension widgets are not actively monitored by the maintainers of Glance, use them at your own risk.
 * [Glance F1](https://github.com/SkyAllinott/glance-F1) by @SkyAllinott - Adds user customization to widget by @abaza738 like local timezones, a track map, and more.
+* [GitHub Graph](https://github.com/haondt/glance-github-graph) by @haondt - Show your GitHub contribution graph
 * [iCal (ICS) Calendar List](https://github.com/AWildLeon/Glance-iCal-Events) by @AWildLeon - List a ICS File's upcoming events (Like [Google Calendar List](widgets/google-calendar-list-by-anant-j/README.md))
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
