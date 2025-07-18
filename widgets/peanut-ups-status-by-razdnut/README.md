@@ -1,4 +1,4 @@
-# PEANUT STATS
+# PEANUT UPS STATS
 - The widget returns statistics on from PeaNut to Monitor UPS
 
 ![](preview.png)
