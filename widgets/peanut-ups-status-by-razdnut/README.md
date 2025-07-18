@@ -1,4 +1,7 @@
+# PEANUT STATS
+- The widget returns statistics on from PeaNut to Monitor UPS
 
+```yaml
 - type: custom-api
         title: PeaNUT UPS Status
         cache: 1m
@@ -49,3 +52,8 @@
             <hr style="border:none;border-top:1px solid #ddd;margin:8px 0;max-width:150px">
             <p style="margin:4px 0;font-size:1.1em;">🔌 Current: <strong>{{ printf "%d W" $current }}</strong></p>
           </div>
+```
+## Environment variables
+- `PEANUT_DEVICE` - Device name
+- `PEANUT_URL` - PeaNut URL
+- `PEANUT_AUTH` - Bearer Token (For API calls, you'll need to include an Authorization header with the Base64 encoded credentials in the format username:password. The header should be formatted as: Authorization: Basic <encoded credentials> )
