@@ -1,6 +1,8 @@
 # PEANUT STATS
 - The widget returns statistics on from PeaNut to Monitor UPS
 
+![](preview.png)
+
 ```yaml
 - type: custom-api
         title: PeaNUT UPS Status
