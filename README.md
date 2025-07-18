@@ -33,7 +33,6 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Google Calendar List](widgets/google-calendar-list-by-anant-j/README.md) by @anant-j - List Google Calendar upcoming events
 * [Hardcover Currently Reading](widgets/hardcover-currently-reading-by-akasiek/README.md) by @Akasiek - show the currently reading book from [Hardcover](https://hardcover.app/)
 * [Immich stats](widgets/immich-stats-by-svilenmarkov/README.md) by @svilenmarkov - show the number of photos, videos and usage of your Immich server
-* [Karakeep Dashboard](widgets/karakeep-dashboard-by-razdnut/README.md) by @razdnut - The widget returns statistics on the number of bookmarks and the number of tags and the most recently added bookmarks.
 * [Last.FM Recent Tracks](widgets/lastfm-recent-tracks-by-akasiek/README.md) by @Akasiek - show recent tracks scrobbled by a Last.FM user
 * [LeetCode Daily Question](widgets/leetcode-daily-question-by-thuyhh/README.md) by @hohaithuy - show today leetcode questions with hashtag and difficult
 * [Mealie Today's Meal](widgets/mealie-todays-meal-by-wtoa/README.md) by @wtoa - show today's meal based off the meal planner from [Mealie](https://mealie.io/)
@@ -48,6 +47,7 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Media Server Playing](widgets/media-server-playing-by-titembaatar/README.md) by @titembaataar - collection of widgets to show what's being played on your Media Server like Plex/Jellyfin
 * [Proxmox VE Nodes](widgets/proxmox-ve-nodes-by-ralphocdol/README.md) by @ralphocdol - show the Node's CPU, RAM and Disk usage of your Proxmox Virtual Environment servers
 * [MLB Scores](widgets/mlb-scores-tracker-by-ShmoobiJones/README.md) by @ShmoobiJones - Lists all MLB scores daily, with baserunner info and inning scores.
+* [PeaNut UPS Stats](widgets/peanut-ups-status-by-razdnut/README.md) by @razdnut - Returns statistics from PeaNut to Monitor UPS
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
