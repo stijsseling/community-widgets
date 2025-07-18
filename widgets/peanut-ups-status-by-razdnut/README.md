@@ -6,7 +6,7 @@
 ```yaml
 - type: custom-api
         title: PeaNUT UPS Status
-        cache: 1m
+        cache: 10m
         options:
           device: ${PEANUT_DEVICE}
         subrequests:
