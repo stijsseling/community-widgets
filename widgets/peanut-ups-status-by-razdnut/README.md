@@ -8,7 +8,7 @@
         title: PeaNUT UPS Status
         url: http://${PEANUT_URL}/api/v1/devices/${PEANUT_DEVICE}
         method: GET
-        cache: 1m
+        cache: 10m
         headers:
           Accept: application/json
           Authorization: "Basic ${PEANUT_AUTH}"
