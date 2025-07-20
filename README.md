@@ -12,14 +12,21 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 
 ## Custom API Widgets
 * [AFL Widgets](widgets/afl-widgets-by-0099FF/README.md) by @0099FF - Statistics about the current Australian Football League (AFL) season using the [Squiggle](https://api.squiggle.com.au) API.
+* [Air Quality](widgets/air-quality-by-painfultruths/README.md) by @painfultruths - Displays information about air quality using data from the World Air Quality Index (WAQI) API.
 * [Animals Display](widgets/animals-display-by-panonim/README.md) by @panonim - Display random images of animals such as cats or dogs.
 * [Arr Releases](widgets/arr-releases-by-erkston/README.md) by @erkston - Show upcoming, recently downloaded, or missing items from Sonarr, Radarr, or Lidarr
+* [Astronomy Picture of the Day](widgets/astronomy-picture-of-the-day-by-Saisamarth21/README.md) by @ Saisamarth21 - Shows Astronomy Picture of the Day from NASA.
 * [Audiobookshelf stats](widgets/audiobookshelf-by-ferdyverse/README.md) by @ferdyverse - Show the number of books and podcasts in your Audiobookshelf server, along with their total duration.
+* [Beszel Metrics](widgets/beszel-metrics-by-panonim/README.md) by @panonim - Simple widget to show system metrics from Beszel.
+* [Calibre-Web Stats](widgets/calibre-web-stats-by-rvelasq/README.md) by @rvelasq - Display a summary of books from your Calibre-Web server.
 * [Cats As A Service Photos](widgets/cats-as-a-service-photos-by-gugugiyu/README.md) by @gugugiyu - show a grid of cat photos from the Cat as a Service [API](https://cataas.com/)
 * [Chess.com Daily Puzzle](widgets/chess-puzzle-by-panonim/README.md) by @panonim - Display daily chess puzzle from chess.com
+* [Cloudflare Tunnels](widgets/cloudflared-tunnels-by-drshajul/README.md) by @drshajul - External and Local Cloudflare Tunnels links
 * [Cryptopanic News](widgets/cryptopanic-news/README.md) by @herculosh - A real-time cryptocurrency news widget that displays filtered news from CryptoPanic.com with configurable filters for news type, regions, and currencies.
 * [Cup Updates](widgets/cup-updates-by-panonim/README.md) by @panonim - Displays information about containers needing an update from Cup.
+* [Epic Games Free Games](widgets/epic-free-widget-by-marocainperdu/README.md) by @marocainperdu - Display currently free games from the Epic Games Store with promotional images and availability periods.
 * [Formula 1 Widgets](widgets/formula1-widgets-by-abaza738/README.md) by @abaza738 - show different stats from the current Formula 1 season from [F1 API](https://f1api.dev)
+* [Forgejo repos](widgets/forgejo-repos-by-dodecube/README.md) by @dodecube - show data about latest repos from forgejo instance.
 * [Football Fixtures](widgets/football-fixtures-by-cristiandiiorio/README.md) by @cristiandiiorio - show the last match and the next match of your favourite football team using football-data api
 * [Frigate stats](widgets/frigate-stats-by-Pimer0/README.md) by @Pimer0 - show alerts and detections from the last 24 hours from your Frigate service [Frigate](https://frigate.video/)
 * [Ghostfolio stats](widgets/ghostfolio-stats-by-ziritione85/README.md) by @ziritione85 - show the status of your investments with today's results, YTD and totals
@@ -43,9 +50,13 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Overseerr Trending/Discovery](widgets/overseerr-trending-discovery-by-flamechair/README.md) by @flamechair - Shows trending media along with Overseerr recommendations for movies/tv
 * [Proxmox VE Nodes](widgets/proxmox-ve-nodes-by-ralphocdol/README.md) by @ralphocdol - show the Node's CPU, RAM and Disk usage of your Proxmox Virtual Environment servers
 * [MLB Scores](widgets/mlb-scores-tracker-by-ShmoobiJones/README.md) by @ShmoobiJones - Lists all MLB scores daily, with baserunner info and inning scores.
+* [PeaNut UPS Stats](widgets/peanut-ups-status-by-razdnut/README.md) by @razdnut - Returns statistics from PeaNut to Monitor UPS
 * [Proxmox VE stats](widgets/proxmox-ve-stats-by-ralphocdol/README.md) by @ralphocdol - show the number of nodes, LXCs, VMs and Storage of your Proxmox Virtual Environment server
 * [Random Bible Verse](widgets/random-bible-verse-by-pypp/README.md) by @pypp - show a random bible verse
 * [Random fact](widgets/random-fact-by-svilenmarkov/README.md) by @svilenmarkov - show a random fact
+* [Should I Deploy Today](widgets/should-i-deploy-today/README.md) by @hohaithuy - remind to deploy today
+* [RetroAchievement](widgets/retroachievement-of-the-week-by-milktoastrat/README.md) by @milktoastrat - displays the current RetroAchievements.org Achievement of the week
+* [RomM Stats](widgets/romm-stats-by-milktoastrat/README.md) by @milktoastrat - show the stats of your [RomM](https://github.com/rommapp/romm) instance
 * [Slack Status](widgets/slack-status-by-cartwatson/README.md) by @cartwatson - show slack status from api
 * [Speedtest tracker](widgets/speedtest-tracker-by-not-first/README.md) by @not-first - show the latest internet speed information from speedtest tracker
 * [Spotify Now Playing](widgets/spotify-now-playing-by-needsadjustment/README.md) by @needsadjustment - show the currently playing Spotify song
@@ -66,14 +77,17 @@ Custom API widgets are much easier to setup and usually only require a copy-past
 * [Vikunja Taskboard](widgets/vikunja-taskboard-by-gugugiyu/README.md) by @gugugiyu - Real time taskboard using the Vikunja API
 * [What's Up Docker Monitor](widgets/wud-monitor-by-panonim/README.md) by @panonim - A customizable widget for displaying the wud data about containers.
 * [YouTube Embedded Player](widgets/youtube-embedded-player-by-ralphocdol/README.md) by @ralphocdol - A grid-card layout of YouTube List with Embed player pulled from either RSS-Bridge or FreshRSS
-* [Home Assistant Sensor Stats](widgets/homeassistant-sensor-stats-by-awildleon/README.md) by @AWildLeon - Display's configured Sensors values from Home Assistant 
+* [Home Assistant Sensor Stats](widgets/homeassistant-sensor-stats-by-awildleon/README.md) by @AWildLeon - Display's configured Sensors values from Home Assistant
 
 ## Extension Widgets
 
 > [!WARNING]
 >
 > Extension widgets are not actively monitored by the maintainers of Glance, use them at your own risk.
+* [Glance F1](https://github.com/SkyAllinott/glance-F1) by @SkyAllinott - Adds user customization to widget by @abaza738 like local timezones, a track map, and more.
+* [GitHub Graph](https://github.com/haondt/glance-github-graph) by @haondt - Show your GitHub contribution graph
 * [iCal (ICS) Calendar List](https://github.com/AWildLeon/Glance-iCal-Events) by @AWildLeon - List a ICS File's upcoming events (Like [Google Calendar List](widgets/google-calendar-list-by-anant-j/README.md))
 * [linktiles](https://github.com/haondt/linktiles/) by @haondt - display your linkding bookmarks in a configurable mosaic
+* [qBittorrent Statistic](https://github.com/Panonim/qbwrapper) by @panonim - Display file statistics as they are being downloaded.
 * [Restic snapshot](https://github.com/not-first/restic-glance-extension) by @not-first - show the most recent snapshot and storage stats of a restic repo
 * [Kubernetes nodes and apps](https://github.com/lukasdietrich/glance-k8s) by @lukasdietrich - List Kubernetes nodes and applications. Also including helm charts
