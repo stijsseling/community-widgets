@@ -1,7 +1,8 @@
 # Unraid
 
 Get Docker containers, VM's and/or system information from a local unraid server
-Requires the Unraid API, see here how to enable and generate an API key:  
+
+Connects to the unraid graphql API. See this page on how to enable the AIP and generate an API key: https://docs.unraid.net/API/how-to-use-the-api/
 
 ![](preview.png)
 
